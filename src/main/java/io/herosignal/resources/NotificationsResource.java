@@ -273,6 +273,7 @@ public final class NotificationsResource {
     public Export history(String messageId, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/notifications/{messageId}/history");
         op.pathParam("messageId", messageId);
+        op.queryAppId(true);
         return client.execute(op, options, TYPE_6);
     }
 
@@ -295,6 +296,7 @@ public final class NotificationsResource {
     public Export exportEvents(String messageId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/notifications/{messageId}/export_events");
         op.pathParam("messageId", messageId);
+        op.queryAppId(true);
         return client.execute(op, options, TYPE_7);
     }
 }

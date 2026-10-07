@@ -231,8 +231,8 @@ public final class SegmentsResource {
      *
      * {@code POST /v1/apps/{appId}/segments/{segmentId}/estimate}
      */
-    public SegmentEstimate estimate(String segmentId, String force) {
-        return estimate(segmentId, force, null);
+    public SegmentEstimate estimate(String segmentId) {
+        return estimate(segmentId, null, null);
     }
 
     /**
@@ -240,10 +240,23 @@ public final class SegmentsResource {
      *
      * {@code POST /v1/apps/{appId}/segments/{segmentId}/estimate}
      */
-    public SegmentEstimate estimate(String segmentId, String force, RequestOptions options) {
+    public SegmentEstimate estimate(String segmentId, SegmentsEstimateParams params) {
+        return estimate(segmentId, params, null);
+    }
+
+    /**
+     * Tahmini sayım
+     *
+     * {@code POST /v1/apps/{appId}/segments/{segmentId}/estimate}
+     *
+     * Parametreler: force — true: önbelleği atla, tam sayım Değerler: "true", "false".
+     */
+    public SegmentEstimate estimate(String segmentId, SegmentsEstimateParams params, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/segments/{segmentId}/estimate");
         op.pathParam("segmentId", segmentId);
-        op.query("force", force);
+        if (params != null) {
+            params.applyTo(op);
+        }
         return client.execute(op, options, TYPE_7);
     }
 }
