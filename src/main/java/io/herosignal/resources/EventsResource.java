@@ -1,0 +1,116 @@
+// Bu dosya api/openapi.yaml'dan sdk/scripts/generate-server-sdks.mjs ile üretilmiştir; elle düzenlemeyin.
+
+package io.herosignal.resources;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import io.herosignal.HeroSignal;
+import io.herosignal.RequestOptions;
+import io.herosignal.core.Operation;
+import io.herosignal.core.PageIterable;
+import io.herosignal.models.*;
+import io.herosignal.params.*;
+
+/**
+ * Özel olay gönderimi ve olay tanımları.
+ */
+public final class EventsResource {
+    private final HeroSignal client;
+
+    public EventsResource(HeroSignal client) {
+        this.client = client;
+    }
+
+    private static final TypeReference<EventsAccepted> TYPE_0 = new TypeReference<EventsAccepted>() {};
+
+    /**
+     * Toplu olay gönder (en fazla 500)
+     *
+     * {@code POST /v1/apps/{appId}/events}
+     */
+    public EventsAccepted send(ApiEventsDto body) {
+        return send(body, null);
+    }
+
+    /**
+     * Toplu olay gönder (en fazla 500)
+     *
+     * {@code POST /v1/apps/{appId}/events}
+     */
+    public EventsAccepted send(ApiEventsDto body, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/events");
+        if (body == null) {
+            throw new IllegalArgumentException("HeroSignal: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_0);
+    }
+
+    private static final TypeReference<EventDefinitionList> TYPE_1 = new TypeReference<EventDefinitionList>() {};
+
+    /**
+     * Olay tanımları
+     *
+     * {@code GET /v1/apps/{appId}/events/definitions}
+     */
+    public EventDefinitionList listDefinitions() {
+        return listDefinitions(null);
+    }
+
+    /**
+     * Olay tanımları
+     *
+     * {@code GET /v1/apps/{appId}/events/definitions}
+     */
+    public EventDefinitionList listDefinitions(RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/events/definitions");
+        return client.execute(op, options, TYPE_1);
+    }
+
+    private static final TypeReference<EventDefinitionDetail> TYPE_2 = new TypeReference<EventDefinitionDetail>() {};
+
+    /**
+     * Olay detayı
+     *
+     * {@code GET /v1/apps/{appId}/events/definitions/{name}}
+     */
+    public EventDefinitionDetail getDefinition(String name) {
+        return getDefinition(name, null);
+    }
+
+    /**
+     * Olay detayı
+     *
+     * {@code GET /v1/apps/{appId}/events/definitions/{name}}
+     */
+    public EventDefinitionDetail getDefinition(String name, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/events/definitions/{name}");
+        op.pathParam("name", name);
+        return client.execute(op, options, TYPE_2);
+    }
+
+    private static final TypeReference<EventDefinition> TYPE_3 = new TypeReference<EventDefinition>() {};
+
+    /**
+     * Görünen ad / dönüşüm işareti
+     *
+     * {@code PATCH /v1/apps/{appId}/events/definitions/{name}}
+     */
+    public EventDefinition updateDefinition(String name, PatchEventDefinitionDto body) {
+        return updateDefinition(name, body, null);
+    }
+
+    /**
+     * Görünen ad / dönüşüm işareti
+     *
+     * {@code PATCH /v1/apps/{appId}/events/definitions/{name}}
+     */
+    public EventDefinition updateDefinition(String name, PatchEventDefinitionDto body, RequestOptions options) {
+        Operation op = new Operation("PATCH", "/v1/apps/{appId}/events/definitions/{name}");
+        op.pathParam("name", name);
+        if (body == null) {
+            throw new IllegalArgumentException("HeroSignal: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_3);
+    }
+}

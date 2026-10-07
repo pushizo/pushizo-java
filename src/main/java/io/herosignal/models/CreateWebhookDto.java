@@ -1,0 +1,97 @@
+// Bu dosya api/openapi.yaml'dan sdk/scripts/generate-server-sdks.mjs ile üretilmiştir; elle düzenlemeyin.
+
+package io.herosignal.models;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+/**
+ * CreateWebhookDto şeması.
+ */
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public final class CreateWebhookDto {
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("url")
+    private String url;
+
+    @JsonProperty("description")
+    private String description;
+
+    /**
+     * Zorunlu. Değerler: "message.queued", "message.completed", "message.failed", "delivery.sent", "delivery.delivered", "delivery.failed", "delivery.opened", "delivery.clicked", "delivery.bounced", "delivery.complained", "delivery.unsubscribed", "in_app.impression", "in_app.clicked", "in_app.dismissed", "subscription.created", "subscription.unsubscribed", "subscription.invalidated", "user.created", "user.updated", "user.merged", "user.deleted", "event.received", "conversion.created", "campaign.scheduled", "campaign.started", "campaign.completed".
+     */
+    @JsonProperty("events")
+    private java.util.List<String> events;
+
+    @JsonProperty("event_filters")
+    private CreateWebhookDtoEventFilters eventFilters;
+
+    @JsonProperty("batch")
+    private Boolean batch;
+
+    @JsonProperty("headers")
+    private java.util.Map<String, String> headers;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public CreateWebhookDto url(String url) {
+        this.url = url;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public CreateWebhookDto description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public java.util.List<String> getEvents() {
+        return events;
+    }
+
+    public CreateWebhookDto events(java.util.List<String> events) {
+        this.events = events;
+        return this;
+    }
+
+    public CreateWebhookDtoEventFilters getEventFilters() {
+        return eventFilters;
+    }
+
+    public CreateWebhookDto eventFilters(CreateWebhookDtoEventFilters eventFilters) {
+        this.eventFilters = eventFilters;
+        return this;
+    }
+
+    public Boolean getBatch() {
+        return batch;
+    }
+
+    public CreateWebhookDto batch(Boolean batch) {
+        this.batch = batch;
+        return this;
+    }
+
+    public java.util.Map<String, String> getHeaders() {
+        return headers;
+    }
+
+    public CreateWebhookDto headers(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return io.herosignal.core.Json.stringify(this);
+    }
+}
