@@ -69,6 +69,12 @@ public final class InAppMessage {
     /**
      * Zorunlu.
      */
+    @JsonProperty("journey_only")
+    private Boolean journeyOnly;
+
+    /**
+     * Zorunlu.
+     */
     @JsonProperty("start_at")
     private String startAt;
 
@@ -174,6 +180,15 @@ public final class InAppMessage {
 
     public InAppMessage frequency(InAppMessageFrequency frequency) {
         this.frequency = frequency;
+        return this;
+    }
+
+    public Boolean getJourneyOnly() {
+        return journeyOnly;
+    }
+
+    public InAppMessage journeyOnly(Boolean journeyOnly) {
+        this.journeyOnly = journeyOnly;
         return this;
     }
 

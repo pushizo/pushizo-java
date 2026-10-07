@@ -36,6 +36,9 @@ public final class CreateInAppDto {
     @JsonProperty("frequency")
     private CreateInAppDtoFrequency frequency;
 
+    @JsonProperty("journey_only")
+    private Boolean journeyOnly;
+
     @JsonProperty("priority")
     private Long priority;
 
@@ -87,6 +90,15 @@ public final class CreateInAppDto {
 
     public CreateInAppDto frequency(CreateInAppDtoFrequency frequency) {
         this.frequency = frequency;
+        return this;
+    }
+
+    public Boolean getJourneyOnly() {
+        return journeyOnly;
+    }
+
+    public CreateInAppDto journeyOnly(Boolean journeyOnly) {
+        this.journeyOnly = journeyOnly;
         return this;
     }
 

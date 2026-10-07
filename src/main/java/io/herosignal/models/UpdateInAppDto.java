@@ -27,6 +27,9 @@ public final class UpdateInAppDto {
     @JsonProperty("frequency")
     private UpdateInAppDtoFrequency frequency;
 
+    @JsonProperty("journey_only")
+    private Boolean journeyOnly;
+
     @JsonProperty("priority")
     private Long priority;
 
@@ -78,6 +81,15 @@ public final class UpdateInAppDto {
 
     public UpdateInAppDto frequency(UpdateInAppDtoFrequency frequency) {
         this.frequency = frequency;
+        return this;
+    }
+
+    public Boolean getJourneyOnly() {
+        return journeyOnly;
+    }
+
+    public UpdateInAppDto journeyOnly(Boolean journeyOnly) {
+        this.journeyOnly = journeyOnly;
         return this;
     }
 
