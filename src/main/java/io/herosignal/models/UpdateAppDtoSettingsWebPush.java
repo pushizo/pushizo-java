@@ -21,6 +21,18 @@ public final class UpdateAppDtoSettingsWebPush {
     @JsonProperty("prompt")
     private UpdateAppDtoSettingsWebPushPrompt prompt;
 
+    @JsonProperty("welcomeNotification")
+    private UpdateAppDtoSettingsWebPushWelcomeNotification welcomeNotification;
+
+    @JsonProperty("clickBehavior")
+    private UpdateAppDtoSettingsWebPushClickBehavior clickBehavior;
+
+    @JsonProperty("customLink")
+    private UpdateAppDtoSettingsWebPushCustomLink customLink;
+
+    @JsonProperty("promptBackoffDays")
+    private java.util.List<Long> promptBackoffDays;
+
     public String getServiceWorkerPath() {
         return serviceWorkerPath;
     }
@@ -45,6 +57,42 @@ public final class UpdateAppDtoSettingsWebPush {
 
     public UpdateAppDtoSettingsWebPush prompt(UpdateAppDtoSettingsWebPushPrompt prompt) {
         this.prompt = prompt;
+        return this;
+    }
+
+    public UpdateAppDtoSettingsWebPushWelcomeNotification getWelcomeNotification() {
+        return welcomeNotification;
+    }
+
+    public UpdateAppDtoSettingsWebPush welcomeNotification(UpdateAppDtoSettingsWebPushWelcomeNotification welcomeNotification) {
+        this.welcomeNotification = welcomeNotification;
+        return this;
+    }
+
+    public UpdateAppDtoSettingsWebPushClickBehavior getClickBehavior() {
+        return clickBehavior;
+    }
+
+    public UpdateAppDtoSettingsWebPush clickBehavior(UpdateAppDtoSettingsWebPushClickBehavior clickBehavior) {
+        this.clickBehavior = clickBehavior;
+        return this;
+    }
+
+    public UpdateAppDtoSettingsWebPushCustomLink getCustomLink() {
+        return customLink;
+    }
+
+    public UpdateAppDtoSettingsWebPush customLink(UpdateAppDtoSettingsWebPushCustomLink customLink) {
+        this.customLink = customLink;
+        return this;
+    }
+
+    public java.util.List<Long> getPromptBackoffDays() {
+        return promptBackoffDays;
+    }
+
+    public UpdateAppDtoSettingsWebPush promptBackoffDays(java.util.List<Long> promptBackoffDays) {
+        this.promptBackoffDays = promptBackoffDays;
         return this;
     }
 
