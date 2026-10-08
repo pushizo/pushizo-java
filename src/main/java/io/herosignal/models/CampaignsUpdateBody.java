@@ -30,6 +30,24 @@ public final class CampaignsUpdateBody {
     @JsonProperty("content")
     private java.util.Map<String, Object> content;
 
+    @JsonProperty("labels")
+    private java.util.List<String> labels;
+
+    /**
+     * Tercih kategorisi anahtarı; kapalı kullanıcılar bastırılır
+     */
+    @JsonProperty("category")
+    private String category;
+
+    @JsonProperty("ab_test")
+    private CampaignsUpdateBodyAbTest abTest;
+
+    /**
+     * A/B varyantları (ağırlıklar toplamı 100; en fazla bir is_control)
+     */
+    @JsonProperty("variants")
+    private java.util.List<CampaignsUpdateBodyVariantsItem> variants;
+
     @JsonProperty("template_id")
     private String templateId;
 
@@ -78,6 +96,42 @@ public final class CampaignsUpdateBody {
 
     public CampaignsUpdateBody content(java.util.Map<String, Object> content) {
         this.content = content;
+        return this;
+    }
+
+    public java.util.List<String> getLabels() {
+        return labels;
+    }
+
+    public CampaignsUpdateBody labels(java.util.List<String> labels) {
+        this.labels = labels;
+        return this;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public CampaignsUpdateBody category(String category) {
+        this.category = category;
+        return this;
+    }
+
+    public CampaignsUpdateBodyAbTest getAbTest() {
+        return abTest;
+    }
+
+    public CampaignsUpdateBody abTest(CampaignsUpdateBodyAbTest abTest) {
+        this.abTest = abTest;
+        return this;
+    }
+
+    public java.util.List<CampaignsUpdateBodyVariantsItem> getVariants() {
+        return variants;
+    }
+
+    public CampaignsUpdateBody variants(java.util.List<CampaignsUpdateBodyVariantsItem> variants) {
+        this.variants = variants;
         return this;
     }
 

@@ -27,6 +27,8 @@ public final class CampaignsListParams {
      */
     private String channel;
 
+    private String label;
+
     public Long getLimit() {
         return limit;
     }
@@ -81,6 +83,15 @@ public final class CampaignsListParams {
         return this;
     }
 
+    public String getLabel() {
+        return label;
+    }
+
+    public CampaignsListParams label(String label) {
+        this.label = label;
+        return this;
+    }
+
     /** Sığ kopya (sayfalama sırasında çağıranın nesnesi değiştirilmez). */
     public CampaignsListParams copy() {
         CampaignsListParams c = new CampaignsListParams();
@@ -90,6 +101,7 @@ public final class CampaignsListParams {
         c.status = status;
         c.type = type;
         c.channel = channel;
+        c.label = label;
         return c;
     }
 
@@ -101,5 +113,6 @@ public final class CampaignsListParams {
         op.query("status", status);
         op.query("type", type);
         op.query("channel", channel);
+        op.query("label", label);
     }
 }

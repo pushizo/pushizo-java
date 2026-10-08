@@ -63,6 +63,9 @@ public final class JourneyStatsNodesItem {
     @JsonProperty("messages")
     private java.util.Map<String, Long> messages;
 
+    @JsonProperty("variants")
+    private java.util.List<JourneyStatsNodesItemVariantsItem> variants;
+
     public String getNodeId() {
         return nodeId;
     }
@@ -141,6 +144,15 @@ public final class JourneyStatsNodesItem {
 
     public JourneyStatsNodesItem messages(java.util.Map<String, Long> messages) {
         this.messages = messages;
+        return this;
+    }
+
+    public java.util.List<JourneyStatsNodesItemVariantsItem> getVariants() {
+        return variants;
+    }
+
+    public JourneyStatsNodesItem variants(java.util.List<JourneyStatsNodesItemVariantsItem> variants) {
+        this.variants = variants;
         return this;
     }
 

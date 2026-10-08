@@ -18,6 +18,12 @@ public final class UpdateInAppDto {
     @JsonProperty("triggers")
     private java.util.List<Object> triggers;
 
+    @JsonProperty("trigger_groups")
+    private java.util.List<java.util.List<Object>> triggerGroups;
+
+    @JsonProperty("variants")
+    private java.util.List<UpdateInAppDtoVariantsItem> variants;
+
     @JsonProperty("display")
     private UpdateInAppDtoDisplay display;
 
@@ -54,6 +60,24 @@ public final class UpdateInAppDto {
 
     public UpdateInAppDto triggers(java.util.List<Object> triggers) {
         this.triggers = triggers;
+        return this;
+    }
+
+    public java.util.List<java.util.List<Object>> getTriggerGroups() {
+        return triggerGroups;
+    }
+
+    public UpdateInAppDto triggerGroups(java.util.List<java.util.List<Object>> triggerGroups) {
+        this.triggerGroups = triggerGroups;
+        return this;
+    }
+
+    public java.util.List<UpdateInAppDtoVariantsItem> getVariants() {
+        return variants;
+    }
+
+    public UpdateInAppDto variants(java.util.List<UpdateInAppDtoVariantsItem> variants) {
+        this.variants = variants;
         return this;
     }
 

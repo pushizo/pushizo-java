@@ -24,6 +24,12 @@ public final class CreateInAppDto {
     @JsonProperty("triggers")
     private java.util.List<Object> triggers;
 
+    @JsonProperty("trigger_groups")
+    private java.util.List<java.util.List<Object>> triggerGroups;
+
+    @JsonProperty("variants")
+    private java.util.List<CreateInAppDtoVariantsItem> variants;
+
     /**
      * Zorunlu.
      */
@@ -63,6 +69,24 @@ public final class CreateInAppDto {
 
     public CreateInAppDto triggers(java.util.List<Object> triggers) {
         this.triggers = triggers;
+        return this;
+    }
+
+    public java.util.List<java.util.List<Object>> getTriggerGroups() {
+        return triggerGroups;
+    }
+
+    public CreateInAppDto triggerGroups(java.util.List<java.util.List<Object>> triggerGroups) {
+        this.triggerGroups = triggerGroups;
+        return this;
+    }
+
+    public java.util.List<CreateInAppDtoVariantsItem> getVariants() {
+        return variants;
+    }
+
+    public CreateInAppDto variants(java.util.List<CreateInAppDtoVariantsItem> variants) {
+        this.variants = variants;
         return this;
     }
 

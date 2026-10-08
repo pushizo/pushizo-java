@@ -1,0 +1,67 @@
+// Bu dosya api/openapi.yaml'dan sdk/scripts/generate-server-sdks.mjs ile üretilmiştir; elle düzenlemeyin.
+
+package io.herosignal.models;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+/**
+ * AppSettingsPreferenceCenterTextsValue şeması.
+ */
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public final class AppSettingsPreferenceCenterTextsValue {
+    @JsonProperty("title")
+    private String title;
+
+    @JsonProperty("description")
+    private String description;
+
+    @JsonProperty("unsubscribeAll")
+    private String unsubscribeAll;
+
+    @JsonProperty("saved")
+    private String saved;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public AppSettingsPreferenceCenterTextsValue title(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public AppSettingsPreferenceCenterTextsValue description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public String getUnsubscribeAll() {
+        return unsubscribeAll;
+    }
+
+    public AppSettingsPreferenceCenterTextsValue unsubscribeAll(String unsubscribeAll) {
+        this.unsubscribeAll = unsubscribeAll;
+        return this;
+    }
+
+    public String getSaved() {
+        return saved;
+    }
+
+    public AppSettingsPreferenceCenterTextsValue saved(String saved) {
+        this.saved = saved;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return io.herosignal.core.Json.stringify(this);
+    }
+}

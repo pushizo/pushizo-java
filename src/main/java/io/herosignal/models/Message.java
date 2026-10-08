@@ -69,6 +69,36 @@ public final class Message {
     /**
      * Zorunlu.
      */
+    @JsonProperty("labels")
+    private java.util.List<String> labels;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("category")
+    private String category;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("template_id")
+    private String templateId;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("campaign_id")
+    private String campaignId;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("variants")
+    private java.util.List<MessageVariantsItem> variants;
+
+    /**
+     * Zorunlu.
+     */
     @JsonProperty("counts")
     private MessageCounts counts;
 
@@ -192,6 +222,51 @@ public final class Message {
 
     public Message options(java.util.Map<String, Object> options) {
         this.options = options;
+        return this;
+    }
+
+    public java.util.List<String> getLabels() {
+        return labels;
+    }
+
+    public Message labels(java.util.List<String> labels) {
+        this.labels = labels;
+        return this;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public Message category(String category) {
+        this.category = category;
+        return this;
+    }
+
+    public String getTemplateId() {
+        return templateId;
+    }
+
+    public Message templateId(String templateId) {
+        this.templateId = templateId;
+        return this;
+    }
+
+    public String getCampaignId() {
+        return campaignId;
+    }
+
+    public Message campaignId(String campaignId) {
+        this.campaignId = campaignId;
+        return this;
+    }
+
+    public java.util.List<MessageVariantsItem> getVariants() {
+        return variants;
+    }
+
+    public Message variants(java.util.List<MessageVariantsItem> variants) {
+        this.variants = variants;
         return this;
     }
 

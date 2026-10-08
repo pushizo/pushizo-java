@@ -18,6 +18,21 @@ public final class AppSettings {
     @JsonProperty("frequencyCap")
     private AppSettingsFrequencyCap frequencyCap;
 
+    @JsonProperty("frequencyCaps")
+    private java.util.List<AppSettingsFrequencyCapsItem> frequencyCaps;
+
+    @JsonProperty("inApp")
+    private AppSettingsInApp inApp;
+
+    @JsonProperty("androidChannels")
+    private java.util.List<AppSettingsAndroidChannelsItem> androidChannels;
+
+    @JsonProperty("sms")
+    private AppSettingsSms sms;
+
+    @JsonProperty("preferenceCenter")
+    private AppSettingsPreferenceCenter preferenceCenter;
+
     @JsonProperty("defaultTtlSeconds")
     private Long defaultTtlSeconds;
 
@@ -54,6 +69,51 @@ public final class AppSettings {
 
     public AppSettings frequencyCap(AppSettingsFrequencyCap frequencyCap) {
         this.frequencyCap = frequencyCap;
+        return this;
+    }
+
+    public java.util.List<AppSettingsFrequencyCapsItem> getFrequencyCaps() {
+        return frequencyCaps;
+    }
+
+    public AppSettings frequencyCaps(java.util.List<AppSettingsFrequencyCapsItem> frequencyCaps) {
+        this.frequencyCaps = frequencyCaps;
+        return this;
+    }
+
+    public AppSettingsInApp getInApp() {
+        return inApp;
+    }
+
+    public AppSettings inApp(AppSettingsInApp inApp) {
+        this.inApp = inApp;
+        return this;
+    }
+
+    public java.util.List<AppSettingsAndroidChannelsItem> getAndroidChannels() {
+        return androidChannels;
+    }
+
+    public AppSettings androidChannels(java.util.List<AppSettingsAndroidChannelsItem> androidChannels) {
+        this.androidChannels = androidChannels;
+        return this;
+    }
+
+    public AppSettingsSms getSms() {
+        return sms;
+    }
+
+    public AppSettings sms(AppSettingsSms sms) {
+        this.sms = sms;
+        return this;
+    }
+
+    public AppSettingsPreferenceCenter getPreferenceCenter() {
+        return preferenceCenter;
+    }
+
+    public AppSettings preferenceCenter(AppSettingsPreferenceCenter preferenceCenter) {
+        this.preferenceCenter = preferenceCenter;
         return this;
     }
 

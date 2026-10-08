@@ -255,7 +255,42 @@ public final class AnalyticsResource {
         return client.execute(op, options, TYPE_6);
     }
 
-    private static final TypeReference<EngagementReport> TYPE_7 = new TypeReference<EngagementReport>() {};
+    private static final TypeReference<RetentionReport> TYPE_7 = new TypeReference<RetentionReport>() {};
+
+    /**
+     * Retention kohortu
+     *
+     * {@code GET /v1/apps/{appId}/analytics/retention}
+     */
+    public RetentionReport retention() {
+        return retention(null, null);
+    }
+
+    /**
+     * Retention kohortu
+     *
+     * {@code GET /v1/apps/{appId}/analytics/retention}
+     */
+    public RetentionReport retention(AnalyticsRetentionParams params) {
+        return retention(params, null);
+    }
+
+    /**
+     * Retention kohortu
+     *
+     * {@code GET /v1/apps/{appId}/analytics/retention}
+     *
+     * Parametreler: format — Değerler: "json", "csv".
+     */
+    public RetentionReport retention(AnalyticsRetentionParams params, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/analytics/retention");
+        if (params != null) {
+            params.applyTo(op);
+        }
+        return client.execute(op, options, TYPE_7);
+    }
+
+    private static final TypeReference<EngagementReport> TYPE_8 = new TypeReference<EngagementReport>() {};
 
     /**
      * Etkileşim ısı haritası
@@ -287,6 +322,6 @@ public final class AnalyticsResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_7);
+        return client.execute(op, options, TYPE_8);
     }
 }

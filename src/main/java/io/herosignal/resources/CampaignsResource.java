@@ -359,7 +359,55 @@ public final class CampaignsResource {
         return client.execute(op, options, TYPE_12);
     }
 
-    private static final TypeReference<DeliveryList> TYPE_13 = new TypeReference<DeliveryList>() {};
+    private static final TypeReference<CampaignVariantStats> TYPE_13 = new TypeReference<CampaignVariantStats>() {};
+
+    /**
+     * A/B varyant karşılaştırması
+     *
+     * {@code GET /v1/apps/{appId}/campaigns/{campaignId}/variants/stats}
+     */
+    public CampaignVariantStats variantStats(String campaignId) {
+        return variantStats(campaignId, null);
+    }
+
+    /**
+     * A/B varyant karşılaştırması
+     *
+     * {@code GET /v1/apps/{appId}/campaigns/{campaignId}/variants/stats}
+     */
+    public CampaignVariantStats variantStats(String campaignId, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/campaigns/{campaignId}/variants/stats");
+        op.pathParam("campaignId", campaignId);
+        return client.execute(op, options, TYPE_13);
+    }
+
+    private static final TypeReference<Campaign> TYPE_14 = new TypeReference<Campaign>() {};
+
+    /**
+     * A/B kazananını seç
+     *
+     * {@code POST /v1/apps/{appId}/campaigns/{campaignId}/winner}
+     */
+    public Campaign selectWinner(String campaignId, SelectWinnerDto body) {
+        return selectWinner(campaignId, body, null);
+    }
+
+    /**
+     * A/B kazananını seç
+     *
+     * {@code POST /v1/apps/{appId}/campaigns/{campaignId}/winner}
+     */
+    public Campaign selectWinner(String campaignId, SelectWinnerDto body, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/campaigns/{campaignId}/winner");
+        op.pathParam("campaignId", campaignId);
+        if (body == null) {
+            throw new IllegalArgumentException("HeroSignal: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_14);
+    }
+
+    private static final TypeReference<DeliveryList> TYPE_15 = new TypeReference<DeliveryList>() {};
 
     /**
      * Abone bazlı teslimatlar
@@ -392,7 +440,7 @@ public final class CampaignsResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_13);
+        return client.execute(op, options, TYPE_15);
     }
 
     /**
@@ -424,7 +472,7 @@ public final class CampaignsResource {
         });
     }
 
-    private static final TypeReference<Campaign> TYPE_14 = new TypeReference<Campaign>() {};
+    private static final TypeReference<Campaign> TYPE_16 = new TypeReference<Campaign>() {};
 
     /**
      * Başarısız teslimatlara yeniden gönder
@@ -443,10 +491,10 @@ public final class CampaignsResource {
     public Campaign resendFailed(String campaignId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/campaigns/{campaignId}/resend-failed");
         op.pathParam("campaignId", campaignId);
-        return client.execute(op, options, TYPE_14);
+        return client.execute(op, options, TYPE_16);
     }
 
-    private static final TypeReference<MessageList> TYPE_15 = new TypeReference<MessageList>() {};
+    private static final TypeReference<MessageList> TYPE_17 = new TypeReference<MessageList>() {};
 
     /**
      * Kampanya çalıştırmaları
@@ -465,6 +513,6 @@ public final class CampaignsResource {
     public MessageList messages(String campaignId, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/campaigns/{campaignId}/messages");
         op.pathParam("campaignId", campaignId);
-        return client.execute(op, options, TYPE_15);
+        return client.execute(op, options, TYPE_17);
     }
 }

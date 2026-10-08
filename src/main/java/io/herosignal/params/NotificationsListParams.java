@@ -30,6 +30,8 @@ public final class NotificationsListParams {
      */
     private String sort;
 
+    private String label;
+
     public Long getLimit() {
         return limit;
     }
@@ -84,6 +86,15 @@ public final class NotificationsListParams {
         return this;
     }
 
+    public String getLabel() {
+        return label;
+    }
+
+    public NotificationsListParams label(String label) {
+        this.label = label;
+        return this;
+    }
+
     /** Sığ kopya (sayfalama sırasında çağıranın nesnesi değiştirilmez). */
     public NotificationsListParams copy() {
         NotificationsListParams c = new NotificationsListParams();
@@ -93,6 +104,7 @@ public final class NotificationsListParams {
         c.kind = kind;
         c.status = status;
         c.sort = sort;
+        c.label = label;
         return c;
     }
 
@@ -104,5 +116,6 @@ public final class NotificationsListParams {
         op.query("kind", kind);
         op.query("status", status);
         op.query("sort", sort);
+        op.query("label", label);
     }
 }

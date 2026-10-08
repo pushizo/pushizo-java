@@ -18,6 +18,21 @@ public final class UpdateAppDtoSettings {
     @JsonProperty("frequencyCap")
     private UpdateAppDtoSettingsFrequencyCap frequencyCap;
 
+    @JsonProperty("frequencyCaps")
+    private java.util.List<UpdateAppDtoSettingsFrequencyCapsItem> frequencyCaps;
+
+    @JsonProperty("inApp")
+    private UpdateAppDtoSettingsInApp inApp;
+
+    @JsonProperty("androidChannels")
+    private java.util.List<UpdateAppDtoSettingsAndroidChannelsItem> androidChannels;
+
+    @JsonProperty("sms")
+    private UpdateAppDtoSettingsSms sms;
+
+    @JsonProperty("preferenceCenter")
+    private UpdateAppDtoSettingsPreferenceCenter preferenceCenter;
+
     @JsonProperty("defaultTtlSeconds")
     private Long defaultTtlSeconds;
 
@@ -54,6 +69,51 @@ public final class UpdateAppDtoSettings {
 
     public UpdateAppDtoSettings frequencyCap(UpdateAppDtoSettingsFrequencyCap frequencyCap) {
         this.frequencyCap = frequencyCap;
+        return this;
+    }
+
+    public java.util.List<UpdateAppDtoSettingsFrequencyCapsItem> getFrequencyCaps() {
+        return frequencyCaps;
+    }
+
+    public UpdateAppDtoSettings frequencyCaps(java.util.List<UpdateAppDtoSettingsFrequencyCapsItem> frequencyCaps) {
+        this.frequencyCaps = frequencyCaps;
+        return this;
+    }
+
+    public UpdateAppDtoSettingsInApp getInApp() {
+        return inApp;
+    }
+
+    public UpdateAppDtoSettings inApp(UpdateAppDtoSettingsInApp inApp) {
+        this.inApp = inApp;
+        return this;
+    }
+
+    public java.util.List<UpdateAppDtoSettingsAndroidChannelsItem> getAndroidChannels() {
+        return androidChannels;
+    }
+
+    public UpdateAppDtoSettings androidChannels(java.util.List<UpdateAppDtoSettingsAndroidChannelsItem> androidChannels) {
+        this.androidChannels = androidChannels;
+        return this;
+    }
+
+    public UpdateAppDtoSettingsSms getSms() {
+        return sms;
+    }
+
+    public UpdateAppDtoSettings sms(UpdateAppDtoSettingsSms sms) {
+        this.sms = sms;
+        return this;
+    }
+
+    public UpdateAppDtoSettingsPreferenceCenter getPreferenceCenter() {
+        return preferenceCenter;
+    }
+
+    public UpdateAppDtoSettings preferenceCenter(UpdateAppDtoSettingsPreferenceCenter preferenceCenter) {
+        this.preferenceCenter = preferenceCenter;
         return this;
     }
 

@@ -216,6 +216,12 @@ public final class CreateNotificationDto {
     @JsonProperty("name")
     private String name;
 
+    @JsonProperty("labels")
+    private java.util.List<String> labels;
+
+    @JsonProperty("category")
+    private String category;
+
     public String getAppId() {
         return appId;
     }
@@ -771,6 +777,24 @@ public final class CreateNotificationDto {
 
     public CreateNotificationDto name(String name) {
         this.name = name;
+        return this;
+    }
+
+    public java.util.List<String> getLabels() {
+        return labels;
+    }
+
+    public CreateNotificationDto labels(java.util.List<String> labels) {
+        this.labels = labels;
+        return this;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public CreateNotificationDto category(String category) {
+        this.category = category;
         return this;
     }
 

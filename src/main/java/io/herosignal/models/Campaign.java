@@ -31,6 +31,30 @@ public final class Campaign {
     private String name;
 
     /**
+     * Zorunlu.
+     */
+    @JsonProperty("labels")
+    private java.util.List<String> labels;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("category")
+    private String category;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("ab_test")
+    private CampaignAbTest abTest;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("variants")
+    private java.util.List<CampaignVariantsItem> variants;
+
+    /**
      * Zorunlu. Değerler: "one_time", "scheduled", "recurring", "automated", "transactional".
      */
     @JsonProperty("type")
@@ -180,6 +204,42 @@ public final class Campaign {
 
     public Campaign name(String name) {
         this.name = name;
+        return this;
+    }
+
+    public java.util.List<String> getLabels() {
+        return labels;
+    }
+
+    public Campaign labels(java.util.List<String> labels) {
+        this.labels = labels;
+        return this;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public Campaign category(String category) {
+        this.category = category;
+        return this;
+    }
+
+    public CampaignAbTest getAbTest() {
+        return abTest;
+    }
+
+    public Campaign abTest(CampaignAbTest abTest) {
+        this.abTest = abTest;
+        return this;
+    }
+
+    public java.util.List<CampaignVariantsItem> getVariants() {
+        return variants;
+    }
+
+    public Campaign variants(java.util.List<CampaignVariantsItem> variants) {
+        this.variants = variants;
         return this;
     }
 

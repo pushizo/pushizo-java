@@ -51,6 +51,18 @@ public final class InAppMessage {
     /**
      * Zorunlu.
      */
+    @JsonProperty("trigger_groups")
+    private java.util.List<java.util.List<Object>> triggerGroups;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("variants")
+    private java.util.List<InAppMessageVariantsItem> variants;
+
+    /**
+     * Zorunlu.
+     */
     @JsonProperty("display")
     private InAppMessageDisplay display;
 
@@ -89,6 +101,12 @@ public final class InAppMessage {
      */
     @JsonProperty("stats")
     private InAppMessageStats stats;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("variant_stats")
+    private java.util.List<InAppMessageVariantStatsItem> variantStats;
 
     /**
      * Zorunlu.
@@ -156,6 +174,24 @@ public final class InAppMessage {
         return this;
     }
 
+    public java.util.List<java.util.List<Object>> getTriggerGroups() {
+        return triggerGroups;
+    }
+
+    public InAppMessage triggerGroups(java.util.List<java.util.List<Object>> triggerGroups) {
+        this.triggerGroups = triggerGroups;
+        return this;
+    }
+
+    public java.util.List<InAppMessageVariantsItem> getVariants() {
+        return variants;
+    }
+
+    public InAppMessage variants(java.util.List<InAppMessageVariantsItem> variants) {
+        this.variants = variants;
+        return this;
+    }
+
     public InAppMessageDisplay getDisplay() {
         return display;
     }
@@ -216,6 +252,15 @@ public final class InAppMessage {
 
     public InAppMessage stats(InAppMessageStats stats) {
         this.stats = stats;
+        return this;
+    }
+
+    public java.util.List<InAppMessageVariantStatsItem> getVariantStats() {
+        return variantStats;
+    }
+
+    public InAppMessage variantStats(java.util.List<InAppMessageVariantStatsItem> variantStats) {
+        this.variantStats = variantStats;
         return this;
     }
 

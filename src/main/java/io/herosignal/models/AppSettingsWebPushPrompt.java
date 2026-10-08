@@ -24,6 +24,12 @@ public final class AppSettingsWebPushPrompt {
     @JsonProperty("type")
     private String type;
 
+    /**
+     * Değerler: "push", "email", "sms", "email_sms".
+     */
+    @JsonProperty("collect")
+    private String collect;
+
     @JsonProperty("delaySeconds")
     private Long delaySeconds;
 
@@ -57,6 +63,15 @@ public final class AppSettingsWebPushPrompt {
 
     public AppSettingsWebPushPrompt type(String type) {
         this.type = type;
+        return this;
+    }
+
+    public String getCollect() {
+        return collect;
+    }
+
+    public AppSettingsWebPushPrompt collect(String collect) {
+        this.collect = collect;
         return this;
     }
 

@@ -179,7 +179,29 @@ public final class TemplatesResource {
         return client.execute(op, options, TYPE_4);
     }
 
-    private static final TypeReference<Template> TYPE_5 = new TypeReference<Template>() {};
+    private static final TypeReference<TemplateStats> TYPE_5 = new TypeReference<TemplateStats>() {};
+
+    /**
+     * Şablon analitiği
+     *
+     * {@code GET /v1/apps/{appId}/templates/{templateId}/stats}
+     */
+    public TemplateStats stats(String templateId) {
+        return stats(templateId, null);
+    }
+
+    /**
+     * Şablon analitiği
+     *
+     * {@code GET /v1/apps/{appId}/templates/{templateId}/stats}
+     */
+    public TemplateStats stats(String templateId, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/templates/{templateId}/stats");
+        op.pathParam("templateId", templateId);
+        return client.execute(op, options, TYPE_5);
+    }
+
+    private static final TypeReference<Template> TYPE_6 = new TypeReference<Template>() {};
 
     /**
      * Şablonu aynı organizasyondaki başka bir app'e kopyala
@@ -202,10 +224,10 @@ public final class TemplatesResource {
             throw new IllegalArgumentException("HeroSignal: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_5);
+        return client.execute(op, options, TYPE_6);
     }
 
-    private static final TypeReference<TemplateVersionList> TYPE_6 = new TypeReference<TemplateVersionList>() {};
+    private static final TypeReference<TemplateVersionList> TYPE_7 = new TypeReference<TemplateVersionList>() {};
 
     /**
      * Sürüm geçmişi
@@ -224,10 +246,10 @@ public final class TemplatesResource {
     public TemplateVersionList versions(String templateId, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/templates/{templateId}/versions");
         op.pathParam("templateId", templateId);
-        return client.execute(op, options, TYPE_6);
+        return client.execute(op, options, TYPE_7);
     }
 
-    private static final TypeReference<RenderPreview> TYPE_7 = new TypeReference<RenderPreview>() {};
+    private static final TypeReference<RenderPreview> TYPE_8 = new TypeReference<RenderPreview>() {};
 
     /**
      * Şablonu örnek verilerle render et
@@ -250,6 +272,6 @@ public final class TemplatesResource {
             throw new IllegalArgumentException("HeroSignal: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_7);
+        return client.execute(op, options, TYPE_8);
     }
 }
