@@ -69,6 +69,9 @@ public final class ChannelConfigConfig {
     @JsonProperty("reply_to")
     private String replyTo;
 
+    @JsonProperty("dkim_selector")
+    private String dkimSelector;
+
     @JsonProperty("postal_address")
     private String postalAddress;
 
@@ -255,6 +258,15 @@ public final class ChannelConfigConfig {
 
     public ChannelConfigConfig replyTo(String replyTo) {
         this.replyTo = replyTo;
+        return this;
+    }
+
+    public String getDkimSelector() {
+        return dkimSelector;
+    }
+
+    public ChannelConfigConfig dkimSelector(String dkimSelector) {
+        this.dkimSelector = dkimSelector;
         return this;
     }
 

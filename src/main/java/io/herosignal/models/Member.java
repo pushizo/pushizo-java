@@ -37,7 +37,7 @@ public final class Member {
     private String name;
 
     /**
-     * Zorunlu. Değerler: "owner", "admin", "developer", "marketer", "analyst", "billing", "viewer".
+     * Zorunlu. Değerler: "owner", "admin", "developer", "marketer", "analyst", "billing", "viewer", "composer".
      */
     @JsonProperty("role")
     private String role;
