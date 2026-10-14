@@ -111,6 +111,18 @@ public final class InAppMessage {
     /**
      * Zorunlu.
      */
+    @JsonProperty("ab_test")
+    private InAppMessageAbTest abTest;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("variant_significance")
+    private InAppMessageVariantSignificance variantSignificance;
+
+    /**
+     * Zorunlu.
+     */
     @JsonProperty("created_at")
     private String createdAt;
 
@@ -261,6 +273,24 @@ public final class InAppMessage {
 
     public InAppMessage variantStats(java.util.List<InAppMessageVariantStatsItem> variantStats) {
         this.variantStats = variantStats;
+        return this;
+    }
+
+    public InAppMessageAbTest getAbTest() {
+        return abTest;
+    }
+
+    public InAppMessage abTest(InAppMessageAbTest abTest) {
+        this.abTest = abTest;
+        return this;
+    }
+
+    public InAppMessageVariantSignificance getVariantSignificance() {
+        return variantSignificance;
+    }
+
+    public InAppMessage variantSignificance(InAppMessageVariantSignificance variantSignificance) {
+        this.variantSignificance = variantSignificance;
         return this;
     }
 

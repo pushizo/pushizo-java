@@ -30,6 +30,9 @@ public final class CreateInAppDto {
     @JsonProperty("variants")
     private java.util.List<CreateInAppDtoVariantsItem> variants;
 
+    @JsonProperty("ab_test")
+    private CreateInAppDtoAbTest abTest;
+
     /**
      * Zorunlu.
      */
@@ -87,6 +90,15 @@ public final class CreateInAppDto {
 
     public CreateInAppDto variants(java.util.List<CreateInAppDtoVariantsItem> variants) {
         this.variants = variants;
+        return this;
+    }
+
+    public CreateInAppDtoAbTest getAbTest() {
+        return abTest;
+    }
+
+    public CreateInAppDto abTest(CreateInAppDtoAbTest abTest) {
+        this.abTest = abTest;
         return this;
     }
 
