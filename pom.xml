@@ -11,13 +11,29 @@
 
   <name>HeroSignal Java SDK</name>
   <description>HeroSignal sunucu SDK'sı: bildirim gönderme, kullanıcı/abonelik yönetimi, segment/şablon/kampanya ve webhook imza doğrulaması</description>
-  <url>https://herosignal.dev</url>
+  <url>https://github.com/exec0de/herosignal/tree/main/sdk/java</url>
 
   <licenses>
     <license>
       <name>MIT</name>
+      <url>https://github.com/exec0de/herosignal/blob/main/LICENSE</url>
     </license>
   </licenses>
+
+  <developers>
+    <developer>
+      <id>herosignal</id>
+      <name>HeroSignal</name>
+      <url>https://github.com/exec0de/herosignal</url>
+    </developer>
+  </developers>
+
+  <scm>
+    <url>https://github.com/exec0de/herosignal</url>
+    <connection>scm:git:https://github.com/exec0de/herosignal.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/exec0de/herosignal.git</developerConnection>
+    <tag>sdk-v0.1.0</tag>
+  </scm>
 
   <properties>
     <maven.compiler.release>17</maven.compiler.release>
@@ -59,4 +75,70 @@
       </plugin>
     </plugins>
   </build>
+
+  <!-- Maven Central yayını: mvn -P release deploy (sdk-release.yml `maven` işi; docs/sdk/publishing.md). Sonatype Central
+       Portal hesabı (server-id `central`, MAVEN_CENTRAL_USERNAME/PASSWORD) ve GPG imzası (MAVEN_GPG_PASSPHRASE) gerekir. -->
+  <profiles>
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>3.3.1</version>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals><goal>jar-no-fork</goal></goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.10.1</version>
+            <configuration>
+              <doclint>none</doclint>
+            </configuration>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals><goal>jar</goal></goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>3.2.7</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals><goal>sign</goal></goals>
+                <configuration>
+                  <gpgArguments>
+                    <arg>--pinentry-mode</arg>
+                    <arg>loopback</arg>
+                  </gpgArguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.sonatype.central</groupId>
+            <artifactId>central-publishing-maven-plugin</artifactId>
+            <version>0.6.0</version>
+            <extensions>true</extensions>
+            <configuration>
+              <publishingServerId>central</publishingServerId>
+              <autoPublish>true</autoPublish>
+              <waitUntil>published</waitUntil>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>

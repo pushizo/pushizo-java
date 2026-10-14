@@ -25,7 +25,7 @@ public final class OverviewStatsChannelsItem {
     private String provider;
 
     /**
-     * Zorunlu. Değerler: "unconfigured", "active", "invalid".
+     * Zorunlu. Değerler: "unconfigured", "active", "invalid", "suspended".
      */
     @JsonProperty("status")
     private String status;
