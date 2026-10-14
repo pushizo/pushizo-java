@@ -9,7 +9,12 @@ import io.herosignal.core.Json;
 import io.herosignal.core.Operation;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.net.ConnectException;
+import java.net.NoRouteToHostException;
 import java.net.URLEncoder;
+import java.net.UnknownHostException;
+import java.net.http.HttpConnectTimeoutException;
+import java.nio.channels.UnresolvedAddressException;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -20,7 +25,9 @@ import java.time.format.DateTimeParseException;
 import java.util.HexFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -185,6 +192,8 @@ public final class HeroSignal extends HeroSignalResources {
 
         Duration attemptTimeout = options != null && options.timeout() != null ? options.timeout() : timeout;
         int retries = options != null && options.maxRetries() != null ? options.maxRetries() : maxRetries;
+        boolean hasKey = headers.entrySet().stream()
+                .anyMatch(h -> "idempotency-key".equalsIgnoreCase(h.getKey()) && h.getValue() != null && !h.getValue().isEmpty());
         HttpTransport.Request request = new HttpTransport.Request(op.method(), url.toString(), headers, body, attemptTimeout);
         for (int attempt = 0; ; attempt++) {
             HeroSignalException error;
@@ -194,7 +203,7 @@ public final class HeroSignal extends HeroSignalResources {
             } catch (IOException e) {
                 response = null;
                 error = new NetworkException(e.getMessage() != null ? e.getMessage() : e.getClass().getSimpleName(), e);
-                if (attempt >= retries) {
+                if (attempt >= retries || !shouldRetry(op.method(), error, hasKey, requestNotSent(e))) {
                     throw error;
                 }
                 pause(BACKOFF_MS[Math.min(attempt, BACKOFF_MS.length - 1)]);
@@ -207,12 +216,44 @@ public final class HeroSignal extends HeroSignalResources {
                 return response.body();
             }
             error = errorFrom(response);
-            if (!error.isRetryable() || attempt >= retries) {
+            if (attempt >= retries || !shouldRetry(op.method(), error, hasKey, false)) {
                 throw error;
             }
             Duration retryAfter = error.getRetryAfter();
             pause(retryAfter != null && !retryAfter.isZero() ? retryAfter.toMillis() : BACKOFF_MS[Math.min(attempt, BACKOFF_MS.length - 1)]);
         }
+    }
+
+    /** Sunucuda tekrarlanması ek yan etki doğurmayan HTTP metotları; 5xx ve ağ hatalarında serbestçe yeniden denenir. */
+    private static final Set<String> IDEMPOTENT_METHODS = Set.of("GET", "HEAD", "OPTIONS", "PUT", "DELETE");
+
+    /**
+     * Yeniden deneme politikası: 429 her metotta (istek işlenmeden reddedilmiştir); 5xx ve ağ hataları idempotent
+     * metotlarda, POST/PATCH'te yalnızca Idempotency-Key varsa ya da istek sunucuya hiç gönderilmediyse. Aksi hâlde
+     * sunucu isteği işlemiş olabilir ve tekrar çift kayıt üretebilir.
+     */
+    static boolean shouldRetry(String method, HeroSignalException error, boolean hasIdempotencyKey, boolean notSent) {
+        if (error.getStatus() == 429) {
+            return true;
+        }
+        if (!error.isRetryable()) {
+            return false;
+        }
+        return IDEMPOTENT_METHODS.contains(method.toUpperCase(Locale.ROOT)) || hasIdempotencyKey || notSent;
+    }
+
+    /**
+     * Hatanın bağlantı kurulmadan (bağlantı reddi, DNS çözümlenemedi, sunucuya yol yok, bağlantı zaman aşımı)
+     * oluştuğunu, yani isteğin sunucuya hiç gönderilmediğini bildirir.
+     */
+    static boolean requestNotSent(Throwable error) {
+        for (Throwable t = error; t != null; t = t.getCause() == t ? null : t.getCause()) {
+            if (t instanceof ConnectException || t instanceof HttpConnectTimeoutException || t instanceof UnknownHostException
+                    || t instanceof NoRouteToHostException || t instanceof UnresolvedAddressException) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void pause(long millis) {

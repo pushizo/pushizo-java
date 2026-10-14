@@ -212,6 +212,35 @@ public final class InAppMessagesResource {
      *
      * {@code POST /v1/apps/{appId}/in-app-messages/{messageId}/winner}
      */
+    public InAppMessage selectWinner(String messageId, InAppWinnerDto body) {
+        return selectWinner(messageId, body, null);
+    }
+
+    /**
+     * A/B kazananını elle seç
+     *
+     * {@code POST /v1/apps/{appId}/in-app-messages/{messageId}/winner}
+     */
+    public InAppMessage selectWinner(String messageId, InAppWinnerDto body, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/in-app-messages/{messageId}/winner");
+        op.pathParam("messageId", messageId);
+        if (body == null) {
+            throw new IllegalArgumentException("HeroSignal: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_6);
+    }
+
+    private static final TypeReference<InAppMessage> TYPE_7 = new TypeReference<InAppMessage>() {};
+
+    /**
+     * A/B kazananını elle seç
+     *
+     * {@code POST /v1/apps/{appId}/in-app-messages/{messageId}/winner}
+     *
+     * @deprecated {@link #selectWinner} kullanın; bu ad geriye dönük uyumluluk için korunur.
+     */
+    @Deprecated
     public InAppMessage winner(String messageId, InAppWinnerDto body) {
         return winner(messageId, body, null);
     }
@@ -220,7 +249,10 @@ public final class InAppMessagesResource {
      * A/B kazananını elle seç
      *
      * {@code POST /v1/apps/{appId}/in-app-messages/{messageId}/winner}
+     *
+     * @deprecated {@link #selectWinner} kullanın; bu ad geriye dönük uyumluluk için korunur.
      */
+    @Deprecated
     public InAppMessage winner(String messageId, InAppWinnerDto body, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/in-app-messages/{messageId}/winner");
         op.pathParam("messageId", messageId);
@@ -228,6 +260,6 @@ public final class InAppMessagesResource {
             throw new IllegalArgumentException("HeroSignal: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_6);
+        return client.execute(op, options, TYPE_7);
     }
 }

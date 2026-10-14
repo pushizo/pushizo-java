@@ -10,9 +10,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.sun.net.httpserver.HttpServer;
 import io.herosignal.core.HttpTransport;
 import io.herosignal.core.Json;
+import io.herosignal.models.ApiEventsDto;
 import io.herosignal.models.CreateNotificationDto;
 import io.herosignal.models.CreateNotificationDtoTarget;
 import io.herosignal.models.CreateNotificationResult;
+import io.herosignal.models.InAppWinnerDto;
 import io.herosignal.models.Segment;
 import io.herosignal.models.UserDetail;
 import io.herosignal.params.ImportsCreateForm;
@@ -38,6 +40,7 @@ class HeroSignalTest {
         final List<Request> requests = new ArrayList<>();
         final Deque<Response> responses = new ArrayDeque<>();
         final Deque<Boolean> network = new ArrayDeque<>();
+        final Deque<Boolean> refused = new ArrayDeque<>();
 
         FakeTransport add(int status, String body, String... headers) {
             Map<String, List<String>> h = new TreeMap<>();
@@ -46,12 +49,22 @@ class HeroSignalTest {
             }
             responses.add(new Response(status, h, body.getBytes(StandardCharsets.UTF_8)));
             network.add(false);
+            refused.add(false);
             return this;
         }
 
         FakeTransport networkError() {
             responses.add(new Response(0, Map.of(), new byte[0]));
             network.add(true);
+            refused.add(false);
+            return this;
+        }
+
+        /** Bağlantı reddi: istek sunucuya hiç gitmedi. */
+        FakeTransport connectionRefused() {
+            responses.add(new Response(0, Map.of(), new byte[0]));
+            network.add(false);
+            refused.add(true);
             return this;
         }
 
@@ -64,6 +77,9 @@ class HeroSignalTest {
             }
             if (network.poll()) {
                 throw new IOException("bağlantı koptu");
+            }
+            if (refused.poll()) {
+                throw new java.net.ConnectException("Connection refused");
             }
             return r;
         }
@@ -194,6 +210,93 @@ class HeroSignalTest {
 
         FakeTransport t3 = new FakeTransport().add(429, "{}");
         assertThrows(RateLimitException.class, () -> client(t3).apps().list(RequestOptions.builder().maxRetries(0).build()));
+    }
+
+    static final String UNAVAILABLE = "{\"error\":{\"code\":\"HS_SERVICE_UNAVAILABLE\",\"message\":\"x\"}}";
+
+    @Test
+    void postWithoutIdempotencyKeyIsNotRetriedOn5xx() {
+        FakeTransport t = new FakeTransport().add(503, UNAVAILABLE).add(200, "{\"accepted\":1}");
+        assertThrows(ServerException.class, () -> client(t).events().send(new ApiEventsDto().events(List.of())));
+        assertEquals(1, t.requests.size());
+        assertTrue(slept.isEmpty());
+
+        // Otomatik anahtar kapalıyken notifications.create de anahtarsız POST'tur.
+        FakeTransport t2 = new FakeTransport().add(503, UNAVAILABLE).add(202, "{\"id\":\"m\"}");
+        HeroSignal noAuto = HeroSignal.builder().apiKey("k").appId("app_1").transport(t2).sleeper(slept::add).autoIdempotencyKey(false).build();
+        assertThrows(ServerException.class, () -> noAuto.notifications().create(new CreateNotificationDto().contents(Map.of("en", "x"))));
+        assertEquals(1, t2.requests.size());
+
+        // Gönderildikten sonra kopan bağlantı: sunucu isteği işlemiş olabilir, tekrarlanmaz.
+        FakeTransport t3 = new FakeTransport().networkError().add(200, "{}");
+        assertThrows(NetworkException.class, () -> client(t3).events().send(new ApiEventsDto()));
+        assertEquals(1, t3.requests.size());
+    }
+
+    @Test
+    void postWithIdempotencyKeyIsRetriedOn5xx() {
+        FakeTransport t = new FakeTransport().add(503, UNAVAILABLE).add(200, "{\"accepted\":1}");
+        client(t).events().send(new ApiEventsDto(), RequestOptions.builder().idempotencyKey("evt-1").build());
+        assertEquals(2, t.requests.size());
+        t.requests.forEach(r -> assertEquals("evt-1", r.headers().get("Idempotency-Key")));
+
+        // Başlıkla verilen anahtar da sayılır; PATCH aynı kurala uyar.
+        FakeTransport t2 = new FakeTransport().add(503, UNAVAILABLE).add(200, "{}");
+        client(t2).request("PATCH", "/v1/apps/{appId}", null, Map.of("name", "x"), RequestOptions.builder().header("Idempotency-Key", "upd-1").build());
+        assertEquals(List.of("PATCH", "PATCH"), t2.requests.stream().map(HttpTransport.Request::method).toList());
+    }
+
+    @Test
+    void idempotentMethodsAreRetriedOn5xx() {
+        FakeTransport t = new FakeTransport().add(503, UNAVAILABLE).add(200, "{\"id\":\"msg_1\"}").add(503, UNAVAILABLE).add(200, "{\"ok\":true}");
+        HeroSignal hs = client(t);
+        hs.notifications().get("msg_1");
+        hs.webhooks().delete("whk_1");
+        assertEquals(List.of("GET", "GET", "DELETE", "DELETE"), t.requests.stream().map(HttpTransport.Request::method).toList());
+    }
+
+    @Test
+    void rateLimitedPostIsRetriedWithoutKey() {
+        FakeTransport t = new FakeTransport()
+                .add(429, "{\"error\":{\"code\":\"HS_RATE_LIMITED\",\"message\":\"x\"}}", "Retry-After", "1")
+                .add(200, "{\"accepted\":1}");
+        client(t).events().send(new ApiEventsDto());
+        assertEquals(2, t.requests.size());
+        assertEquals(List.of(1000L), slept);
+        assertNull(t.requests.get(0).headers().get("Idempotency-Key"));
+    }
+
+    @Test
+    void postIsRetriedWhenRequestWasNeverSent() {
+        FakeTransport t = new FakeTransport().connectionRefused().add(200, "{\"accepted\":1}");
+        client(t).events().send(new ApiEventsDto());
+        assertEquals(2, t.requests.size());
+    }
+
+    @Test
+    void postIsRetriedOnRealConnectionRefused() throws Exception {
+        int port;
+        try (java.net.ServerSocket socket = new java.net.ServerSocket(0, 1, java.net.InetAddress.getLoopbackAddress())) {
+            port = socket.getLocalPort();
+        }
+        HeroSignal hs = HeroSignal.builder().apiKey("k").appId("app_1").baseUrl("http://127.0.0.1:" + port).maxRetries(1).sleeper(slept::add).build();
+        assertThrows(NetworkException.class, () -> hs.events().send(new ApiEventsDto()));
+        assertEquals(List.of(300L), slept);
+    }
+
+    @Test
+    @SuppressWarnings("deprecation")
+    void inAppSelectWinnerAndDeprecatedAlias() throws Exception {
+        FakeTransport t = new FakeTransport().add(200, "{\"id\":\"iam_1\"}").add(200, "{\"id\":\"iam_1\"}");
+        HeroSignal hs = client(t);
+        hs.inAppMessages().selectWinner("iam_1", new InAppWinnerDto().variantId("b"));
+        hs.inAppMessages().winner("iam_1", new InAppWinnerDto().variantId("b"));
+        assertEquals(2, t.requests.size());
+        for (int i = 0; i < 2; i++) {
+            assertEquals("POST", t.requests.get(i).method());
+            assertEquals("https://api.test/v1/apps/app_1/in-app-messages/iam_1/winner", t.requests.get(i).url());
+            assertEquals("b", t.body(i).get("variant_id").asText());
+        }
     }
 
     @Test

@@ -18,12 +18,42 @@ public final class EventDefinitionList {
     @JsonProperty("data")
     private java.util.List<EventDefinition> data;
 
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("next_cursor")
+    private String nextCursor;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("has_more")
+    private Boolean hasMore;
+
     public java.util.List<EventDefinition> getData() {
         return data;
     }
 
     public EventDefinitionList data(java.util.List<EventDefinition> data) {
         this.data = data;
+        return this;
+    }
+
+    public String getNextCursor() {
+        return nextCursor;
+    }
+
+    public EventDefinitionList nextCursor(String nextCursor) {
+        this.nextCursor = nextCursor;
+        return this;
+    }
+
+    public Boolean getHasMore() {
+        return hasMore;
+    }
+
+    public EventDefinitionList hasMore(Boolean hasMore) {
+        this.hasMore = hasMore;
         return this;
     }
 
