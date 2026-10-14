@@ -8,6 +8,11 @@ package io.herosignal.params;
 public final class JourneysStatsParams {
     private Long version;
 
+    /**
+     * Değerler: "true", "false".
+     */
+    private String allVersions;
+
     public Long getVersion() {
         return version;
     }
@@ -17,15 +22,26 @@ public final class JourneysStatsParams {
         return this;
     }
 
+    public String getAllVersions() {
+        return allVersions;
+    }
+
+    public JourneysStatsParams allVersions(String allVersions) {
+        this.allVersions = allVersions;
+        return this;
+    }
+
     /** Sığ kopya (sayfalama sırasında çağıranın nesnesi değiştirilmez). */
     public JourneysStatsParams copy() {
         JourneysStatsParams c = new JourneysStatsParams();
         c.version = version;
+        c.allVersions = allVersions;
         return c;
     }
 
     /** İç API: alanları isteğe ekler. */
     public void applyTo(io.herosignal.core.Operation op) {
         op.query("version", version);
+        op.query("all_versions", allVersions);
     }
 }
