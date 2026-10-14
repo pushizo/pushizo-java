@@ -24,6 +24,9 @@ public final class UpdateInAppDto {
     @JsonProperty("variants")
     private java.util.List<UpdateInAppDtoVariantsItem> variants;
 
+    @JsonProperty("ab_test")
+    private UpdateInAppDtoAbTest abTest;
+
     @JsonProperty("display")
     private UpdateInAppDtoDisplay display;
 
@@ -78,6 +81,15 @@ public final class UpdateInAppDto {
 
     public UpdateInAppDto variants(java.util.List<UpdateInAppDtoVariantsItem> variants) {
         this.variants = variants;
+        return this;
+    }
+
+    public UpdateInAppDtoAbTest getAbTest() {
+        return abTest;
+    }
+
+    public UpdateInAppDto abTest(UpdateInAppDtoAbTest abTest) {
+        this.abTest = abTest;
         return this;
     }
 

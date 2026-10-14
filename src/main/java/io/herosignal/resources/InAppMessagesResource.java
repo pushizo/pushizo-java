@@ -204,4 +204,30 @@ public final class InAppMessagesResource {
         op.body(body);
         return client.execute(op, options, TYPE_5);
     }
+
+    private static final TypeReference<InAppMessage> TYPE_6 = new TypeReference<InAppMessage>() {};
+
+    /**
+     * A/B kazananını elle seç
+     *
+     * {@code POST /v1/apps/{appId}/in-app-messages/{messageId}/winner}
+     */
+    public InAppMessage winner(String messageId, InAppWinnerDto body) {
+        return winner(messageId, body, null);
+    }
+
+    /**
+     * A/B kazananını elle seç
+     *
+     * {@code POST /v1/apps/{appId}/in-app-messages/{messageId}/winner}
+     */
+    public InAppMessage winner(String messageId, InAppWinnerDto body, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/in-app-messages/{messageId}/winner");
+        op.pathParam("messageId", messageId);
+        if (body == null) {
+            throw new IllegalArgumentException("HeroSignal: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_6);
+    }
 }
