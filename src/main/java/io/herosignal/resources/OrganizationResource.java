@@ -123,4 +123,37 @@ public final class OrganizationResource {
             return new PageIterable.Page<>(page.getData(), page.getNextCursor(), Boolean.TRUE.equals(page.getHasMore()));
         });
     }
+
+    private static final TypeReference<UsageReport> TYPE_3 = new TypeReference<UsageReport>() {};
+
+    /**
+     * Organizasyon kullanımı ve plan kotaları (org geneli anahtar)
+     *
+     * {@code GET /v1/organization/usage}
+     */
+    public UsageReport usage() {
+        return usage(null, null);
+    }
+
+    /**
+     * Organizasyon kullanımı ve plan kotaları (org geneli anahtar)
+     *
+     * {@code GET /v1/organization/usage}
+     */
+    public UsageReport usage(OrganizationUsageParams params) {
+        return usage(params, null);
+    }
+
+    /**
+     * Organizasyon kullanımı ve plan kotaları (org geneli anahtar)
+     *
+     * {@code GET /v1/organization/usage}
+     */
+    public UsageReport usage(OrganizationUsageParams params, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/organization/usage");
+        if (params != null) {
+            params.applyTo(op);
+        }
+        return client.execute(op, options, TYPE_3);
+    }
 }

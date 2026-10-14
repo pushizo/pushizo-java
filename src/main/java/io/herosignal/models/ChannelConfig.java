@@ -25,7 +25,7 @@ public final class ChannelConfig {
     private String provider;
 
     /**
-     * Zorunlu. Değerler: "unconfigured", "active", "invalid".
+     * Zorunlu. Değerler: "unconfigured", "active", "invalid", "suspended".
      */
     @JsonProperty("status")
     private String status;
@@ -65,6 +65,18 @@ public final class ChannelConfig {
      */
     @JsonProperty("updated_at")
     private String updatedAt;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("suspended_reason")
+    private String suspendedReason;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("dns_check")
+    private ChannelConfigDnsCheck dnsCheck;
 
     public String getChannel() {
         return channel;
@@ -144,6 +156,24 @@ public final class ChannelConfig {
 
     public ChannelConfig updatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+        return this;
+    }
+
+    public String getSuspendedReason() {
+        return suspendedReason;
+    }
+
+    public ChannelConfig suspendedReason(String suspendedReason) {
+        this.suspendedReason = suspendedReason;
+        return this;
+    }
+
+    public ChannelConfigDnsCheck getDnsCheck() {
+        return dnsCheck;
+    }
+
+    public ChannelConfig dnsCheck(ChannelConfigDnsCheck dnsCheck) {
+        this.dnsCheck = dnsCheck;
         return this;
     }
 
