@@ -33,6 +33,12 @@ public final class ConversionsReportPrevious {
     /**
      * Zorunlu.
      */
+    @JsonProperty("unattributed")
+    private Long unattributed;
+
+    /**
+     * Zorunlu.
+     */
     @JsonProperty("revenue")
     private Double revenue;
 
@@ -60,6 +66,15 @@ public final class ConversionsReportPrevious {
 
     public ConversionsReportPrevious influenced(Long influenced) {
         this.influenced = influenced;
+        return this;
+    }
+
+    public Long getUnattributed() {
+        return unattributed;
+    }
+
+    public ConversionsReportPrevious unattributed(Long unattributed) {
+        this.unattributed = unattributed;
         return this;
     }
 
