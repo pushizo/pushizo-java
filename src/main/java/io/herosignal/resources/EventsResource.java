@@ -53,7 +53,7 @@ public final class EventsResource {
      * {@code GET /v1/apps/{appId}/events/definitions}
      */
     public EventDefinitionList listDefinitions() {
-        return listDefinitions(null);
+        return listDefinitions(null, null);
     }
 
     /**
@@ -61,9 +61,50 @@ public final class EventsResource {
      *
      * {@code GET /v1/apps/{appId}/events/definitions}
      */
-    public EventDefinitionList listDefinitions(RequestOptions options) {
+    public EventDefinitionList listDefinitions(EventsListDefinitionsParams params) {
+        return listDefinitions(params, null);
+    }
+
+    /**
+     * Olay tanımları
+     *
+     * {@code GET /v1/apps/{appId}/events/definitions}
+     */
+    public EventDefinitionList listDefinitions(EventsListDefinitionsParams params, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/events/definitions");
+        if (params != null) {
+            params.applyTo(op);
+        }
         return client.execute(op, options, TYPE_1);
+    }
+
+    /**
+     * listDefinitions sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek dolaşır (sayfalar tembel yüklenir).
+     */
+    public PageIterable<EventDefinition> listDefinitionsAll() {
+        return listDefinitionsAll(null, null);
+    }
+
+    /**
+     * listDefinitions sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek dolaşır (sayfalar tembel yüklenir).
+     */
+    public PageIterable<EventDefinition> listDefinitionsAll(EventsListDefinitionsParams params) {
+        return listDefinitionsAll(params, null);
+    }
+
+    /**
+     * listDefinitions sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek dolaşır (sayfalar tembel yüklenir).
+     */
+    public PageIterable<EventDefinition> listDefinitionsAll(EventsListDefinitionsParams params, RequestOptions options) {
+        EventsListDefinitionsParams base = params == null ? new EventsListDefinitionsParams() : params.copy();
+        return new PageIterable<>(cursor -> {
+            EventsListDefinitionsParams p = base.copy();
+            if (cursor != null) {
+                p.cursor(cursor);
+            }
+            EventDefinitionList page = listDefinitions(p, options);
+            return new PageIterable.Page<>(page.getData(), page.getNextCursor(), Boolean.TRUE.equals(page.getHasMore()));
+        });
     }
 
     private static final TypeReference<EventDefinitionDetail> TYPE_2 = new TypeReference<EventDefinitionDetail>() {};

@@ -74,7 +74,7 @@ gönderilmez, yanıttaki bilinmeyen alanlar yok sayılır. SDK'da metodu olmayan
 | `appId` | — | Çağrıda `RequestOptions.appId` verilmezse kullanılan app |
 | `baseUrl` | `https://api.herosignal.dev` | API adresi |
 | `timeout` | 30 sn | Deneme başına zaman aşımı |
-| `maxRetries` | 3 | 429/5xx ve ağ hatalarında yeniden deneme |
+| `maxRetries` | 3 | En fazla yeniden deneme (politika: aşağıda) |
 | `autoIdempotencyKey` | `true` | `Idempotency-Key` destekleyen çağrılarda otomatik UUID |
 | `transport` | `JdkHttpTransport` | Özel taşıma (ör. `new JdkHttpTransport(özelHttpClient)`) |
 
@@ -82,7 +82,7 @@ gönderilmez, yanıttaki bilinmeyen alanlar yok sayılır. SDK'da metodu olmayan
 
 ### Hatalar
 
-429, 5xx ve ağ hatalarında üstel geri çekilmeyle (0,3 / 1 / 3 sn) yeniden denenir; `Retry-After` başlığına uyulur.
+429 her metotta; 5xx ve ağ hataları GET/HEAD/OPTIONS/PUT/DELETE'te, POST/PATCH'te yalnızca `Idempotency-Key` varsa (otomatik anahtar dahil) veya istek sunucuya hiç gönderilemediyse (bağlantı reddi, DNS hatası, bağlantı zaman aşımı) üstel geri çekilmeyle (0,3 / 1 / 3 sn) yeniden denenir; `Retry-After` başlığına uyulur.
 Kalıcı hatalar `HeroSignalException` (unchecked) alt sınıflarıdır ve `getStatus()`, `getCode()` (`HS_…`),
 `getRequestId()`, `getDetails()` taşır:
 
