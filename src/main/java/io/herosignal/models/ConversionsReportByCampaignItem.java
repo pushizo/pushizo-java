@@ -45,6 +45,12 @@ public final class ConversionsReportByCampaignItem {
     /**
      * Zorunlu.
      */
+    @JsonProperty("unattributed")
+    private Long unattributed;
+
+    /**
+     * Zorunlu.
+     */
     @JsonProperty("revenue")
     private Double revenue;
 
@@ -102,6 +108,15 @@ public final class ConversionsReportByCampaignItem {
 
     public ConversionsReportByCampaignItem influenced(Long influenced) {
         this.influenced = influenced;
+        return this;
+    }
+
+    public Long getUnattributed() {
+        return unattributed;
+    }
+
+    public ConversionsReportByCampaignItem unattributed(Long unattributed) {
+        this.unattributed = unattributed;
         return this;
     }
 

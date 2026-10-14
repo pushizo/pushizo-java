@@ -51,6 +51,18 @@ public final class EventDefinition {
     /**
      * Zorunlu.
      */
+    @JsonProperty("outcome_unique")
+    private Boolean outcomeUnique;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("outcome_unattributed")
+    private Boolean outcomeUnattributed;
+
+    /**
+     * Zorunlu.
+     */
     @JsonProperty("first_seen_at")
     private String firstSeenAt;
 
@@ -129,6 +141,24 @@ public final class EventDefinition {
 
     public EventDefinition isConversion(Boolean isConversion) {
         this.isConversion = isConversion;
+        return this;
+    }
+
+    public Boolean getOutcomeUnique() {
+        return outcomeUnique;
+    }
+
+    public EventDefinition outcomeUnique(Boolean outcomeUnique) {
+        this.outcomeUnique = outcomeUnique;
+        return this;
+    }
+
+    public Boolean getOutcomeUnattributed() {
+        return outcomeUnattributed;
+    }
+
+    public EventDefinition outcomeUnattributed(Boolean outcomeUnattributed) {
+        this.outcomeUnattributed = outcomeUnattributed;
         return this;
     }
 

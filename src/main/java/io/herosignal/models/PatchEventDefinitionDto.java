@@ -18,6 +18,12 @@ public final class PatchEventDefinitionDto {
     @JsonProperty("is_conversion")
     private Boolean isConversion;
 
+    @JsonProperty("outcome_unique")
+    private Boolean outcomeUnique;
+
+    @JsonProperty("outcome_unattributed")
+    private Boolean outcomeUnattributed;
+
     public String getDisplayName() {
         return displayName;
     }
@@ -33,6 +39,24 @@ public final class PatchEventDefinitionDto {
 
     public PatchEventDefinitionDto isConversion(Boolean isConversion) {
         this.isConversion = isConversion;
+        return this;
+    }
+
+    public Boolean getOutcomeUnique() {
+        return outcomeUnique;
+    }
+
+    public PatchEventDefinitionDto outcomeUnique(Boolean outcomeUnique) {
+        this.outcomeUnique = outcomeUnique;
+        return this;
+    }
+
+    public Boolean getOutcomeUnattributed() {
+        return outcomeUnattributed;
+    }
+
+    public PatchEventDefinitionDto outcomeUnattributed(Boolean outcomeUnattributed) {
+        this.outcomeUnattributed = outcomeUnattributed;
         return this;
     }
 
