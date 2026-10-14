@@ -63,6 +63,12 @@ public final class User {
     /**
      * Zorunlu.
      */
+    @JsonProperty("usage_seconds")
+    private Long usageSeconds;
+
+    /**
+     * Zorunlu.
+     */
     @JsonProperty("merged_into")
     private String mergedInto;
 
@@ -159,6 +165,15 @@ public final class User {
 
     public User sessionCount(Long sessionCount) {
         this.sessionCount = sessionCount;
+        return this;
+    }
+
+    public Long getUsageSeconds() {
+        return usageSeconds;
+    }
+
+    public User usageSeconds(Long usageSeconds) {
+        this.usageSeconds = usageSeconds;
         return this;
     }
 
