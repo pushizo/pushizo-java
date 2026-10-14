@@ -388,6 +388,8 @@ public final class JourneysResource {
      * Düğüm bazlı istatistik
      *
      * {@code GET /v1/apps/{appId}/journeys/{journeyId}/stats}
+     *
+     * Parametreler: all_versions — Değerler: "true", "false".
      */
     public JourneyStats stats(String journeyId, JourneysStatsParams params, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/journeys/{journeyId}/stats");
