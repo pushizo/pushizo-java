@@ -51,6 +51,12 @@ public final class ChannelConfigConfig {
     @JsonProperty("client_email")
     private String clientEmail;
 
+    @JsonProperty("hms_app_id")
+    private String hmsAppId;
+
+    @JsonProperty("high_priority")
+    private Boolean highPriority;
+
     @JsonProperty("subject")
     private String subject;
 
@@ -204,6 +210,24 @@ public final class ChannelConfigConfig {
 
     public ChannelConfigConfig clientEmail(String clientEmail) {
         this.clientEmail = clientEmail;
+        return this;
+    }
+
+    public String getHmsAppId() {
+        return hmsAppId;
+    }
+
+    public ChannelConfigConfig hmsAppId(String hmsAppId) {
+        this.hmsAppId = hmsAppId;
+        return this;
+    }
+
+    public Boolean getHighPriority() {
+        return highPriority;
+    }
+
+    public ChannelConfigConfig highPriority(Boolean highPriority) {
+        this.highPriority = highPriority;
         return this;
     }
 

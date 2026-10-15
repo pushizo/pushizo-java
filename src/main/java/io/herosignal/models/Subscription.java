@@ -31,7 +31,7 @@ public final class Subscription {
     private String userId;
 
     /**
-     * Zorunlu. Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+     * Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
      */
     @JsonProperty("channel")
     private String channel;
@@ -101,6 +101,12 @@ public final class Subscription {
      */
     @JsonProperty("unsubscribed_at")
     private String unsubscribedAt;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("location")
+    private SubscriptionLocation location;
 
     /**
      * Zorunlu.
@@ -240,6 +246,15 @@ public final class Subscription {
 
     public Subscription unsubscribedAt(String unsubscribedAt) {
         this.unsubscribedAt = unsubscribedAt;
+        return this;
+    }
+
+    public SubscriptionLocation getLocation() {
+        return location;
+    }
+
+    public Subscription location(SubscriptionLocation location) {
+        this.location = location;
         return this;
     }
 

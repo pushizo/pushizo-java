@@ -91,7 +91,7 @@ public final class UserDetail {
     private Long subscriptionCount;
 
     /**
-     * Zorunlu. Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+     * Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
      */
     @JsonProperty("channels")
     private java.util.List<String> channels;

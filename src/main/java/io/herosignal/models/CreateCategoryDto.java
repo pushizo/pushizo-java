@@ -28,7 +28,7 @@ public final class CreateCategoryDto {
     private java.util.Map<String, String> description;
 
     /**
-     * Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+     * Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
      */
     @JsonProperty("channels")
     private java.util.List<String> channels;

@@ -31,7 +31,7 @@ public final class CreateExportDtoFilters {
     private String status;
 
     /**
-     * Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+     * Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
      */
     @JsonProperty("channel")
     private String channel;
