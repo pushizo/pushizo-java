@@ -63,6 +63,12 @@ public final class EventDefinitionDetail {
     /**
      * Zorunlu.
      */
+    @JsonProperty("retention_days")
+    private Long retentionDays;
+
+    /**
+     * Zorunlu.
+     */
     @JsonProperty("first_seen_at")
     private String firstSeenAt;
 
@@ -171,6 +177,15 @@ public final class EventDefinitionDetail {
 
     public EventDefinitionDetail outcomeUnattributed(Boolean outcomeUnattributed) {
         this.outcomeUnattributed = outcomeUnattributed;
+        return this;
+    }
+
+    public Long getRetentionDays() {
+        return retentionDays;
+    }
+
+    public EventDefinitionDetail retentionDays(Long retentionDays) {
+        this.retentionDays = retentionDays;
         return this;
     }
 

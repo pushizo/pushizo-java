@@ -67,6 +67,12 @@ public final class App {
     private AppSettings settings;
 
     /**
+     * Zorunlu. Değerler: "hmac", "jwt", "both".
+     */
+    @JsonProperty("identity_verification_mode")
+    private String identityVerificationMode;
+
+    /**
      * Zorunlu. Değerler: "active", "suspended", "deleted".
      */
     @JsonProperty("status")
@@ -162,6 +168,15 @@ public final class App {
 
     public App settings(AppSettings settings) {
         this.settings = settings;
+        return this;
+    }
+
+    public String getIdentityVerificationMode() {
+        return identityVerificationMode;
+    }
+
+    public App identityVerificationMode(String identityVerificationMode) {
+        this.identityVerificationMode = identityVerificationMode;
         return this;
     }
 

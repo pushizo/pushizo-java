@@ -24,6 +24,9 @@ public final class PatchEventDefinitionDto {
     @JsonProperty("outcome_unattributed")
     private Boolean outcomeUnattributed;
 
+    @JsonProperty("retention_days")
+    private Long retentionDays;
+
     public String getDisplayName() {
         return displayName;
     }
@@ -57,6 +60,15 @@ public final class PatchEventDefinitionDto {
 
     public PatchEventDefinitionDto outcomeUnattributed(Boolean outcomeUnattributed) {
         this.outcomeUnattributed = outcomeUnattributed;
+        return this;
+    }
+
+    public Long getRetentionDays() {
+        return retentionDays;
+    }
+
+    public PatchEventDefinitionDto retentionDays(Long retentionDays) {
+        this.retentionDays = retentionDays;
         return this;
     }
 
