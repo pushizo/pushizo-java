@@ -39,6 +39,18 @@ public final class UpdateWebhookDto {
     @JsonProperty("status")
     private String status;
 
+    @JsonProperty("body_template")
+    private String bodyTemplate;
+
+    /**
+     * Şablon çıktısının içerik türü (varsayılan application/json). Değerler: "application/json", "text/plain".
+     */
+    @JsonProperty("body_content_type")
+    private String bodyContentType;
+
+    @JsonProperty("filters")
+    private UpdateWebhookDtoFilters filters;
+
     public String getUrl() {
         return url;
     }
@@ -99,6 +111,33 @@ public final class UpdateWebhookDto {
 
     public UpdateWebhookDto status(String status) {
         this.status = status;
+        return this;
+    }
+
+    public String getBodyTemplate() {
+        return bodyTemplate;
+    }
+
+    public UpdateWebhookDto bodyTemplate(String bodyTemplate) {
+        this.bodyTemplate = bodyTemplate;
+        return this;
+    }
+
+    public String getBodyContentType() {
+        return bodyContentType;
+    }
+
+    public UpdateWebhookDto bodyContentType(String bodyContentType) {
+        this.bodyContentType = bodyContentType;
+        return this;
+    }
+
+    public UpdateWebhookDtoFilters getFilters() {
+        return filters;
+    }
+
+    public UpdateWebhookDto filters(UpdateWebhookDtoFilters filters) {
+        this.filters = filters;
         return this;
     }
 

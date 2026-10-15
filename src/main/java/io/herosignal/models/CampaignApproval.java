@@ -36,6 +36,12 @@ public final class CampaignApproval {
     @JsonProperty("approved_at")
     private String approvedAt;
 
+    @JsonProperty("rejected_by")
+    private String rejectedBy;
+
+    @JsonProperty("rejected_at")
+    private String rejectedAt;
+
     public Boolean getRequired() {
         return required;
     }
@@ -87,6 +93,24 @@ public final class CampaignApproval {
 
     public CampaignApproval approvedAt(String approvedAt) {
         this.approvedAt = approvedAt;
+        return this;
+    }
+
+    public String getRejectedBy() {
+        return rejectedBy;
+    }
+
+    public CampaignApproval rejectedBy(String rejectedBy) {
+        this.rejectedBy = rejectedBy;
+        return this;
+    }
+
+    public String getRejectedAt() {
+        return rejectedAt;
+    }
+
+    public CampaignApproval rejectedAt(String rejectedAt) {
+        this.rejectedAt = rejectedAt;
         return this;
     }
 

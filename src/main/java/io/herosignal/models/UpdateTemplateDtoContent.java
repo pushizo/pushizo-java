@@ -159,6 +159,30 @@ public final class UpdateTemplateDtoContent {
     @JsonProperty("sms_media_urls")
     private java.util.List<String> smsMediaUrls;
 
+    @JsonProperty("whatsapp_template")
+    private UpdateTemplateDtoContentWhatsappTemplate whatsappTemplate;
+
+    @JsonProperty("whatsapp_media")
+    private UpdateTemplateDtoContentWhatsappMedia whatsappMedia;
+
+    @JsonProperty("whatsapp_interactive")
+    private UpdateTemplateDtoContentWhatsappInteractive whatsappInteractive;
+
+    @JsonProperty("rcs_card")
+    private UpdateTemplateDtoContentRcsCard rcsCard;
+
+    @JsonProperty("rcs_suggestions")
+    private java.util.List<Object> rcsSuggestions;
+
+    @JsonProperty("rcs_content_sid")
+    private String rcsContentSid;
+
+    @JsonProperty("rcs_content_variables")
+    private java.util.Map<String, String> rcsContentVariables;
+
+    @JsonProperty("rcs_fallback_text")
+    private java.util.Map<String, String> rcsFallbackText;
+
     public java.util.Map<String, String> getHeadings() {
         return headings;
     }
@@ -570,6 +594,78 @@ public final class UpdateTemplateDtoContent {
 
     public UpdateTemplateDtoContent smsMediaUrls(java.util.List<String> smsMediaUrls) {
         this.smsMediaUrls = smsMediaUrls;
+        return this;
+    }
+
+    public UpdateTemplateDtoContentWhatsappTemplate getWhatsappTemplate() {
+        return whatsappTemplate;
+    }
+
+    public UpdateTemplateDtoContent whatsappTemplate(UpdateTemplateDtoContentWhatsappTemplate whatsappTemplate) {
+        this.whatsappTemplate = whatsappTemplate;
+        return this;
+    }
+
+    public UpdateTemplateDtoContentWhatsappMedia getWhatsappMedia() {
+        return whatsappMedia;
+    }
+
+    public UpdateTemplateDtoContent whatsappMedia(UpdateTemplateDtoContentWhatsappMedia whatsappMedia) {
+        this.whatsappMedia = whatsappMedia;
+        return this;
+    }
+
+    public UpdateTemplateDtoContentWhatsappInteractive getWhatsappInteractive() {
+        return whatsappInteractive;
+    }
+
+    public UpdateTemplateDtoContent whatsappInteractive(UpdateTemplateDtoContentWhatsappInteractive whatsappInteractive) {
+        this.whatsappInteractive = whatsappInteractive;
+        return this;
+    }
+
+    public UpdateTemplateDtoContentRcsCard getRcsCard() {
+        return rcsCard;
+    }
+
+    public UpdateTemplateDtoContent rcsCard(UpdateTemplateDtoContentRcsCard rcsCard) {
+        this.rcsCard = rcsCard;
+        return this;
+    }
+
+    public java.util.List<Object> getRcsSuggestions() {
+        return rcsSuggestions;
+    }
+
+    public UpdateTemplateDtoContent rcsSuggestions(java.util.List<Object> rcsSuggestions) {
+        this.rcsSuggestions = rcsSuggestions;
+        return this;
+    }
+
+    public String getRcsContentSid() {
+        return rcsContentSid;
+    }
+
+    public UpdateTemplateDtoContent rcsContentSid(String rcsContentSid) {
+        this.rcsContentSid = rcsContentSid;
+        return this;
+    }
+
+    public java.util.Map<String, String> getRcsContentVariables() {
+        return rcsContentVariables;
+    }
+
+    public UpdateTemplateDtoContent rcsContentVariables(java.util.Map<String, String> rcsContentVariables) {
+        this.rcsContentVariables = rcsContentVariables;
+        return this;
+    }
+
+    public java.util.Map<String, String> getRcsFallbackText() {
+        return rcsFallbackText;
+    }
+
+    public UpdateTemplateDtoContent rcsFallbackText(java.util.Map<String, String> rcsFallbackText) {
+        this.rcsFallbackText = rcsFallbackText;
         return this;
     }
 

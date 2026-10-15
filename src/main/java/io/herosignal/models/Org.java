@@ -54,6 +54,18 @@ public final class Org {
     @JsonProperty("created_at")
     private String createdAt;
 
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("region")
+    private String region;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("managed_by_reseller")
+    private Boolean managedByReseller;
+
     public String getId() {
         return id;
     }
@@ -114,6 +126,24 @@ public final class Org {
 
     public Org createdAt(String createdAt) {
         this.createdAt = createdAt;
+        return this;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public Org region(String region) {
+        this.region = region;
+        return this;
+    }
+
+    public Boolean getManagedByReseller() {
+        return managedByReseller;
+    }
+
+    public Org managedByReseller(Boolean managedByReseller) {
+        this.managedByReseller = managedByReseller;
         return this;
     }
 

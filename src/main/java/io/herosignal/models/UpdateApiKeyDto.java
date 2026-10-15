@@ -16,7 +16,7 @@ public final class UpdateApiKeyDto {
     private String name;
 
     /**
-     * Değerler: "admin", "notifications:write", "users:read", "users:write", "events:write", "segments:read", "analytics:read".
+     * Değerler: "admin", "notifications:write", "users:read", "users:write", "events:write", "segments:read", "analytics:read", "mcp:write".
      */
     @JsonProperty("scopes")
     private java.util.List<String> scopes;

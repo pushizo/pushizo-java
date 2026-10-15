@@ -23,7 +23,7 @@ public final class CampaignsListParams {
     private String type;
 
     /**
-     * Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+     * Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
      */
     private String channel;
 

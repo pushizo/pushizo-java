@@ -31,7 +31,7 @@ public final class Template {
     private String name;
 
     /**
-     * Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+     * Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
      */
     @JsonProperty("channel")
     private String channel;

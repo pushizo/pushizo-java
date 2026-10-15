@@ -31,6 +31,18 @@ public final class UpdateInAppDtoDisplay {
     private Long autoDismissSeconds;
 
     /**
+     * Değerler: "blocks", "html".
+     */
+    @JsonProperty("content_type")
+    private String contentType;
+
+    @JsonProperty("html")
+    private java.util.Map<String, String> html;
+
+    @JsonProperty("html_height")
+    private Long htmlHeight;
+
+    /**
      * Zorunlu.
      */
     @JsonProperty("blocks")
@@ -78,6 +90,33 @@ public final class UpdateInAppDtoDisplay {
 
     public UpdateInAppDtoDisplay autoDismissSeconds(Long autoDismissSeconds) {
         this.autoDismissSeconds = autoDismissSeconds;
+        return this;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public UpdateInAppDtoDisplay contentType(String contentType) {
+        this.contentType = contentType;
+        return this;
+    }
+
+    public java.util.Map<String, String> getHtml() {
+        return html;
+    }
+
+    public UpdateInAppDtoDisplay html(java.util.Map<String, String> html) {
+        this.html = html;
+        return this;
+    }
+
+    public Long getHtmlHeight() {
+        return htmlHeight;
+    }
+
+    public UpdateInAppDtoDisplay htmlHeight(Long htmlHeight) {
+        this.htmlHeight = htmlHeight;
         return this;
     }
 

@@ -34,7 +34,7 @@ public final class EstimateAudienceDtoTarget {
     private Object filters;
 
     /**
-     * Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+     * Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
      */
     @JsonProperty("channels")
     private java.util.List<String> channels;

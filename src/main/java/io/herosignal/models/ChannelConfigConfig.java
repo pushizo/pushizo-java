@@ -123,6 +123,30 @@ public final class ChannelConfigConfig {
     @JsonProperty("iys_filter")
     private String iysFilter;
 
+    @JsonProperty("waba_id")
+    private String wabaId;
+
+    @JsonProperty("phone_number_id")
+    private String phoneNumberId;
+
+    @JsonProperty("graph_api_version")
+    private String graphApiVersion;
+
+    @JsonProperty("display_phone_number")
+    private String displayPhoneNumber;
+
+    @JsonProperty("verified_name")
+    private String verifiedName;
+
+    @JsonProperty("rbm_agent_id")
+    private String rbmAgentId;
+
+    @JsonProperty("content_sid")
+    private String contentSid;
+
+    @JsonProperty("sms_fallback")
+    private Boolean smsFallback;
+
     public String getAuthType() {
         return authType;
     }
@@ -417,6 +441,78 @@ public final class ChannelConfigConfig {
 
     public ChannelConfigConfig iysFilter(String iysFilter) {
         this.iysFilter = iysFilter;
+        return this;
+    }
+
+    public String getWabaId() {
+        return wabaId;
+    }
+
+    public ChannelConfigConfig wabaId(String wabaId) {
+        this.wabaId = wabaId;
+        return this;
+    }
+
+    public String getPhoneNumberId() {
+        return phoneNumberId;
+    }
+
+    public ChannelConfigConfig phoneNumberId(String phoneNumberId) {
+        this.phoneNumberId = phoneNumberId;
+        return this;
+    }
+
+    public String getGraphApiVersion() {
+        return graphApiVersion;
+    }
+
+    public ChannelConfigConfig graphApiVersion(String graphApiVersion) {
+        this.graphApiVersion = graphApiVersion;
+        return this;
+    }
+
+    public String getDisplayPhoneNumber() {
+        return displayPhoneNumber;
+    }
+
+    public ChannelConfigConfig displayPhoneNumber(String displayPhoneNumber) {
+        this.displayPhoneNumber = displayPhoneNumber;
+        return this;
+    }
+
+    public String getVerifiedName() {
+        return verifiedName;
+    }
+
+    public ChannelConfigConfig verifiedName(String verifiedName) {
+        this.verifiedName = verifiedName;
+        return this;
+    }
+
+    public String getRbmAgentId() {
+        return rbmAgentId;
+    }
+
+    public ChannelConfigConfig rbmAgentId(String rbmAgentId) {
+        this.rbmAgentId = rbmAgentId;
+        return this;
+    }
+
+    public String getContentSid() {
+        return contentSid;
+    }
+
+    public ChannelConfigConfig contentSid(String contentSid) {
+        this.contentSid = contentSid;
+        return this;
+    }
+
+    public Boolean getSmsFallback() {
+        return smsFallback;
+    }
+
+    public ChannelConfigConfig smsFallback(Boolean smsFallback) {
+        this.smsFallback = smsFallback;
         return this;
     }
 

@@ -19,7 +19,7 @@ public final class CreateTemplateDto {
     private String name;
 
     /**
-     * Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+     * Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
      */
     @JsonProperty("channel")
     private String channel;

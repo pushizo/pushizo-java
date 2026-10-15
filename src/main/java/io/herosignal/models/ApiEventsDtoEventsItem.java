@@ -27,6 +27,9 @@ public final class ApiEventsDtoEventsItem {
     @JsonProperty("occurred_at")
     private String occurredAt;
 
+    @JsonProperty("event_id")
+    private String eventId;
+
     @JsonProperty("subscription_id")
     private String subscriptionId;
 
@@ -66,6 +69,15 @@ public final class ApiEventsDtoEventsItem {
 
     public ApiEventsDtoEventsItem occurredAt(String occurredAt) {
         this.occurredAt = occurredAt;
+        return this;
+    }
+
+    public String getEventId() {
+        return eventId;
+    }
+
+    public ApiEventsDtoEventsItem eventId(String eventId) {
+        this.eventId = eventId;
         return this;
     }
 
