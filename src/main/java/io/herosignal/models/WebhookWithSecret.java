@@ -105,6 +105,24 @@ public final class WebhookWithSecret {
     /**
      * Zorunlu.
      */
+    @JsonProperty("body_template")
+    private String bodyTemplate;
+
+    /**
+     * Zorunlu. Değerler: "application/json", "text/plain".
+     */
+    @JsonProperty("body_content_type")
+    private String bodyContentType;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("filters")
+    private WebhookWithSecretFilters filters;
+
+    /**
+     * Zorunlu.
+     */
     @JsonProperty("created_at")
     private String createdAt;
 
@@ -252,6 +270,33 @@ public final class WebhookWithSecret {
 
     public WebhookWithSecret previousSecretExpiresAt(String previousSecretExpiresAt) {
         this.previousSecretExpiresAt = previousSecretExpiresAt;
+        return this;
+    }
+
+    public String getBodyTemplate() {
+        return bodyTemplate;
+    }
+
+    public WebhookWithSecret bodyTemplate(String bodyTemplate) {
+        this.bodyTemplate = bodyTemplate;
+        return this;
+    }
+
+    public String getBodyContentType() {
+        return bodyContentType;
+    }
+
+    public WebhookWithSecret bodyContentType(String bodyContentType) {
+        this.bodyContentType = bodyContentType;
+        return this;
+    }
+
+    public WebhookWithSecretFilters getFilters() {
+        return filters;
+    }
+
+    public WebhookWithSecret filters(WebhookWithSecretFilters filters) {
+        this.filters = filters;
         return this;
     }
 

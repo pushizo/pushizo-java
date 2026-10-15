@@ -192,6 +192,30 @@ public final class CreateNotificationDto {
     @JsonProperty("disable_sms_link_shortening")
     private Boolean disableSmsLinkShortening;
 
+    @JsonProperty("whatsapp_template")
+    private CreateNotificationDtoWhatsappTemplate whatsappTemplate;
+
+    @JsonProperty("whatsapp_media")
+    private CreateNotificationDtoWhatsappMedia whatsappMedia;
+
+    @JsonProperty("whatsapp_interactive")
+    private CreateNotificationDtoWhatsappInteractive whatsappInteractive;
+
+    @JsonProperty("rcs_card")
+    private CreateNotificationDtoRcsCard rcsCard;
+
+    @JsonProperty("rcs_suggestions")
+    private java.util.List<Object> rcsSuggestions;
+
+    @JsonProperty("rcs_content_sid")
+    private String rcsContentSid;
+
+    @JsonProperty("rcs_content_variables")
+    private java.util.Map<String, String> rcsContentVariables;
+
+    @JsonProperty("rcs_fallback_text")
+    private java.util.Map<String, String> rcsFallbackText;
+
     @JsonProperty("add_to_inbox")
     private Boolean addToInbox;
 
@@ -705,6 +729,78 @@ public final class CreateNotificationDto {
 
     public CreateNotificationDto disableSmsLinkShortening(Boolean disableSmsLinkShortening) {
         this.disableSmsLinkShortening = disableSmsLinkShortening;
+        return this;
+    }
+
+    public CreateNotificationDtoWhatsappTemplate getWhatsappTemplate() {
+        return whatsappTemplate;
+    }
+
+    public CreateNotificationDto whatsappTemplate(CreateNotificationDtoWhatsappTemplate whatsappTemplate) {
+        this.whatsappTemplate = whatsappTemplate;
+        return this;
+    }
+
+    public CreateNotificationDtoWhatsappMedia getWhatsappMedia() {
+        return whatsappMedia;
+    }
+
+    public CreateNotificationDto whatsappMedia(CreateNotificationDtoWhatsappMedia whatsappMedia) {
+        this.whatsappMedia = whatsappMedia;
+        return this;
+    }
+
+    public CreateNotificationDtoWhatsappInteractive getWhatsappInteractive() {
+        return whatsappInteractive;
+    }
+
+    public CreateNotificationDto whatsappInteractive(CreateNotificationDtoWhatsappInteractive whatsappInteractive) {
+        this.whatsappInteractive = whatsappInteractive;
+        return this;
+    }
+
+    public CreateNotificationDtoRcsCard getRcsCard() {
+        return rcsCard;
+    }
+
+    public CreateNotificationDto rcsCard(CreateNotificationDtoRcsCard rcsCard) {
+        this.rcsCard = rcsCard;
+        return this;
+    }
+
+    public java.util.List<Object> getRcsSuggestions() {
+        return rcsSuggestions;
+    }
+
+    public CreateNotificationDto rcsSuggestions(java.util.List<Object> rcsSuggestions) {
+        this.rcsSuggestions = rcsSuggestions;
+        return this;
+    }
+
+    public String getRcsContentSid() {
+        return rcsContentSid;
+    }
+
+    public CreateNotificationDto rcsContentSid(String rcsContentSid) {
+        this.rcsContentSid = rcsContentSid;
+        return this;
+    }
+
+    public java.util.Map<String, String> getRcsContentVariables() {
+        return rcsContentVariables;
+    }
+
+    public CreateNotificationDto rcsContentVariables(java.util.Map<String, String> rcsContentVariables) {
+        this.rcsContentVariables = rcsContentVariables;
+        return this;
+    }
+
+    public java.util.Map<String, String> getRcsFallbackText() {
+        return rcsFallbackText;
+    }
+
+    public CreateNotificationDto rcsFallbackText(java.util.Map<String, String> rcsFallbackText) {
+        this.rcsFallbackText = rcsFallbackText;
         return this;
     }
 

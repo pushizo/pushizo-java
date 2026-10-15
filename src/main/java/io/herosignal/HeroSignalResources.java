@@ -29,10 +29,19 @@ public abstract class HeroSignalResources {
     private final ApiKeysResource apiKeys;
     private final OrganizationResource organization;
     private final CategoriesResource categories;
+    private final ContentTablesResource contentTables;
+    private final ConversationsResource conversations;
+    private final DataFeedsResource dataFeeds;
+    private final EmailDeliverabilityResource emailDeliverability;
     private final IdentityKeysResource identityKeys;
+    private final IntegrationsResource integrations;
     private final JourneysResource journeys;
     private final LiveActivitiesResource liveActivities;
+    private final McpResource mcp;
     private final PreferencesResource preferences;
+    private final SmsKeywordsResource smsKeywords;
+    private final WarehouseExportsResource warehouseExports;
+    private final WhatsappResource whatsapp;
 
     protected HeroSignalResources() {
         this.notifications = new NotificationsResource((HeroSignal) this);
@@ -55,10 +64,19 @@ public abstract class HeroSignalResources {
         this.apiKeys = new ApiKeysResource((HeroSignal) this);
         this.organization = new OrganizationResource((HeroSignal) this);
         this.categories = new CategoriesResource((HeroSignal) this);
+        this.contentTables = new ContentTablesResource((HeroSignal) this);
+        this.conversations = new ConversationsResource((HeroSignal) this);
+        this.dataFeeds = new DataFeedsResource((HeroSignal) this);
+        this.emailDeliverability = new EmailDeliverabilityResource((HeroSignal) this);
         this.identityKeys = new IdentityKeysResource((HeroSignal) this);
+        this.integrations = new IntegrationsResource((HeroSignal) this);
         this.journeys = new JourneysResource((HeroSignal) this);
         this.liveActivities = new LiveActivitiesResource((HeroSignal) this);
+        this.mcp = new McpResource((HeroSignal) this);
         this.preferences = new PreferencesResource((HeroSignal) this);
+        this.smsKeywords = new SmsKeywordsResource((HeroSignal) this);
+        this.warehouseExports = new WarehouseExportsResource((HeroSignal) this);
+        this.whatsapp = new WhatsappResource((HeroSignal) this);
     }
 
     /**
@@ -202,10 +220,45 @@ public abstract class HeroSignalResources {
     }
 
     /**
+     * contentTables
+     */
+    public ContentTablesResource contentTables() {
+        return contentTables;
+    }
+
+    /**
+     * conversations
+     */
+    public ConversationsResource conversations() {
+        return conversations;
+    }
+
+    /**
+     * dataFeeds
+     */
+    public DataFeedsResource dataFeeds() {
+        return dataFeeds;
+    }
+
+    /**
+     * emailDeliverability
+     */
+    public EmailDeliverabilityResource emailDeliverability() {
+        return emailDeliverability;
+    }
+
+    /**
      * identityKeys
      */
     public IdentityKeysResource identityKeys() {
         return identityKeys;
+    }
+
+    /**
+     * integrations
+     */
+    public IntegrationsResource integrations() {
+        return integrations;
     }
 
     /**
@@ -223,9 +276,37 @@ public abstract class HeroSignalResources {
     }
 
     /**
+     * mcp
+     */
+    public McpResource mcp() {
+        return mcp;
+    }
+
+    /**
      * preferences
      */
     public PreferencesResource preferences() {
         return preferences;
+    }
+
+    /**
+     * smsKeywords
+     */
+    public SmsKeywordsResource smsKeywords() {
+        return smsKeywords;
+    }
+
+    /**
+     * warehouseExports
+     */
+    public WarehouseExportsResource warehouseExports() {
+        return warehouseExports;
+    }
+
+    /**
+     * whatsapp
+     */
+    public WhatsappResource whatsapp() {
+        return whatsapp;
     }
 }

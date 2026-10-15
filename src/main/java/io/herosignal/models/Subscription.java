@@ -31,7 +31,7 @@ public final class Subscription {
     private String userId;
 
     /**
-     * Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+     * Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
      */
     @JsonProperty("channel")
     private String channel;
@@ -95,6 +95,12 @@ public final class Subscription {
      */
     @JsonProperty("opted_in_at")
     private String optedInAt;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("opt_in_source")
+    private String optInSource;
 
     /**
      * Zorunlu.
@@ -237,6 +243,15 @@ public final class Subscription {
 
     public Subscription optedInAt(String optedInAt) {
         this.optedInAt = optedInAt;
+        return this;
+    }
+
+    public String getOptInSource() {
+        return optInSource;
+    }
+
+    public Subscription optInSource(String optInSource) {
+        this.optInSource = optInSource;
         return this;
     }
 

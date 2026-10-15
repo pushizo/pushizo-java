@@ -66,7 +66,32 @@ public final class WebhooksResource {
         return client.execute(op, options, TYPE_1);
     }
 
-    private static final TypeReference<Webhook> TYPE_2 = new TypeReference<Webhook>() {};
+    private static final TypeReference<WebhookPreviewResult> TYPE_2 = new TypeReference<WebhookPreviewResult>() {};
+
+    /**
+     * Event Streams önizlemesi: örnek olay + şablon + filtre → gövde/hata (gönderim yapmaz)
+     *
+     * {@code POST /v1/apps/{appId}/webhooks/preview}
+     */
+    public WebhookPreviewResult preview(WebhookPreviewDto body) {
+        return preview(body, null);
+    }
+
+    /**
+     * Event Streams önizlemesi: örnek olay + şablon + filtre → gövde/hata (gönderim yapmaz)
+     *
+     * {@code POST /v1/apps/{appId}/webhooks/preview}
+     */
+    public WebhookPreviewResult preview(WebhookPreviewDto body, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/webhooks/preview");
+        if (body == null) {
+            throw new IllegalArgumentException("HeroSignal: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_2);
+    }
+
+    private static final TypeReference<Webhook> TYPE_3 = new TypeReference<Webhook>() {};
 
     /**
      * Endpoint detayı
@@ -85,10 +110,10 @@ public final class WebhooksResource {
     public Webhook get(String webhookId, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/webhooks/{webhookId}");
         op.pathParam("webhookId", webhookId);
-        return client.execute(op, options, TYPE_2);
+        return client.execute(op, options, TYPE_3);
     }
 
-    private static final TypeReference<Webhook> TYPE_3 = new TypeReference<Webhook>() {};
+    private static final TypeReference<Webhook> TYPE_4 = new TypeReference<Webhook>() {};
 
     /**
      * Endpoint güncelle (URL, olaylar, batch, başlıklar, etkinleştir/durdur)
@@ -111,10 +136,10 @@ public final class WebhooksResource {
             throw new IllegalArgumentException("HeroSignal: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_3);
+        return client.execute(op, options, TYPE_4);
     }
 
-    private static final TypeReference<Ok> TYPE_4 = new TypeReference<Ok>() {};
+    private static final TypeReference<Ok> TYPE_5 = new TypeReference<Ok>() {};
 
     /**
      * Endpoint sil
@@ -133,10 +158,10 @@ public final class WebhooksResource {
     public Ok delete(String webhookId, RequestOptions options) {
         Operation op = new Operation("DELETE", "/v1/apps/{appId}/webhooks/{webhookId}");
         op.pathParam("webhookId", webhookId);
-        return client.execute(op, options, TYPE_4);
+        return client.execute(op, options, TYPE_5);
     }
 
-    private static final TypeReference<WebhookWithSecret> TYPE_5 = new TypeReference<WebhookWithSecret>() {};
+    private static final TypeReference<WebhookWithSecret> TYPE_6 = new TypeReference<WebhookWithSecret>() {};
 
     /**
      * Secret rotasyonu (eski secret 24 saat ikinci imza olarak gönderilir)
@@ -155,10 +180,10 @@ public final class WebhooksResource {
     public WebhookWithSecret rotateSecret(String webhookId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/webhooks/{webhookId}/rotate-secret");
         op.pathParam("webhookId", webhookId);
-        return client.execute(op, options, TYPE_5);
+        return client.execute(op, options, TYPE_6);
     }
 
-    private static final TypeReference<WebhookDeliveryDetail> TYPE_6 = new TypeReference<WebhookDeliveryDetail>() {};
+    private static final TypeReference<WebhookDeliveryDetail> TYPE_7 = new TypeReference<WebhookDeliveryDetail>() {};
 
     /**
      * Test olayı gönder (anında, sonuç döner)
@@ -177,10 +202,10 @@ public final class WebhooksResource {
     public WebhookDeliveryDetail test(String webhookId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/webhooks/{webhookId}/test");
         op.pathParam("webhookId", webhookId);
-        return client.execute(op, options, TYPE_6);
+        return client.execute(op, options, TYPE_7);
     }
 
-    private static final TypeReference<WebhookDeliveryPage> TYPE_7 = new TypeReference<WebhookDeliveryPage>() {};
+    private static final TypeReference<WebhookDeliveryPage> TYPE_8 = new TypeReference<WebhookDeliveryPage>() {};
 
     /**
      * Teslim geçmişi (cursor; durum/olay türü filtresi)
@@ -213,7 +238,7 @@ public final class WebhooksResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_7);
+        return client.execute(op, options, TYPE_8);
     }
 
     /**
@@ -245,7 +270,7 @@ public final class WebhooksResource {
         });
     }
 
-    private static final TypeReference<WebhookDeliveryDetail> TYPE_8 = new TypeReference<WebhookDeliveryDetail>() {};
+    private static final TypeReference<WebhookDeliveryDetail> TYPE_9 = new TypeReference<WebhookDeliveryDetail>() {};
 
     /**
      * Teslimi yeniden gönder (aynı olay kimliğiyle)
@@ -264,6 +289,6 @@ public final class WebhooksResource {
     public WebhookDeliveryDetail replay(String deliveryId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/webhooks/deliveries/{deliveryId}/replay");
         op.pathParam("deliveryId", deliveryId);
-        return client.execute(op, options, TYPE_8);
+        return client.execute(op, options, TYPE_9);
     }
 }

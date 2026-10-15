@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public final class AddSubscriptionDto {
     /**
-     * Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+     * Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
      */
     @JsonProperty("channel")
     private String channel;
@@ -32,6 +32,9 @@ public final class AddSubscriptionDto {
      */
     @JsonProperty("status")
     private String status;
+
+    @JsonProperty("opt_in")
+    private AddSubscriptionDtoOptIn optIn;
 
     public String getChannel() {
         return channel;
@@ -66,6 +69,15 @@ public final class AddSubscriptionDto {
 
     public AddSubscriptionDto status(String status) {
         this.status = status;
+        return this;
+    }
+
+    public AddSubscriptionDtoOptIn getOptIn() {
+        return optIn;
+    }
+
+    public AddSubscriptionDto optIn(AddSubscriptionDtoOptIn optIn) {
+        this.optIn = optIn;
         return this;
     }
 

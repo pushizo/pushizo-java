@@ -45,7 +45,7 @@ public final class CampaignsResource {
      *
      * {@code GET /v1/apps/{appId}/campaigns}
      *
-     * Parametreler: status — Değerler: "draft", "scheduled", "running", "paused", "completed", "cancelled", "failed".; type — Değerler: "one_time", "scheduled", "recurring", "automated", "transactional".; channel — Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
+     * Parametreler: status — Değerler: "draft", "scheduled", "running", "paused", "completed", "cancelled", "failed".; type — Değerler: "one_time", "scheduled", "recurring", "automated", "transactional".; channel — Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
      */
     public CampaignPage list(CampaignsListParams params, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/campaigns");

@@ -1,0 +1,55 @@
+// Bu dosya api/openapi.yaml'dan sdk/scripts/generate-server-sdks.mjs ile üretilmiştir; elle düzenlemeyin.
+
+package io.herosignal.models;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+/**
+ * McpCreateCampaignDraftBodyRecurrence şeması.
+ */
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public final class McpCreateCampaignDraftBodyRecurrence {
+    @JsonProperty("cron")
+    private String cron;
+
+    @JsonProperty("until")
+    private String until;
+
+    @JsonProperty("timezone")
+    private String timezone;
+
+    public String getCron() {
+        return cron;
+    }
+
+    public McpCreateCampaignDraftBodyRecurrence cron(String cron) {
+        this.cron = cron;
+        return this;
+    }
+
+    public String getUntil() {
+        return until;
+    }
+
+    public McpCreateCampaignDraftBodyRecurrence until(String until) {
+        this.until = until;
+        return this;
+    }
+
+    public String getTimezone() {
+        return timezone;
+    }
+
+    public McpCreateCampaignDraftBodyRecurrence timezone(String timezone) {
+        this.timezone = timezone;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return io.herosignal.core.Json.stringify(this);
+    }
+}

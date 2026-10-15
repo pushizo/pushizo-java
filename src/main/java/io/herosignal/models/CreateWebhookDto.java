@@ -36,6 +36,18 @@ public final class CreateWebhookDto {
     @JsonProperty("headers")
     private java.util.Map<String, String> headers;
 
+    @JsonProperty("body_template")
+    private String bodyTemplate;
+
+    /**
+     * Şablon çıktısının içerik türü (varsayılan application/json). Değerler: "application/json", "text/plain".
+     */
+    @JsonProperty("body_content_type")
+    private String bodyContentType;
+
+    @JsonProperty("filters")
+    private CreateWebhookDtoFilters filters;
+
     public String getUrl() {
         return url;
     }
@@ -87,6 +99,33 @@ public final class CreateWebhookDto {
 
     public CreateWebhookDto headers(java.util.Map<String, String> headers) {
         this.headers = headers;
+        return this;
+    }
+
+    public String getBodyTemplate() {
+        return bodyTemplate;
+    }
+
+    public CreateWebhookDto bodyTemplate(String bodyTemplate) {
+        this.bodyTemplate = bodyTemplate;
+        return this;
+    }
+
+    public String getBodyContentType() {
+        return bodyContentType;
+    }
+
+    public CreateWebhookDto bodyContentType(String bodyContentType) {
+        this.bodyContentType = bodyContentType;
+        return this;
+    }
+
+    public CreateWebhookDtoFilters getFilters() {
+        return filters;
+    }
+
+    public CreateWebhookDto filters(CreateWebhookDtoFilters filters) {
+        this.filters = filters;
         return this;
     }
 

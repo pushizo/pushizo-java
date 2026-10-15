@@ -19,7 +19,7 @@ public final class CreateAppApiKeyDto {
     private String name;
 
     /**
-     * Zorunlu. Değerler: "admin", "notifications:write", "users:read", "users:write", "events:write", "segments:read", "analytics:read".
+     * Zorunlu. Değerler: "admin", "notifications:write", "users:read", "users:write", "events:write", "segments:read", "analytics:read", "mcp:write".
      */
     @JsonProperty("scopes")
     private java.util.List<String> scopes;
