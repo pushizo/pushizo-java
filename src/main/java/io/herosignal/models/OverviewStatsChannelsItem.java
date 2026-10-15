@@ -13,13 +13,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public final class OverviewStatsChannelsItem {
     /**
-     * Zorunlu. Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+     * Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
      */
     @JsonProperty("channel")
     private String channel;
 
     /**
-     * Zorunlu. Değerler: "apns", "fcm", "webpush", "smtp", "ses", "resend", "twilio", "netgsm", "mock".
+     * Zorunlu. Değerler: "apns", "fcm", "hms", "webpush", "smtp", "ses", "resend", "twilio", "netgsm", "mock".
      */
     @JsonProperty("provider")
     private String provider;

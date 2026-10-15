@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public final class RenderPreview {
     /**
-     * Zorunlu. Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+     * Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
      */
     @JsonProperty("channel")
     private String channel;

@@ -13,7 +13,7 @@ public final class TemplatesListParams {
     private String q;
 
     /**
-     * Değerler: "ios_push", "android_push", "web_push", "email", "sms".
+     * Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms".
      */
     private String channel;
 
