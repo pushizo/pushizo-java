@@ -31,6 +31,7 @@ public abstract class HeroSignalResources {
     private final CategoriesResource categories;
     private final IdentityKeysResource identityKeys;
     private final JourneysResource journeys;
+    private final LiveActivitiesResource liveActivities;
     private final PreferencesResource preferences;
 
     protected HeroSignalResources() {
@@ -56,6 +57,7 @@ public abstract class HeroSignalResources {
         this.categories = new CategoriesResource((HeroSignal) this);
         this.identityKeys = new IdentityKeysResource((HeroSignal) this);
         this.journeys = new JourneysResource((HeroSignal) this);
+        this.liveActivities = new LiveActivitiesResource((HeroSignal) this);
         this.preferences = new PreferencesResource((HeroSignal) this);
     }
 
@@ -211,6 +213,13 @@ public abstract class HeroSignalResources {
      */
     public JourneysResource journeys() {
         return journeys;
+    }
+
+    /**
+     * liveActivities
+     */
+    public LiveActivitiesResource liveActivities() {
+        return liveActivities;
     }
 
     /**
