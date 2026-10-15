@@ -30,6 +30,12 @@ public final class UpdateAppDto {
     @JsonProperty("settings")
     private UpdateAppDtoSettings settings;
 
+    /**
+     * Değerler: "hmac", "jwt", "both".
+     */
+    @JsonProperty("identity_verification_mode")
+    private String identityVerificationMode;
+
     public String getName() {
         return name;
     }
@@ -81,6 +87,15 @@ public final class UpdateAppDto {
 
     public UpdateAppDto settings(UpdateAppDtoSettings settings) {
         this.settings = settings;
+        return this;
+    }
+
+    public String getIdentityVerificationMode() {
+        return identityVerificationMode;
+    }
+
+    public UpdateAppDto identityVerificationMode(String identityVerificationMode) {
+        this.identityVerificationMode = identityVerificationMode;
         return this;
     }
 

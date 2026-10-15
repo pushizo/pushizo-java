@@ -24,6 +24,9 @@ public final class OrgSettings {
     @JsonProperty("sessionMaxHours")
     private Long sessionMaxHours;
 
+    @JsonProperty("auditStream")
+    private OrgSettingsAuditStream auditStream;
+
     public Boolean getMfaRequired() {
         return mfaRequired;
     }
@@ -57,6 +60,15 @@ public final class OrgSettings {
 
     public OrgSettings sessionMaxHours(Long sessionMaxHours) {
         this.sessionMaxHours = sessionMaxHours;
+        return this;
+    }
+
+    public OrgSettingsAuditStream getAuditStream() {
+        return auditStream;
+    }
+
+    public OrgSettings auditStream(OrgSettingsAuditStream auditStream) {
+        this.auditStream = auditStream;
         return this;
     }
 
