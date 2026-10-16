@@ -1,8 +1,8 @@
-# HeroSignal Java SDK
+# Pushizo Java SDK
 
-HeroSignal public API'si için Java sunucu SDK'sı (Java 17+, `java.net.http`, JSON için Jackson).
-Modeller (`io.herosignal.models`), parametre sınıfları (`io.herosignal.params`) ve kaynaklar
-(`io.herosignal.resources`) `api/openapi.yaml`'dan üretilir; kimlik doğrulama, yeniden deneme, idempotency,
+Pushizo public API'si için Java sunucu SDK'sı (Java 17+, `java.net.http`, JSON için Jackson).
+Modeller (`io.pushizo.models`), parametre sınıfları (`io.pushizo.params`) ve kaynaklar
+(`io.pushizo.resources`) `api/openapi.yaml`'dan üretilir; kimlik doğrulama, yeniden deneme, idempotency,
 sayfalama ve webhook imza doğrulaması el yazımıdır.
 
 ## Kurulum
@@ -11,8 +11,8 @@ Maven:
 
 ```xml
 <dependency>
-  <groupId>io.herosignal</groupId>
-  <artifactId>herosignal-java</artifactId>
+  <groupId>io.pushizo</groupId>
+  <artifactId>pushizo-java</artifactId>
   <version>0.1.0</version>
 </dependency>
 ```
@@ -20,20 +20,20 @@ Maven:
 Gradle:
 
 ```kotlin
-implementation("io.herosignal:herosignal-java:0.1.0")
+implementation("io.pushizo:pushizo-java:0.1.0")
 ```
 
 ## Kullanım
 
 ```java
-import io.herosignal.HeroSignal;
-import io.herosignal.RequestOptions;
-import io.herosignal.models.*;
-import io.herosignal.params.SegmentsListParams;
+import io.pushizo.Pushizo;
+import io.pushizo.RequestOptions;
+import io.pushizo.models.*;
+import io.pushizo.params.SegmentsListParams;
 import java.util.List;
 import java.util.Map;
 
-HeroSignal hs = HeroSignal.builder()
+Pushizo hs = Pushizo.builder()
         .apiKey(System.getenv("HS_API_KEY"))
         .appId("app_…")
         // .baseUrl("http://localhost:4000")
@@ -59,7 +59,7 @@ for (Segment segment : hs.segments().listAll(new SegmentsListParams().limit(100L
 hs.apps().get(RequestOptions.forApp("app_diger"));
 
 // SDK identity verification
-String identityHash = HeroSignal.identityHash(System.getenv("HS_SDK_SECRET"), "user-42");
+String identityHash = Pushizo.identityHash(System.getenv("HS_SDK_SECRET"), "user-42");
 ```
 
 Model alanları akıcı ayarlayıcılar (`.contents(...)`) ve `getX()` okuyucularıyla kullanılır; `null` alanlar
@@ -72,7 +72,7 @@ gönderilmez, yanıttaki bilinmeyen alanlar yok sayılır. SDK'da metodu olmayan
 |---------|------------|----------|
 | `apiKey` | — | `hs_live_…` API anahtarı (Bearer) |
 | `appId` | — | Çağrıda `RequestOptions.appId` verilmezse kullanılan app |
-| `baseUrl` | `https://api.herosignal.dev` | API adresi |
+| `baseUrl` | `https://api.pushizo.com` | API adresi |
 | `timeout` | 30 sn | Deneme başına zaman aşımı |
 | `maxRetries` | 3 | En fazla yeniden deneme (politika: aşağıda) |
 | `autoIdempotencyKey` | `true` | `Idempotency-Key` destekleyen çağrılarda otomatik UUID |
@@ -83,7 +83,7 @@ gönderilmez, yanıttaki bilinmeyen alanlar yok sayılır. SDK'da metodu olmayan
 ### Hatalar
 
 429 her metotta; 5xx ve ağ hataları GET/HEAD/OPTIONS/PUT/DELETE'te, POST/PATCH'te yalnızca `Idempotency-Key` varsa (otomatik anahtar dahil) veya istek sunucuya hiç gönderilemediyse (bağlantı reddi, DNS hatası, bağlantı zaman aşımı) üstel geri çekilmeyle (0,3 / 1 / 3 sn) yeniden denenir; `Retry-After` başlığına uyulur.
-Kalıcı hatalar `HeroSignalException` (unchecked) alt sınıflarıdır ve `getStatus()`, `getCode()` (`HS_…`),
+Kalıcı hatalar `PushizoException` (unchecked) alt sınıflarıdır ve `getStatus()`, `getCode()` (`HS_…`),
 `getRequestId()`, `getDetails()` taşır:
 
 ```java
@@ -93,7 +93,7 @@ try {
     // 404
 } catch (InvalidRequestException e) {
     if (ErrorCodes.NO_RECIPIENTS.equals(e.getCode())) { /* 422 */ }
-} catch (HeroSignalException e) {
+} catch (PushizoException e) {
     // AuthenticationException, PermissionDeniedException, ConflictException, RateLimitException, ServerException, NetworkException
 }
 ```
@@ -101,9 +101,9 @@ try {
 ## Webhook imza doğrulaması
 
 ```java
-import io.herosignal.WebhookEvent;
-import io.herosignal.WebhookSignatureException;
-import io.herosignal.Webhooks;
+import io.pushizo.WebhookEvent;
+import io.pushizo.WebhookSignatureException;
+import io.pushizo.Webhooks;
 
 byte[] payload = request.getInputStream().readAllBytes();              // ham gövde
 try {
@@ -129,5 +129,5 @@ mvn test                                                 # sdk/java içinde
 node sdk/scripts/generate-server-sdks.mjs --lang java    # depo kökünde; üretilmiş sınıflar yenilenir
 ```
 
-`models/`, `params/`, `resources/` ve `HeroSignalResources.java` elle düzenlenmez. Webhook testleri
+`models/`, `params/`, `resources/` ve `PushizoResources.java` elle düzenlenmez. Webhook testleri
 `sdk/testdata/webhook-signature-vectors.json` ortak vektörlerini kullanır.

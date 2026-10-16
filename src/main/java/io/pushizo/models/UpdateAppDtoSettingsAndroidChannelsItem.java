@@ -1,0 +1,112 @@
+// Bu dosya api/openapi.yaml'dan sdk/scripts/generate-server-sdks.mjs ile üretilmiştir; elle düzenlemeyin.
+
+package io.pushizo.models;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+/**
+ * UpdateAppDtoSettingsAndroidChannelsItem şeması.
+ */
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public final class UpdateAppDtoSettingsAndroidChannelsItem {
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("id")
+    private String id;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("name")
+    private String name;
+
+    @JsonProperty("description")
+    private String description;
+
+    /**
+     * Zorunlu. Değerler: "low", "default", "high", "urgent".
+     */
+    @JsonProperty("importance")
+    private String importance;
+
+    @JsonProperty("sound")
+    private String sound;
+
+    @JsonProperty("vibration")
+    private Boolean vibration;
+
+    @JsonProperty("group")
+    private String group;
+
+    public String getId() {
+        return id;
+    }
+
+    public UpdateAppDtoSettingsAndroidChannelsItem id(String id) {
+        this.id = id;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public UpdateAppDtoSettingsAndroidChannelsItem name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public UpdateAppDtoSettingsAndroidChannelsItem description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public String getImportance() {
+        return importance;
+    }
+
+    public UpdateAppDtoSettingsAndroidChannelsItem importance(String importance) {
+        this.importance = importance;
+        return this;
+    }
+
+    public String getSound() {
+        return sound;
+    }
+
+    public UpdateAppDtoSettingsAndroidChannelsItem sound(String sound) {
+        this.sound = sound;
+        return this;
+    }
+
+    public Boolean getVibration() {
+        return vibration;
+    }
+
+    public UpdateAppDtoSettingsAndroidChannelsItem vibration(Boolean vibration) {
+        this.vibration = vibration;
+        return this;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public UpdateAppDtoSettingsAndroidChannelsItem group(String group) {
+        this.group = group;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return io.pushizo.core.Json.stringify(this);
+    }
+}
