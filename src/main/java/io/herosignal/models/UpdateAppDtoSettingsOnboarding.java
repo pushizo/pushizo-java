@@ -24,6 +24,27 @@ public final class UpdateAppDtoSettingsOnboarding {
     @JsonProperty("completed_at")
     private String completedAt;
 
+    @JsonProperty("version")
+    private Long version;
+
+    /**
+     * Değerler: "ios", "android", "huawei", "web".
+     */
+    @JsonProperty("platforms")
+    private java.util.List<String> platforms;
+
+    /**
+     * Değerler: "native", "flutter", "react-native", "unity", "capacitor", "cordova", "maui".
+     */
+    @JsonProperty("framework")
+    private String framework;
+
+    /**
+     * Değerler: "code", "wordpress".
+     */
+    @JsonProperty("web_integration")
+    private String webIntegration;
+
     public Long getStep() {
         return step;
     }
@@ -48,6 +69,42 @@ public final class UpdateAppDtoSettingsOnboarding {
 
     public UpdateAppDtoSettingsOnboarding completedAt(String completedAt) {
         this.completedAt = completedAt;
+        return this;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public UpdateAppDtoSettingsOnboarding version(Long version) {
+        this.version = version;
+        return this;
+    }
+
+    public java.util.List<String> getPlatforms() {
+        return platforms;
+    }
+
+    public UpdateAppDtoSettingsOnboarding platforms(java.util.List<String> platforms) {
+        this.platforms = platforms;
+        return this;
+    }
+
+    public String getFramework() {
+        return framework;
+    }
+
+    public UpdateAppDtoSettingsOnboarding framework(String framework) {
+        this.framework = framework;
+        return this;
+    }
+
+    public String getWebIntegration() {
+        return webIntegration;
+    }
+
+    public UpdateAppDtoSettingsOnboarding webIntegration(String webIntegration) {
+        this.webIntegration = webIntegration;
         return this;
     }
 

@@ -24,6 +24,27 @@ public final class AppSettingsOnboarding {
     @JsonProperty("completed_at")
     private String completedAt;
 
+    @JsonProperty("version")
+    private Long version;
+
+    /**
+     * Değerler: "ios", "android", "huawei", "web".
+     */
+    @JsonProperty("platforms")
+    private java.util.List<String> platforms;
+
+    /**
+     * Değerler: "native", "flutter", "react-native", "unity", "capacitor", "cordova", "maui".
+     */
+    @JsonProperty("framework")
+    private String framework;
+
+    /**
+     * Değerler: "code", "wordpress".
+     */
+    @JsonProperty("web_integration")
+    private String webIntegration;
+
     public Long getStep() {
         return step;
     }
@@ -48,6 +69,42 @@ public final class AppSettingsOnboarding {
 
     public AppSettingsOnboarding completedAt(String completedAt) {
         this.completedAt = completedAt;
+        return this;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public AppSettingsOnboarding version(Long version) {
+        this.version = version;
+        return this;
+    }
+
+    public java.util.List<String> getPlatforms() {
+        return platforms;
+    }
+
+    public AppSettingsOnboarding platforms(java.util.List<String> platforms) {
+        this.platforms = platforms;
+        return this;
+    }
+
+    public String getFramework() {
+        return framework;
+    }
+
+    public AppSettingsOnboarding framework(String framework) {
+        this.framework = framework;
+        return this;
+    }
+
+    public String getWebIntegration() {
+        return webIntegration;
+    }
+
+    public AppSettingsOnboarding webIntegration(String webIntegration) {
+        this.webIntegration = webIntegration;
         return this;
     }
 
