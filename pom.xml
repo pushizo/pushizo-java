@@ -4,34 +4,34 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.herosignal</groupId>
-  <artifactId>herosignal-java</artifactId>
+  <groupId>io.pushizo</groupId>
+  <artifactId>pushizo-java</artifactId>
   <version>0.1.0</version>
   <packaging>jar</packaging>
 
-  <name>HeroSignal Java SDK</name>
-  <description>HeroSignal sunucu SDK'sı: bildirim gönderme, kullanıcı/abonelik yönetimi, segment/şablon/kampanya ve webhook imza doğrulaması</description>
-  <url>https://github.com/exec0de/herosignal/tree/main/sdk/java</url>
+  <name>Pushizo Java SDK</name>
+  <description>Pushizo sunucu SDK'sı: bildirim gönderme, kullanıcı/abonelik yönetimi, segment/şablon/kampanya ve webhook imza doğrulaması</description>
+  <url>https://github.com/exec0de/pushizo/tree/main/sdk/java</url>
 
   <licenses>
     <license>
       <name>MIT</name>
-      <url>https://github.com/exec0de/herosignal/blob/main/LICENSE</url>
+      <url>https://github.com/exec0de/pushizo/blob/main/LICENSE</url>
     </license>
   </licenses>
 
   <developers>
     <developer>
-      <id>herosignal</id>
-      <name>HeroSignal</name>
-      <url>https://github.com/exec0de/herosignal</url>
+      <id>pushizo</id>
+      <name>Pushizo</name>
+      <url>https://github.com/exec0de/pushizo</url>
     </developer>
   </developers>
 
   <scm>
-    <url>https://github.com/exec0de/herosignal</url>
-    <connection>scm:git:https://github.com/exec0de/herosignal.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/exec0de/herosignal.git</developerConnection>
+    <url>https://github.com/exec0de/pushizo</url>
+    <connection>scm:git:https://github.com/exec0de/pushizo.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/exec0de/pushizo.git</developerConnection>
     <tag>sdk-v0.1.0</tag>
   </scm>
 
