@@ -1,8 +1,8 @@
 # Pushizo Java SDK
 
 Pushizo public API'si için Java sunucu SDK'sı (Java 17+, `java.net.http`, JSON için Jackson).
-Modeller (`io.pushizo.models`), parametre sınıfları (`io.pushizo.params`) ve kaynaklar
-(`io.pushizo.resources`) `api/openapi.yaml`'dan üretilir; kimlik doğrulama, yeniden deneme, idempotency,
+Modeller (`com.pushizo.models`), parametre sınıfları (`com.pushizo.params`) ve kaynaklar
+(`com.pushizo.resources`) `api/openapi.yaml`'dan üretilir; kimlik doğrulama, yeniden deneme, idempotency,
 sayfalama ve webhook imza doğrulaması el yazımıdır.
 
 ## Kurulum
@@ -11,7 +11,7 @@ Maven:
 
 ```xml
 <dependency>
-  <groupId>io.pushizo</groupId>
+  <groupId>com.pushizo</groupId>
   <artifactId>pushizo-java</artifactId>
   <version>0.1.0</version>
 </dependency>
@@ -20,16 +20,16 @@ Maven:
 Gradle:
 
 ```kotlin
-implementation("io.pushizo:pushizo-java:0.1.0")
+implementation("com.pushizo:pushizo-java:0.1.0")
 ```
 
 ## Kullanım
 
 ```java
-import io.pushizo.Pushizo;
-import io.pushizo.RequestOptions;
-import io.pushizo.models.*;
-import io.pushizo.params.SegmentsListParams;
+import com.pushizo.Pushizo;
+import com.pushizo.RequestOptions;
+import com.pushizo.models.*;
+import com.pushizo.params.SegmentsListParams;
 import java.util.List;
 import java.util.Map;
 
@@ -101,9 +101,9 @@ try {
 ## Webhook imza doğrulaması
 
 ```java
-import io.pushizo.WebhookEvent;
-import io.pushizo.WebhookSignatureException;
-import io.pushizo.Webhooks;
+import com.pushizo.WebhookEvent;
+import com.pushizo.WebhookSignatureException;
+import com.pushizo.Webhooks;
 
 byte[] payload = request.getInputStream().readAllBytes();              // ham gövde
 try {
