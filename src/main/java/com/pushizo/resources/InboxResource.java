@@ -20,7 +20,130 @@ public final class InboxResource {
         this.client = client;
     }
 
-    private static final TypeReference<InboxPage> TYPE_0 = new TypeReference<InboxPage>() {};
+    private static final TypeReference<InboxTeamList> TYPE_0 = new TypeReference<InboxTeamList>() {};
+
+    /**
+     * Takımlar
+     *
+     * {@code GET /v1/apps/{appId}/inbox/teams}
+     */
+    public InboxTeamList teams() {
+        return teams(null);
+    }
+
+    /**
+     * Takımlar
+     *
+     * {@code GET /v1/apps/{appId}/inbox/teams}
+     */
+    public InboxTeamList teams(RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/inbox/teams");
+        return client.execute(op, options, TYPE_0);
+    }
+
+    private static final TypeReference<InboxAgentList> TYPE_1 = new TypeReference<InboxAgentList>() {};
+
+    /**
+     * Temsilciler ve varlık durumu
+     *
+     * {@code GET /v1/apps/{appId}/inbox/agents}
+     */
+    public InboxAgentList agents() {
+        return agents(null);
+    }
+
+    /**
+     * Temsilciler ve varlık durumu
+     *
+     * {@code GET /v1/apps/{appId}/inbox/agents}
+     */
+    public InboxAgentList agents(RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/inbox/agents");
+        return client.execute(op, options, TYPE_1);
+    }
+
+    private static final TypeReference<InboxSettings> TYPE_2 = new TypeReference<InboxSettings>() {};
+
+    /**
+     * Gelen kutusu ayarları
+     *
+     * {@code GET /v1/apps/{appId}/inbox/settings}
+     */
+    public InboxSettings settings() {
+        return settings(null);
+    }
+
+    /**
+     * Gelen kutusu ayarları
+     *
+     * {@code GET /v1/apps/{appId}/inbox/settings}
+     */
+    public InboxSettings settings(RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/inbox/settings");
+        return client.execute(op, options, TYPE_2);
+    }
+
+    private static final TypeReference<InboxSettings> TYPE_3 = new TypeReference<InboxSettings>() {};
+
+    /**
+     * Gelen kutusu ayarlarını güncelle
+     *
+     * {@code PUT /v1/apps/{appId}/inbox/settings}
+     */
+    public InboxSettings updateSettings(InboxSettingsUpdateDto body) {
+        return updateSettings(body, null);
+    }
+
+    /**
+     * Gelen kutusu ayarlarını güncelle
+     *
+     * {@code PUT /v1/apps/{appId}/inbox/settings}
+     */
+    public InboxSettings updateSettings(InboxSettingsUpdateDto body, RequestOptions options) {
+        Operation op = new Operation("PUT", "/v1/apps/{appId}/inbox/settings");
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_3);
+    }
+
+    private static final TypeReference<InboxMetrics> TYPE_4 = new TypeReference<InboxMetrics>() {};
+
+    /**
+     * Gelen kutusu metrikleri (ilk yanıt/çözüm ort. ve p90, SLA, temsilci tablosu)
+     *
+     * {@code GET /v1/apps/{appId}/inbox/metrics}
+     */
+    public InboxMetrics metrics() {
+        return metrics(null, null);
+    }
+
+    /**
+     * Gelen kutusu metrikleri (ilk yanıt/çözüm ort. ve p90, SLA, temsilci tablosu)
+     *
+     * {@code GET /v1/apps/{appId}/inbox/metrics}
+     */
+    public InboxMetrics metrics(InboxMetricsParams params) {
+        return metrics(params, null);
+    }
+
+    /**
+     * Gelen kutusu metrikleri (ilk yanıt/çözüm ort. ve p90, SLA, temsilci tablosu)
+     *
+     * {@code GET /v1/apps/{appId}/inbox/metrics}
+     *
+     * Parametreler: channel — Değerler: "sms", "whatsapp", "rcs", "email", "chat".
+     */
+    public InboxMetrics metrics(InboxMetricsParams params, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/inbox/metrics");
+        if (params != null) {
+            params.applyTo(op);
+        }
+        return client.execute(op, options, TYPE_4);
+    }
+
+    private static final TypeReference<InboxPage> TYPE_5 = new TypeReference<InboxPage>() {};
 
     /**
      * Kullanıcının bildirim kutusu (okunmamış sayısı dahil)
@@ -54,7 +177,7 @@ public final class InboxResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_0);
+        return client.execute(op, options, TYPE_5);
     }
 
     /**
@@ -86,7 +209,7 @@ public final class InboxResource {
         });
     }
 
-    private static final TypeReference<InboxReadAllResult> TYPE_1 = new TypeReference<InboxReadAllResult>() {};
+    private static final TypeReference<InboxReadAllResult> TYPE_6 = new TypeReference<InboxReadAllResult>() {};
 
     /**
      * Tümünü okundu işaretle
@@ -106,10 +229,10 @@ public final class InboxResource {
         Operation op = new Operation("POST", "/v1/apps/{appId}/users/by/{label}/{value}/inbox/read-all");
         op.pathParam("label", label);
         op.pathParam("value", value);
-        return client.execute(op, options, TYPE_1);
+        return client.execute(op, options, TYPE_6);
     }
 
-    private static final TypeReference<InboxItem> TYPE_2 = new TypeReference<InboxItem>() {};
+    private static final TypeReference<InboxItem> TYPE_7 = new TypeReference<InboxItem>() {};
 
     /**
      * Okundu işaretle
@@ -130,10 +253,10 @@ public final class InboxResource {
         op.pathParam("label", label);
         op.pathParam("value", value);
         op.pathParam("itemId", itemId);
-        return client.execute(op, options, TYPE_2);
+        return client.execute(op, options, TYPE_7);
     }
 
-    private static final TypeReference<Ok> TYPE_3 = new TypeReference<Ok>() {};
+    private static final TypeReference<Ok> TYPE_8 = new TypeReference<Ok>() {};
 
     /**
      * Kutudan kaldır (arşivle)
@@ -154,6 +277,6 @@ public final class InboxResource {
         op.pathParam("label", label);
         op.pathParam("value", value);
         op.pathParam("itemId", itemId);
-        return client.execute(op, options, TYPE_3);
+        return client.execute(op, options, TYPE_8);
     }
 }

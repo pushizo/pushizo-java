@@ -11,12 +11,12 @@ public final class ConversationsListParams {
     private String cursor;
 
     /**
-     * Değerler: "sms", "whatsapp", "rcs".
+     * Değerler: "sms", "whatsapp", "rcs", "email", "chat".
      */
     private String channel;
 
     /**
-     * Değerler: "open", "closed".
+     * Değerler: "open", "pending", "resolved", "closed".
      */
     private String status;
 
@@ -26,6 +26,10 @@ public final class ConversationsListParams {
     private String unread;
 
     private String q;
+
+    private String assignee;
+
+    private String teamId;
 
     public Long getLimit() {
         return limit;
@@ -81,6 +85,24 @@ public final class ConversationsListParams {
         return this;
     }
 
+    public String getAssignee() {
+        return assignee;
+    }
+
+    public ConversationsListParams assignee(String assignee) {
+        this.assignee = assignee;
+        return this;
+    }
+
+    public String getTeamId() {
+        return teamId;
+    }
+
+    public ConversationsListParams teamId(String teamId) {
+        this.teamId = teamId;
+        return this;
+    }
+
     /** Sığ kopya (sayfalama sırasında çağıranın nesnesi değiştirilmez). */
     public ConversationsListParams copy() {
         ConversationsListParams c = new ConversationsListParams();
@@ -90,6 +112,8 @@ public final class ConversationsListParams {
         c.status = status;
         c.unread = unread;
         c.q = q;
+        c.assignee = assignee;
+        c.teamId = teamId;
         return c;
     }
 
@@ -101,5 +125,7 @@ public final class ConversationsListParams {
         op.query("status", status);
         op.query("unread", unread);
         op.query("q", q);
+        op.query("assignee", assignee);
+        op.query("team_id", teamId);
     }
 }

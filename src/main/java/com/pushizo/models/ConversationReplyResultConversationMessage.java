@@ -78,6 +78,36 @@ public final class ConversationReplyResultConversationMessage {
     @JsonProperty("created_at")
     private String createdAt;
 
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("seq")
+    private Long seq;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("sender_type")
+    private String senderType;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("client_message_id")
+    private String clientMessageId;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("attachments")
+    private java.util.List<ConversationReplyResultConversationMessageAttachmentsItem> attachments;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("quick_replies")
+    private java.util.List<ConversationReplyResultConversationMessageQuickRepliesItem> quickReplies;
+
     public String getId() {
         return id;
     }
@@ -174,6 +204,51 @@ public final class ConversationReplyResultConversationMessage {
 
     public ConversationReplyResultConversationMessage createdAt(String createdAt) {
         this.createdAt = createdAt;
+        return this;
+    }
+
+    public Long getSeq() {
+        return seq;
+    }
+
+    public ConversationReplyResultConversationMessage seq(Long seq) {
+        this.seq = seq;
+        return this;
+    }
+
+    public String getSenderType() {
+        return senderType;
+    }
+
+    public ConversationReplyResultConversationMessage senderType(String senderType) {
+        this.senderType = senderType;
+        return this;
+    }
+
+    public String getClientMessageId() {
+        return clientMessageId;
+    }
+
+    public ConversationReplyResultConversationMessage clientMessageId(String clientMessageId) {
+        this.clientMessageId = clientMessageId;
+        return this;
+    }
+
+    public java.util.List<ConversationReplyResultConversationMessageAttachmentsItem> getAttachments() {
+        return attachments;
+    }
+
+    public ConversationReplyResultConversationMessage attachments(java.util.List<ConversationReplyResultConversationMessageAttachmentsItem> attachments) {
+        this.attachments = attachments;
+        return this;
+    }
+
+    public java.util.List<ConversationReplyResultConversationMessageQuickRepliesItem> getQuickReplies() {
+        return quickReplies;
+    }
+
+    public ConversationReplyResultConversationMessage quickReplies(java.util.List<ConversationReplyResultConversationMessageQuickRepliesItem> quickReplies) {
+        this.quickReplies = quickReplies;
         return this;
     }
 
