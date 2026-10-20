@@ -99,6 +99,18 @@ public final class AdAccount {
     /**
      * Zorunlu.
      */
+    @JsonProperty("terms_accepted_at")
+    private String termsAcceptedAt;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("terms_version")
+    private String termsVersion;
+
+    /**
+     * Zorunlu.
+     */
     @JsonProperty("audiences")
     private Long audiences;
 
@@ -237,6 +249,24 @@ public final class AdAccount {
 
     public AdAccount lastErrorAt(String lastErrorAt) {
         this.lastErrorAt = lastErrorAt;
+        return this;
+    }
+
+    public String getTermsAcceptedAt() {
+        return termsAcceptedAt;
+    }
+
+    public AdAccount termsAcceptedAt(String termsAcceptedAt) {
+        this.termsAcceptedAt = termsAcceptedAt;
+        return this;
+    }
+
+    public String getTermsVersion() {
+        return termsVersion;
+    }
+
+    public AdAccount termsVersion(String termsVersion) {
+        this.termsVersion = termsVersion;
         return this;
     }
 
