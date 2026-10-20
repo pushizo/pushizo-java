@@ -11,7 +11,7 @@
 
   <name>Pushizo Java SDK</name>
   <description>Pushizo sunucu SDK'sı: bildirim gönderme, kullanıcı/abonelik yönetimi, segment/şablon/kampanya ve webhook imza doğrulaması</description>
-  <url>https://github.com/exec0de/pushizo/tree/main/sdk/java</url>
+  <url>https://docs.pushizo.com/docs/sdk/java</url>
 
   <licenses>
     <license>
