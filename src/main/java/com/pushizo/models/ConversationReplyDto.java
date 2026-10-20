@@ -24,6 +24,15 @@ public final class ConversationReplyDto {
     @JsonProperty("interactive")
     private ConversationReplyDtoInteractive interactive;
 
+    @JsonProperty("client_message_id")
+    private String clientMessageId;
+
+    /**
+     * Değerler: "manual", "canned", "ai_suggestion".
+     */
+    @JsonProperty("source")
+    private String source;
+
     public String getText() {
         return text;
     }
@@ -57,6 +66,24 @@ public final class ConversationReplyDto {
 
     public ConversationReplyDto interactive(ConversationReplyDtoInteractive interactive) {
         this.interactive = interactive;
+        return this;
+    }
+
+    public String getClientMessageId() {
+        return clientMessageId;
+    }
+
+    public ConversationReplyDto clientMessageId(String clientMessageId) {
+        this.clientMessageId = clientMessageId;
+        return this;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public ConversationReplyDto source(String source) {
+        this.source = source;
         return this;
     }
 

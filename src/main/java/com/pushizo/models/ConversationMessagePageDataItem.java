@@ -78,6 +78,36 @@ public final class ConversationMessagePageDataItem {
     @JsonProperty("created_at")
     private String createdAt;
 
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("seq")
+    private Long seq;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("sender_type")
+    private String senderType;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("client_message_id")
+    private String clientMessageId;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("attachments")
+    private java.util.List<ConversationMessagePageDataItemAttachmentsItem> attachments;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("quick_replies")
+    private java.util.List<ConversationMessagePageDataItemQuickRepliesItem> quickReplies;
+
     public String getId() {
         return id;
     }
@@ -174,6 +204,51 @@ public final class ConversationMessagePageDataItem {
 
     public ConversationMessagePageDataItem createdAt(String createdAt) {
         this.createdAt = createdAt;
+        return this;
+    }
+
+    public Long getSeq() {
+        return seq;
+    }
+
+    public ConversationMessagePageDataItem seq(Long seq) {
+        this.seq = seq;
+        return this;
+    }
+
+    public String getSenderType() {
+        return senderType;
+    }
+
+    public ConversationMessagePageDataItem senderType(String senderType) {
+        this.senderType = senderType;
+        return this;
+    }
+
+    public String getClientMessageId() {
+        return clientMessageId;
+    }
+
+    public ConversationMessagePageDataItem clientMessageId(String clientMessageId) {
+        this.clientMessageId = clientMessageId;
+        return this;
+    }
+
+    public java.util.List<ConversationMessagePageDataItemAttachmentsItem> getAttachments() {
+        return attachments;
+    }
+
+    public ConversationMessagePageDataItem attachments(java.util.List<ConversationMessagePageDataItemAttachmentsItem> attachments) {
+        this.attachments = attachments;
+        return this;
+    }
+
+    public java.util.List<ConversationMessagePageDataItemQuickRepliesItem> getQuickReplies() {
+        return quickReplies;
+    }
+
+    public ConversationMessagePageDataItem quickReplies(java.util.List<ConversationMessagePageDataItemQuickRepliesItem> quickReplies) {
+        this.quickReplies = quickReplies;
         return this;
     }
 

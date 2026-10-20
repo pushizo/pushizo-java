@@ -19,13 +19,13 @@ public final class Conversation {
     private String id;
 
     /**
-     * Zorunlu. Değerler: "sms", "whatsapp", "rcs".
+     * Zorunlu. Değerler: "sms", "whatsapp", "rcs", "email", "chat".
      */
     @JsonProperty("channel")
     private String channel;
 
     /**
-     * Zorunlu. Değerler: "open", "closed".
+     * Zorunlu. Değerler: "open", "pending", "resolved", "closed".
      */
     @JsonProperty("status")
     private String status;
@@ -107,6 +107,90 @@ public final class Conversation {
      */
     @JsonProperty("created_at")
     private String createdAt;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("assignee_id")
+    private String assigneeId;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("team_id")
+    private String teamId;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("assigned_at")
+    private String assignedAt;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("language")
+    private String language;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("bot_active")
+    private Boolean botActive;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("last_seq")
+    private Long lastSeq;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("visitor_last_read_seq")
+    private Long visitorLastReadSeq;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("visitor_last_delivered_seq")
+    private Long visitorLastDeliveredSeq;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("agent_last_read_seq")
+    private Long agentLastReadSeq;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("waiting_since")
+    private String waitingSince;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("first_response_at")
+    private String firstResponseAt;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("sla_due_at")
+    private String slaDueAt;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("resolved_at")
+    private String resolvedAt;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("visitor")
+    private ConversationVisitor visitor;
 
     public String getId() {
         return id;
@@ -249,6 +333,132 @@ public final class Conversation {
 
     public Conversation createdAt(String createdAt) {
         this.createdAt = createdAt;
+        return this;
+    }
+
+    public String getAssigneeId() {
+        return assigneeId;
+    }
+
+    public Conversation assigneeId(String assigneeId) {
+        this.assigneeId = assigneeId;
+        return this;
+    }
+
+    public String getTeamId() {
+        return teamId;
+    }
+
+    public Conversation teamId(String teamId) {
+        this.teamId = teamId;
+        return this;
+    }
+
+    public String getAssignedAt() {
+        return assignedAt;
+    }
+
+    public Conversation assignedAt(String assignedAt) {
+        this.assignedAt = assignedAt;
+        return this;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public Conversation language(String language) {
+        this.language = language;
+        return this;
+    }
+
+    public Boolean getBotActive() {
+        return botActive;
+    }
+
+    public Conversation botActive(Boolean botActive) {
+        this.botActive = botActive;
+        return this;
+    }
+
+    public Long getLastSeq() {
+        return lastSeq;
+    }
+
+    public Conversation lastSeq(Long lastSeq) {
+        this.lastSeq = lastSeq;
+        return this;
+    }
+
+    public Long getVisitorLastReadSeq() {
+        return visitorLastReadSeq;
+    }
+
+    public Conversation visitorLastReadSeq(Long visitorLastReadSeq) {
+        this.visitorLastReadSeq = visitorLastReadSeq;
+        return this;
+    }
+
+    public Long getVisitorLastDeliveredSeq() {
+        return visitorLastDeliveredSeq;
+    }
+
+    public Conversation visitorLastDeliveredSeq(Long visitorLastDeliveredSeq) {
+        this.visitorLastDeliveredSeq = visitorLastDeliveredSeq;
+        return this;
+    }
+
+    public Long getAgentLastReadSeq() {
+        return agentLastReadSeq;
+    }
+
+    public Conversation agentLastReadSeq(Long agentLastReadSeq) {
+        this.agentLastReadSeq = agentLastReadSeq;
+        return this;
+    }
+
+    public String getWaitingSince() {
+        return waitingSince;
+    }
+
+    public Conversation waitingSince(String waitingSince) {
+        this.waitingSince = waitingSince;
+        return this;
+    }
+
+    public String getFirstResponseAt() {
+        return firstResponseAt;
+    }
+
+    public Conversation firstResponseAt(String firstResponseAt) {
+        this.firstResponseAt = firstResponseAt;
+        return this;
+    }
+
+    public String getSlaDueAt() {
+        return slaDueAt;
+    }
+
+    public Conversation slaDueAt(String slaDueAt) {
+        this.slaDueAt = slaDueAt;
+        return this;
+    }
+
+    public String getResolvedAt() {
+        return resolvedAt;
+    }
+
+    public Conversation resolvedAt(String resolvedAt) {
+        this.resolvedAt = resolvedAt;
+        return this;
+    }
+
+    public ConversationVisitor getVisitor() {
+        return visitor;
+    }
+
+    public Conversation visitor(ConversationVisitor visitor) {
+        this.visitor = visitor;
         return this;
     }
 

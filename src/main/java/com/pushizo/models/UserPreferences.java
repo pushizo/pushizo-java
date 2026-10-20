@@ -30,6 +30,12 @@ public final class UserPreferences {
     @JsonProperty("categories")
     private java.util.List<MessageCategory> categories;
 
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("consents")
+    private java.util.List<UserPreferencesConsentsItem> consents;
+
     public String getUserId() {
         return userId;
     }
@@ -54,6 +60,15 @@ public final class UserPreferences {
 
     public UserPreferences categories(java.util.List<MessageCategory> categories) {
         this.categories = categories;
+        return this;
+    }
+
+    public java.util.List<UserPreferencesConsentsItem> getConsents() {
+        return consents;
+    }
+
+    public UserPreferences consents(java.util.List<UserPreferencesConsentsItem> consents) {
+        this.consents = consents;
         return this;
     }
 

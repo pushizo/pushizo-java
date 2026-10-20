@@ -28,19 +28,25 @@ public abstract class PushizoResources {
     private final AppsResource apps;
     private final ApiKeysResource apiKeys;
     private final OrganizationResource organization;
+    private final AdsResource ads;
+    private final CannedResponsesResource cannedResponses;
     private final CategoriesResource categories;
     private final ContentTablesResource contentTables;
     private final ConversationsResource conversations;
     private final DataFeedsResource dataFeeds;
     private final EmailDeliverabilityResource emailDeliverability;
+    private final FormsResource forms;
     private final IdentityKeysResource identityKeys;
     private final IntegrationsResource integrations;
     private final JourneysResource journeys;
+    private final LandingPagesResource landingPages;
     private final LiveActivitiesResource liveActivities;
     private final McpResource mcp;
     private final PreferencesResource preferences;
     private final SmsKeywordsResource smsKeywords;
+    private final SurveysResource surveys;
     private final WarehouseExportsResource warehouseExports;
+    private final WebCampaignsResource webCampaigns;
     private final WhatsappResource whatsapp;
 
     protected PushizoResources() {
@@ -63,19 +69,25 @@ public abstract class PushizoResources {
         this.apps = new AppsResource((Pushizo) this);
         this.apiKeys = new ApiKeysResource((Pushizo) this);
         this.organization = new OrganizationResource((Pushizo) this);
+        this.ads = new AdsResource((Pushizo) this);
+        this.cannedResponses = new CannedResponsesResource((Pushizo) this);
         this.categories = new CategoriesResource((Pushizo) this);
         this.contentTables = new ContentTablesResource((Pushizo) this);
         this.conversations = new ConversationsResource((Pushizo) this);
         this.dataFeeds = new DataFeedsResource((Pushizo) this);
         this.emailDeliverability = new EmailDeliverabilityResource((Pushizo) this);
+        this.forms = new FormsResource((Pushizo) this);
         this.identityKeys = new IdentityKeysResource((Pushizo) this);
         this.integrations = new IntegrationsResource((Pushizo) this);
         this.journeys = new JourneysResource((Pushizo) this);
+        this.landingPages = new LandingPagesResource((Pushizo) this);
         this.liveActivities = new LiveActivitiesResource((Pushizo) this);
         this.mcp = new McpResource((Pushizo) this);
         this.preferences = new PreferencesResource((Pushizo) this);
         this.smsKeywords = new SmsKeywordsResource((Pushizo) this);
+        this.surveys = new SurveysResource((Pushizo) this);
         this.warehouseExports = new WarehouseExportsResource((Pushizo) this);
+        this.webCampaigns = new WebCampaignsResource((Pushizo) this);
         this.whatsapp = new WhatsappResource((Pushizo) this);
     }
 
@@ -213,6 +225,20 @@ public abstract class PushizoResources {
     }
 
     /**
+     * ads
+     */
+    public AdsResource ads() {
+        return ads;
+    }
+
+    /**
+     * cannedResponses
+     */
+    public CannedResponsesResource cannedResponses() {
+        return cannedResponses;
+    }
+
+    /**
      * categories
      */
     public CategoriesResource categories() {
@@ -248,6 +274,13 @@ public abstract class PushizoResources {
     }
 
     /**
+     * forms
+     */
+    public FormsResource forms() {
+        return forms;
+    }
+
+    /**
      * identityKeys
      */
     public IdentityKeysResource identityKeys() {
@@ -266,6 +299,13 @@ public abstract class PushizoResources {
      */
     public JourneysResource journeys() {
         return journeys;
+    }
+
+    /**
+     * landingPages
+     */
+    public LandingPagesResource landingPages() {
+        return landingPages;
     }
 
     /**
@@ -297,10 +337,24 @@ public abstract class PushizoResources {
     }
 
     /**
+     * surveys
+     */
+    public SurveysResource surveys() {
+        return surveys;
+    }
+
+    /**
      * warehouseExports
      */
     public WarehouseExportsResource warehouseExports() {
         return warehouseExports;
+    }
+
+    /**
+     * webCampaigns
+     */
+    public WebCampaignsResource webCampaigns() {
+        return webCampaigns;
     }
 
     /**
