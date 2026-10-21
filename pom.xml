@@ -16,7 +16,7 @@
   <licenses>
     <license>
       <name>MIT</name>
-      <url>https://github.com/exec0de/pushizo/blob/main/LICENSE</url>
+      <url>https://github.com/pushizo/pushizo-java/blob/main/LICENSE</url>
     </license>
   </licenses>
 
@@ -24,14 +24,14 @@
     <developer>
       <id>pushizo</id>
       <name>Pushizo</name>
-      <url>https://github.com/exec0de/pushizo</url>
+      <url>https://github.com/pushizo/pushizo-java</url>
     </developer>
   </developers>
 
   <scm>
-    <url>https://github.com/exec0de/pushizo</url>
-    <connection>scm:git:https://github.com/exec0de/pushizo.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/exec0de/pushizo.git</developerConnection>
+    <url>https://github.com/pushizo/pushizo-java</url>
+    <connection>scm:git:https://github.com/pushizo/pushizo-java.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/pushizo/pushizo-java.git</developerConnection>
     <tag>sdk-v0.1.0</tag>
   </scm>
 
