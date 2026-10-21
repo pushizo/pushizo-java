@@ -13,8 +13,19 @@
 
 **Pushizo Java SDK** — Server-side SDK for Java 17+. Models and resources are generated from the Pushizo OpenAPI schema; retries, idempotency, pagination and webhook verification are built in.
 
-> **Status:** Publishing to Maven Central is in progress; until then you can build from this repository.<br>
-> **Durum:** Maven Central yayını hazırlanıyor; o zamana kadar bu depodan derleyerek kullanabilirsiniz.
+> **Status:** Publishing to Maven Central is in progress.<br>
+> **Durum:** Maven Central yayını hazırlanıyor.
+
+**Install from GitHub until then · O zamana kadar GitHub'dan kurulum:**
+
+```bash
+curl -LO https://github.com/pushizo/pushizo-java/releases/download/v0.1.0/pushizo-java-0.1.0.jar
+curl -LO https://github.com/pushizo/pushizo-java/releases/download/v0.1.0/pom.xml
+mvn install:install-file -Dfile=pushizo-java-0.1.0.jar -DpomFile=pom.xml
+# ardından / then: com.pushizo:pushizo-java:0.1.0
+```
+
+**After publication · Yayından sonra:**
 
 ```xml
 <dependency>
