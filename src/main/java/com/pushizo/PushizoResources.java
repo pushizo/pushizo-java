@@ -46,6 +46,7 @@ public abstract class PushizoResources {
     private final ReverseEtlResource reverseEtl;
     private final SmsKeywordsResource smsKeywords;
     private final SurveysResource surveys;
+    private final VerifyResource verify;
     private final WarehouseExportsResource warehouseExports;
     private final WebCampaignsResource webCampaigns;
     private final WhatsappResource whatsapp;
@@ -88,6 +89,7 @@ public abstract class PushizoResources {
         this.reverseEtl = new ReverseEtlResource((Pushizo) this);
         this.smsKeywords = new SmsKeywordsResource((Pushizo) this);
         this.surveys = new SurveysResource((Pushizo) this);
+        this.verify = new VerifyResource((Pushizo) this);
         this.warehouseExports = new WarehouseExportsResource((Pushizo) this);
         this.webCampaigns = new WebCampaignsResource((Pushizo) this);
         this.whatsapp = new WhatsappResource((Pushizo) this);
@@ -350,6 +352,13 @@ public abstract class PushizoResources {
      */
     public SurveysResource surveys() {
         return surveys;
+    }
+
+    /**
+     * verify
+     */
+    public VerifyResource verify() {
+        return verify;
     }
 
     /**

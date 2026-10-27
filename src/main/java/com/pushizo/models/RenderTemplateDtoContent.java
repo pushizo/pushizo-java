@@ -183,6 +183,18 @@ public final class RenderTemplateDtoContent {
     @JsonProperty("rcs_fallback_text")
     private java.util.Map<String, String> rcsFallbackText;
 
+    @JsonProperty("ios_carousel")
+    private java.util.List<RenderTemplateDtoContentIosCarouselItem> iosCarousel;
+
+    @JsonProperty("android_live_update")
+    private RenderTemplateDtoContentAndroidLiveUpdate androidLiveUpdate;
+
+    @JsonProperty("voip")
+    private Boolean voip;
+
+    @JsonProperty("app_clip")
+    private Boolean appClip;
+
     public java.util.Map<String, String> getHeadings() {
         return headings;
     }
@@ -666,6 +678,42 @@ public final class RenderTemplateDtoContent {
 
     public RenderTemplateDtoContent rcsFallbackText(java.util.Map<String, String> rcsFallbackText) {
         this.rcsFallbackText = rcsFallbackText;
+        return this;
+    }
+
+    public java.util.List<RenderTemplateDtoContentIosCarouselItem> getIosCarousel() {
+        return iosCarousel;
+    }
+
+    public RenderTemplateDtoContent iosCarousel(java.util.List<RenderTemplateDtoContentIosCarouselItem> iosCarousel) {
+        this.iosCarousel = iosCarousel;
+        return this;
+    }
+
+    public RenderTemplateDtoContentAndroidLiveUpdate getAndroidLiveUpdate() {
+        return androidLiveUpdate;
+    }
+
+    public RenderTemplateDtoContent androidLiveUpdate(RenderTemplateDtoContentAndroidLiveUpdate androidLiveUpdate) {
+        this.androidLiveUpdate = androidLiveUpdate;
+        return this;
+    }
+
+    public Boolean getVoip() {
+        return voip;
+    }
+
+    public RenderTemplateDtoContent voip(Boolean voip) {
+        this.voip = voip;
+        return this;
+    }
+
+    public Boolean getAppClip() {
+        return appClip;
+    }
+
+    public RenderTemplateDtoContent appClip(Boolean appClip) {
+        this.appClip = appClip;
         return this;
     }
 

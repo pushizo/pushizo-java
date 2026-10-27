@@ -105,6 +105,18 @@ public final class CreateNotificationDto {
     @JsonProperty("android_visibility")
     private Long androidVisibility;
 
+    @JsonProperty("ios_carousel")
+    private java.util.List<CreateNotificationDtoIosCarouselItem> iosCarousel;
+
+    @JsonProperty("android_live_update")
+    private CreateNotificationDtoAndroidLiveUpdate androidLiveUpdate;
+
+    @JsonProperty("voip")
+    private Boolean voip;
+
+    @JsonProperty("app_clip")
+    private Boolean appClip;
+
     @JsonProperty("chrome_web_icon")
     private String chromeWebIcon;
 
@@ -245,6 +257,18 @@ public final class CreateNotificationDto {
 
     @JsonProperty("category")
     private String category;
+
+    /**
+     * Değerler: "sms", "email".
+     */
+    @JsonProperty("fallback_channel")
+    private String fallbackChannel;
+
+    /**
+     * Değerler: "phone", "watch".
+     */
+    @JsonProperty("form_factor")
+    private String formFactor;
 
     public String getAppId() {
         return appId;
@@ -486,6 +510,42 @@ public final class CreateNotificationDto {
 
     public CreateNotificationDto androidVisibility(Long androidVisibility) {
         this.androidVisibility = androidVisibility;
+        return this;
+    }
+
+    public java.util.List<CreateNotificationDtoIosCarouselItem> getIosCarousel() {
+        return iosCarousel;
+    }
+
+    public CreateNotificationDto iosCarousel(java.util.List<CreateNotificationDtoIosCarouselItem> iosCarousel) {
+        this.iosCarousel = iosCarousel;
+        return this;
+    }
+
+    public CreateNotificationDtoAndroidLiveUpdate getAndroidLiveUpdate() {
+        return androidLiveUpdate;
+    }
+
+    public CreateNotificationDto androidLiveUpdate(CreateNotificationDtoAndroidLiveUpdate androidLiveUpdate) {
+        this.androidLiveUpdate = androidLiveUpdate;
+        return this;
+    }
+
+    public Boolean getVoip() {
+        return voip;
+    }
+
+    public CreateNotificationDto voip(Boolean voip) {
+        this.voip = voip;
+        return this;
+    }
+
+    public Boolean getAppClip() {
+        return appClip;
+    }
+
+    public CreateNotificationDto appClip(Boolean appClip) {
+        this.appClip = appClip;
         return this;
     }
 
@@ -891,6 +951,24 @@ public final class CreateNotificationDto {
 
     public CreateNotificationDto category(String category) {
         this.category = category;
+        return this;
+    }
+
+    public String getFallbackChannel() {
+        return fallbackChannel;
+    }
+
+    public CreateNotificationDto fallbackChannel(String fallbackChannel) {
+        this.fallbackChannel = fallbackChannel;
+        return this;
+    }
+
+    public String getFormFactor() {
+        return formFactor;
+    }
+
+    public CreateNotificationDto formFactor(String formFactor) {
+        this.formFactor = formFactor;
         return this;
     }
 

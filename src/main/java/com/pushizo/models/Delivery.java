@@ -37,7 +37,7 @@ public final class Delivery {
     private String userId;
 
     /**
-     * Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+     * Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
      */
     @JsonProperty("channel")
     private String channel;

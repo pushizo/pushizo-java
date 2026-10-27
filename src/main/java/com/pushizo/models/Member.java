@@ -51,6 +51,12 @@ public final class Member {
     /**
      * Zorunlu.
      */
+    @JsonProperty("app_roles")
+    private java.util.List<MemberAppRolesItem> appRoles;
+
+    /**
+     * Zorunlu.
+     */
     @JsonProperty("accepted_at")
     private String acceptedAt;
 
@@ -117,6 +123,15 @@ public final class Member {
 
     public Member appScopes(java.util.List<String> appScopes) {
         this.appScopes = appScopes;
+        return this;
+    }
+
+    public java.util.List<MemberAppRolesItem> getAppRoles() {
+        return appRoles;
+    }
+
+    public Member appRoles(java.util.List<MemberAppRolesItem> appRoles) {
+        this.appRoles = appRoles;
         return this;
     }
 

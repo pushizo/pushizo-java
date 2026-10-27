@@ -240,4 +240,46 @@ public final class EmailDeliverabilityResource {
         }
         return client.execute(op, options, TYPE_8);
     }
+
+    private static final TypeReference<PostmasterStats> TYPE_9 = new TypeReference<PostmasterStats>() {};
+
+    /**
+     * Google Postmaster itibar kayıtları
+     *
+     * {@code GET /v1/apps/{appId}/email-deliverability/postmaster}
+     */
+    public PostmasterStats postmaster() {
+        return postmaster(null);
+    }
+
+    /**
+     * Google Postmaster itibar kayıtları
+     *
+     * {@code GET /v1/apps/{appId}/email-deliverability/postmaster}
+     */
+    public PostmasterStats postmaster(RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/email-deliverability/postmaster");
+        return client.execute(op, options, TYPE_9);
+    }
+
+    private static final TypeReference<PostmasterStats> TYPE_10 = new TypeReference<PostmasterStats>() {};
+
+    /**
+     * Google Postmaster dünkü itibarını oku
+     *
+     * {@code POST /v1/apps/{appId}/email-deliverability/postmaster/sync}
+     */
+    public PostmasterStats syncPostmaster() {
+        return syncPostmaster(null);
+    }
+
+    /**
+     * Google Postmaster dünkü itibarını oku
+     *
+     * {@code POST /v1/apps/{appId}/email-deliverability/postmaster/sync}
+     */
+    public PostmasterStats syncPostmaster(RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/email-deliverability/postmaster/sync");
+        return client.execute(op, options, TYPE_10);
+    }
 }

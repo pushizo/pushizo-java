@@ -48,6 +48,18 @@ public final class SubscriptionDevice {
     @JsonProperty("push_environment")
     private String pushEnvironment;
 
+    /**
+     * Değerler: "phone", "watch".
+     */
+    @JsonProperty("form_factor")
+    private String formFactor;
+
+    /**
+     * Değerler: "alert", "voip", "app_clip".
+     */
+    @JsonProperty("push_kind")
+    private String pushKind;
+
     public String getModel() {
         return model;
     }
@@ -144,6 +156,24 @@ public final class SubscriptionDevice {
 
     public SubscriptionDevice pushEnvironment(String pushEnvironment) {
         this.pushEnvironment = pushEnvironment;
+        return this;
+    }
+
+    public String getFormFactor() {
+        return formFactor;
+    }
+
+    public SubscriptionDevice formFactor(String formFactor) {
+        this.formFactor = formFactor;
+        return this;
+    }
+
+    public String getPushKind() {
+        return pushKind;
+    }
+
+    public SubscriptionDevice pushKind(String pushKind) {
+        this.pushKind = pushKind;
         return this;
     }
 

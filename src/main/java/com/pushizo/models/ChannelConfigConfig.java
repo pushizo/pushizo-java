@@ -111,6 +111,9 @@ public final class ChannelConfigConfig {
     @JsonProperty("messaging_service_sid")
     private String messagingServiceSid;
 
+    @JsonProperty("verify_service_sid")
+    private String verifyServiceSid;
+
     @JsonProperty("usercode")
     private String usercode;
 
@@ -414,6 +417,15 @@ public final class ChannelConfigConfig {
 
     public ChannelConfigConfig messagingServiceSid(String messagingServiceSid) {
         this.messagingServiceSid = messagingServiceSid;
+        return this;
+    }
+
+    public String getVerifyServiceSid() {
+        return verifyServiceSid;
+    }
+
+    public ChannelConfigConfig verifyServiceSid(String verifyServiceSid) {
+        this.verifyServiceSid = verifyServiceSid;
         return this;
     }
 
