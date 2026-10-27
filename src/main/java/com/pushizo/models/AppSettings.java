@@ -33,6 +33,9 @@ public final class AppSettings {
     @JsonProperty("preferenceCenter")
     private AppSettingsPreferenceCenter preferenceCenter;
 
+    @JsonProperty("brandKit")
+    private AppSettingsBrandKit brandKit;
+
     @JsonProperty("defaultTtlSeconds")
     private Long defaultTtlSeconds;
 
@@ -114,6 +117,15 @@ public final class AppSettings {
 
     public AppSettings preferenceCenter(AppSettingsPreferenceCenter preferenceCenter) {
         this.preferenceCenter = preferenceCenter;
+        return this;
+    }
+
+    public AppSettingsBrandKit getBrandKit() {
+        return brandKit;
+    }
+
+    public AppSettings brandKit(AppSettingsBrandKit brandKit) {
+        this.brandKit = brandKit;
         return this;
     }
 

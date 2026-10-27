@@ -33,6 +33,9 @@ public final class UpdateAppDtoSettings {
     @JsonProperty("preferenceCenter")
     private UpdateAppDtoSettingsPreferenceCenter preferenceCenter;
 
+    @JsonProperty("brandKit")
+    private UpdateAppDtoSettingsBrandKit brandKit;
+
     @JsonProperty("defaultTtlSeconds")
     private Long defaultTtlSeconds;
 
@@ -114,6 +117,15 @@ public final class UpdateAppDtoSettings {
 
     public UpdateAppDtoSettings preferenceCenter(UpdateAppDtoSettingsPreferenceCenter preferenceCenter) {
         this.preferenceCenter = preferenceCenter;
+        return this;
+    }
+
+    public UpdateAppDtoSettingsBrandKit getBrandKit() {
+        return brandKit;
+    }
+
+    public UpdateAppDtoSettings brandKit(UpdateAppDtoSettingsBrandKit brandKit) {
+        this.brandKit = brandKit;
         return this;
     }
 
