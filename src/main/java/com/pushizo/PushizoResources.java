@@ -43,6 +43,7 @@ public abstract class PushizoResources {
     private final LiveActivitiesResource liveActivities;
     private final McpResource mcp;
     private final PreferencesResource preferences;
+    private final ReverseEtlResource reverseEtl;
     private final SmsKeywordsResource smsKeywords;
     private final SurveysResource surveys;
     private final WarehouseExportsResource warehouseExports;
@@ -84,6 +85,7 @@ public abstract class PushizoResources {
         this.liveActivities = new LiveActivitiesResource((Pushizo) this);
         this.mcp = new McpResource((Pushizo) this);
         this.preferences = new PreferencesResource((Pushizo) this);
+        this.reverseEtl = new ReverseEtlResource((Pushizo) this);
         this.smsKeywords = new SmsKeywordsResource((Pushizo) this);
         this.surveys = new SurveysResource((Pushizo) this);
         this.warehouseExports = new WarehouseExportsResource((Pushizo) this);
@@ -327,6 +329,13 @@ public abstract class PushizoResources {
      */
     public PreferencesResource preferences() {
         return preferences;
+    }
+
+    /**
+     * reverseEtl
+     */
+    public ReverseEtlResource reverseEtl() {
+        return reverseEtl;
     }
 
     /**

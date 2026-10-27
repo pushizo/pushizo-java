@@ -31,7 +31,7 @@ public final class WarehouseExport {
     private String name;
 
     /**
-     * Zorunlu. Değerler: "bigquery", "snowflake", "s3_parquet".
+     * Zorunlu. Değerler: "bigquery", "snowflake", "s3_parquet", "redshift", "databricks".
      */
     @JsonProperty("destination")
     private String destination;
