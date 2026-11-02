@@ -24,6 +24,9 @@ public final class DeliverabilitySettingsDto {
     @JsonProperty("volume_spike")
     private DeliverabilitySettingsDtoVolumeSpike volumeSpike;
 
+    @JsonProperty("max_invalid_ratio")
+    private Double maxInvalidRatio;
+
     @JsonProperty("postmaster")
     private DeliverabilitySettingsDtoPostmaster postmaster;
 
@@ -60,6 +63,15 @@ public final class DeliverabilitySettingsDto {
 
     public DeliverabilitySettingsDto volumeSpike(DeliverabilitySettingsDtoVolumeSpike volumeSpike) {
         this.volumeSpike = volumeSpike;
+        return this;
+    }
+
+    public Double getMaxInvalidRatio() {
+        return maxInvalidRatio;
+    }
+
+    public DeliverabilitySettingsDto maxInvalidRatio(Double maxInvalidRatio) {
+        this.maxInvalidRatio = maxInvalidRatio;
         return this;
     }
 

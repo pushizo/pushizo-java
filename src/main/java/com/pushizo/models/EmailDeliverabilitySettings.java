@@ -42,6 +42,12 @@ public final class EmailDeliverabilitySettings {
     @JsonProperty("postmaster")
     private EmailDeliverabilitySettingsPostmaster postmaster;
 
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("max_invalid_ratio")
+    private Double maxInvalidRatio;
+
     public String getBccAddress() {
         return bccAddress;
     }
@@ -84,6 +90,15 @@ public final class EmailDeliverabilitySettings {
 
     public EmailDeliverabilitySettings postmaster(EmailDeliverabilitySettingsPostmaster postmaster) {
         this.postmaster = postmaster;
+        return this;
+    }
+
+    public Double getMaxInvalidRatio() {
+        return maxInvalidRatio;
+    }
+
+    public EmailDeliverabilitySettings maxInvalidRatio(Double maxInvalidRatio) {
+        this.maxInvalidRatio = maxInvalidRatio;
         return this;
     }
 

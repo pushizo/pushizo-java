@@ -30,6 +30,12 @@ public final class ImportStats {
     @JsonProperty("errors")
     private Long errors;
 
+    @JsonProperty("rejected_emails")
+    private Long rejectedEmails;
+
+    @JsonProperty("rejected_email_reasons")
+    private java.util.Map<String, Long> rejectedEmailReasons;
+
     public Long getProcessed() {
         return processed;
     }
@@ -81,6 +87,24 @@ public final class ImportStats {
 
     public ImportStats errors(Long errors) {
         this.errors = errors;
+        return this;
+    }
+
+    public Long getRejectedEmails() {
+        return rejectedEmails;
+    }
+
+    public ImportStats rejectedEmails(Long rejectedEmails) {
+        this.rejectedEmails = rejectedEmails;
+        return this;
+    }
+
+    public java.util.Map<String, Long> getRejectedEmailReasons() {
+        return rejectedEmailReasons;
+    }
+
+    public ImportStats rejectedEmailReasons(java.util.Map<String, Long> rejectedEmailReasons) {
+        this.rejectedEmailReasons = rejectedEmailReasons;
         return this;
     }
 
