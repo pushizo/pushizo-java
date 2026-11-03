@@ -36,6 +36,7 @@ public abstract class PushizoResources {
     private final DataFeedsResource dataFeeds;
     private final EmailDeliverabilityResource emailDeliverability;
     private final FormsResource forms;
+    private final GlobalControlResource globalControl;
     private final IdentityKeysResource identityKeys;
     private final IntegrationsResource integrations;
     private final JourneysResource journeys;
@@ -80,6 +81,7 @@ public abstract class PushizoResources {
         this.dataFeeds = new DataFeedsResource((Pushizo) this);
         this.emailDeliverability = new EmailDeliverabilityResource((Pushizo) this);
         this.forms = new FormsResource((Pushizo) this);
+        this.globalControl = new GlobalControlResource((Pushizo) this);
         this.identityKeys = new IdentityKeysResource((Pushizo) this);
         this.integrations = new IntegrationsResource((Pushizo) this);
         this.journeys = new JourneysResource((Pushizo) this);
@@ -284,6 +286,13 @@ public abstract class PushizoResources {
      */
     public FormsResource forms() {
         return forms;
+    }
+
+    /**
+     * globalControl
+     */
+    public GlobalControlResource globalControl() {
+        return globalControl;
     }
 
     /**

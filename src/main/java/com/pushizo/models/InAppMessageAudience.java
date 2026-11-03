@@ -18,6 +18,9 @@ public final class InAppMessageAudience {
     @JsonProperty("excluded_segments")
     private java.util.List<String> excludedSegments;
 
+    @JsonProperty("global_control_exempt")
+    private Boolean globalControlExempt;
+
     public java.util.List<String> getIncludedSegments() {
         return includedSegments;
     }
@@ -33,6 +36,15 @@ public final class InAppMessageAudience {
 
     public InAppMessageAudience excludedSegments(java.util.List<String> excludedSegments) {
         this.excludedSegments = excludedSegments;
+        return this;
+    }
+
+    public Boolean getGlobalControlExempt() {
+        return globalControlExempt;
+    }
+
+    public InAppMessageAudience globalControlExempt(Boolean globalControlExempt) {
+        this.globalControlExempt = globalControlExempt;
         return this;
     }
 

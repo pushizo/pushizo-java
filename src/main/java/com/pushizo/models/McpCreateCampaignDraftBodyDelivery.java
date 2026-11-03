@@ -39,6 +39,9 @@ public final class McpCreateCampaignDraftBodyDelivery {
     @JsonProperty("frequency_cap_exempt")
     private Boolean frequencyCapExempt;
 
+    @JsonProperty("global_control_exempt")
+    private Boolean globalControlExempt;
+
     @JsonProperty("quiet_hours_exempt")
     private Boolean quietHoursExempt;
 
@@ -105,6 +108,15 @@ public final class McpCreateCampaignDraftBodyDelivery {
 
     public McpCreateCampaignDraftBodyDelivery frequencyCapExempt(Boolean frequencyCapExempt) {
         this.frequencyCapExempt = frequencyCapExempt;
+        return this;
+    }
+
+    public Boolean getGlobalControlExempt() {
+        return globalControlExempt;
+    }
+
+    public McpCreateCampaignDraftBodyDelivery globalControlExempt(Boolean globalControlExempt) {
+        this.globalControlExempt = globalControlExempt;
         return this;
     }
 
