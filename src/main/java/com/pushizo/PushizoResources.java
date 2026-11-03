@@ -36,6 +36,7 @@ public abstract class PushizoResources {
     private final ConversationsResource conversations;
     private final DataFeedsResource dataFeeds;
     private final EmailDeliverabilityResource emailDeliverability;
+    private final FeatureFlagsResource featureFlags;
     private final FormsResource forms;
     private final GeofencesResource geofences;
     private final GlobalControlResource globalControl;
@@ -84,6 +85,7 @@ public abstract class PushizoResources {
         this.conversations = new ConversationsResource((Pushizo) this);
         this.dataFeeds = new DataFeedsResource((Pushizo) this);
         this.emailDeliverability = new EmailDeliverabilityResource((Pushizo) this);
+        this.featureFlags = new FeatureFlagsResource((Pushizo) this);
         this.forms = new FormsResource((Pushizo) this);
         this.geofences = new GeofencesResource((Pushizo) this);
         this.globalControl = new GlobalControlResource((Pushizo) this);
@@ -292,6 +294,13 @@ public abstract class PushizoResources {
      */
     public EmailDeliverabilityResource emailDeliverability() {
         return emailDeliverability;
+    }
+
+    /**
+     * featureFlags
+     */
+    public FeatureFlagsResource featureFlags() {
+        return featureFlags;
     }
 
     /**
