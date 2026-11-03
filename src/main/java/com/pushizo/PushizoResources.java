@@ -32,6 +32,7 @@ public abstract class PushizoResources {
     private final CannedResponsesResource cannedResponses;
     private final CatalogsResource catalogs;
     private final CategoriesResource categories;
+    private final ChannelScoresResource channelScores;
     private final ContentTablesResource contentTables;
     private final ConversationsResource conversations;
     private final DataFeedsResource dataFeeds;
@@ -81,6 +82,7 @@ public abstract class PushizoResources {
         this.cannedResponses = new CannedResponsesResource((Pushizo) this);
         this.catalogs = new CatalogsResource((Pushizo) this);
         this.categories = new CategoriesResource((Pushizo) this);
+        this.channelScores = new ChannelScoresResource((Pushizo) this);
         this.contentTables = new ContentTablesResource((Pushizo) this);
         this.conversations = new ConversationsResource((Pushizo) this);
         this.dataFeeds = new DataFeedsResource((Pushizo) this);
@@ -266,6 +268,13 @@ public abstract class PushizoResources {
      */
     public CategoriesResource categories() {
         return categories;
+    }
+
+    /**
+     * channelScores
+     */
+    public ChannelScoresResource channelScores() {
+        return channelScores;
     }
 
     /**
