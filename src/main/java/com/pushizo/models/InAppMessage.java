@@ -87,6 +87,12 @@ public final class InAppMessage {
     /**
      * Zorunlu.
      */
+    @JsonProperty("placement")
+    private String placement;
+
+    /**
+     * Zorunlu.
+     */
     @JsonProperty("start_at")
     private String startAt;
 
@@ -237,6 +243,15 @@ public final class InAppMessage {
 
     public InAppMessage journeyOnly(Boolean journeyOnly) {
         this.journeyOnly = journeyOnly;
+        return this;
+    }
+
+    public String getPlacement() {
+        return placement;
+    }
+
+    public InAppMessage placement(String placement) {
+        this.placement = placement;
         return this;
     }
 

@@ -39,6 +39,9 @@ public final class UpdateInAppDto {
     @JsonProperty("journey_only")
     private Boolean journeyOnly;
 
+    @JsonProperty("placement")
+    private String placement;
+
     @JsonProperty("priority")
     private Long priority;
 
@@ -126,6 +129,15 @@ public final class UpdateInAppDto {
 
     public UpdateInAppDto journeyOnly(Boolean journeyOnly) {
         this.journeyOnly = journeyOnly;
+        return this;
+    }
+
+    public String getPlacement() {
+        return placement;
+    }
+
+    public UpdateInAppDto placement(String placement) {
+        this.placement = placement;
         return this;
     }
 

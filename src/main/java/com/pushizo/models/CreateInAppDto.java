@@ -48,6 +48,9 @@ public final class CreateInAppDto {
     @JsonProperty("journey_only")
     private Boolean journeyOnly;
 
+    @JsonProperty("placement")
+    private String placement;
+
     @JsonProperty("priority")
     private Long priority;
 
@@ -135,6 +138,15 @@ public final class CreateInAppDto {
 
     public CreateInAppDto journeyOnly(Boolean journeyOnly) {
         this.journeyOnly = journeyOnly;
+        return this;
+    }
+
+    public String getPlacement() {
+        return placement;
+    }
+
+    public CreateInAppDto placement(String placement) {
+        this.placement = placement;
         return this;
     }
 
