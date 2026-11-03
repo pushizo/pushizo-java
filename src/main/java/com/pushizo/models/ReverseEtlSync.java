@@ -31,7 +31,7 @@ public final class ReverseEtlSync {
     private String name;
 
     /**
-     * Zorunlu. Değerler: "snowflake", "bigquery", "postgres", "mysql", "s3", "google_sheets".
+     * Zorunlu. Değerler: "snowflake", "bigquery", "postgres", "mysql", "s3", "google_sheets", "clickhouse", "sqlserver", "trino", "athena", "elasticsearch", "kafka", "pubsub".
      */
     @JsonProperty("source")
     private String source;
@@ -55,7 +55,7 @@ public final class ReverseEtlSync {
     private String credentialsHint;
 
     /**
-     * Zorunlu. Değerler: "hourly", "daily".
+     * Zorunlu. Değerler: "every_5_minutes", "hourly", "daily".
      */
     @JsonProperty("schedule")
     private String schedule;

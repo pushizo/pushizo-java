@@ -16,7 +16,7 @@ public final class UpdateReverseEtlDto {
     private String name;
 
     /**
-     * Değerler: "hourly", "daily".
+     * Değerler: "every_5_minutes", "hourly", "daily".
      */
     @JsonProperty("schedule")
     private String schedule;
