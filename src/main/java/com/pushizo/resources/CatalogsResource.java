@@ -275,4 +275,125 @@ public final class CatalogsResource {
         op.pathParam("itemId", itemId);
         return client.execute(op, options, TYPE_9);
     }
+
+    private static final TypeReference<Recommendations> TYPE_10 = new TypeReference<Recommendations>() {};
+
+    /**
+     * Ürün önerileri
+     *
+     * {@code GET /v1/apps/{appId}/catalogs/{catalogId}/recommendations}
+     *
+     * Stokta olmayan ve kullanıcının satın aldığı ürünler çıkmaz. Sonuç yetmezse yedek kaynakla tamamlanır.
+     */
+    public Recommendations listRecommendations(String catalogId, String strategy) {
+        return listRecommendations(catalogId, strategy, null, null);
+    }
+
+    /**
+     * Ürün önerileri
+     *
+     * {@code GET /v1/apps/{appId}/catalogs/{catalogId}/recommendations}
+     *
+     * Stokta olmayan ve kullanıcının satın aldığı ürünler çıkmaz. Sonuç yetmezse yedek kaynakla tamamlanır.
+     */
+    public Recommendations listRecommendations(String catalogId, String strategy, CatalogsListRecommendationsParams params) {
+        return listRecommendations(catalogId, strategy, params, null);
+    }
+
+    /**
+     * Ürün önerileri
+     *
+     * {@code GET /v1/apps/{appId}/catalogs/{catalogId}/recommendations}
+     *
+     * Stokta olmayan ve kullanıcının satın aldığı ürünler çıkmaz. Sonuç yetmezse yedek kaynakla tamamlanır.
+     *
+     * Parametreler: strategy — Değerler: "personalized", "popular", "trending", "similar", "category", "recently_viewed", "new_arrivals".
+     */
+    public Recommendations listRecommendations(String catalogId, String strategy, CatalogsListRecommendationsParams params, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/catalogs/{catalogId}/recommendations");
+        op.pathParam("catalogId", catalogId);
+        op.query("strategy", strategy);
+        if (params != null) {
+            params.applyTo(op);
+        }
+        return client.execute(op, options, TYPE_10);
+    }
+
+    private static final TypeReference<RecommendationConfig> TYPE_11 = new TypeReference<RecommendationConfig>() {};
+
+    /**
+     * Öneri modeli
+     *
+     * {@code GET /v1/apps/{appId}/catalogs/{catalogId}/recommendations/config}
+     */
+    public RecommendationConfig config(String catalogId) {
+        return config(catalogId, null);
+    }
+
+    /**
+     * Öneri modeli
+     *
+     * {@code GET /v1/apps/{appId}/catalogs/{catalogId}/recommendations/config}
+     */
+    public RecommendationConfig config(String catalogId, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/catalogs/{catalogId}/recommendations/config");
+        op.pathParam("catalogId", catalogId);
+        return client.execute(op, options, TYPE_11);
+    }
+
+    private static final TypeReference<RecommendationConfig> TYPE_12 = new TypeReference<RecommendationConfig>() {};
+
+    /**
+     * Öneri modelini ayarla
+     *
+     * {@code PUT /v1/apps/{appId}/catalogs/{catalogId}/recommendations/config}
+     *
+     * Model açıksa öneriler kayıttan sonra yeniden hesaplanır.
+     */
+    public RecommendationConfig updateConfig(String catalogId, UpdateRecommendationConfigDto body) {
+        return updateConfig(catalogId, body, null);
+    }
+
+    /**
+     * Öneri modelini ayarla
+     *
+     * {@code PUT /v1/apps/{appId}/catalogs/{catalogId}/recommendations/config}
+     *
+     * Model açıksa öneriler kayıttan sonra yeniden hesaplanır.
+     */
+    public RecommendationConfig updateConfig(String catalogId, UpdateRecommendationConfigDto body, RequestOptions options) {
+        Operation op = new Operation("PUT", "/v1/apps/{appId}/catalogs/{catalogId}/recommendations/config");
+        op.pathParam("catalogId", catalogId);
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_12);
+    }
+
+    private static final TypeReference<RecommendationConfig> TYPE_13 = new TypeReference<RecommendationConfig>() {};
+
+    /**
+     * Önerileri yeniden hesapla
+     *
+     * {@code POST /v1/apps/{appId}/catalogs/{catalogId}/recommendations/compute}
+     *
+     * İş kuyruğa alınır; ilerleme `status` alanından izlenir.
+     */
+    public RecommendationConfig compute(String catalogId) {
+        return compute(catalogId, null);
+    }
+
+    /**
+     * Önerileri yeniden hesapla
+     *
+     * {@code POST /v1/apps/{appId}/catalogs/{catalogId}/recommendations/compute}
+     *
+     * İş kuyruğa alınır; ilerleme `status` alanından izlenir.
+     */
+    public RecommendationConfig compute(String catalogId, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/catalogs/{catalogId}/recommendations/compute");
+        op.pathParam("catalogId", catalogId);
+        return client.execute(op, options, TYPE_13);
+    }
 }
