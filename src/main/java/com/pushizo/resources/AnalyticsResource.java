@@ -195,7 +195,36 @@ public final class AnalyticsResource {
         return client.execute(op, options, TYPE_4);
     }
 
-    private static final TypeReference<PathReport> TYPE_5 = new TypeReference<PathReport>() {};
+    private static final TypeReference<ReportResult> TYPE_5 = new TypeReference<ReportResult>() {};
+
+    /**
+     * Rapor çalıştır
+     *
+     * {@code POST /v1/apps/{appId}/analytics/reports/run}
+     *
+     * Kaynak, metrik, boyut ve filtre seçilerek rapor üretir; alanlar izinli listeyle sınırlıdır.
+     */
+    public ReportResult runReport(ReportRunBodyDto body) {
+        return runReport(body, null);
+    }
+
+    /**
+     * Rapor çalıştır
+     *
+     * {@code POST /v1/apps/{appId}/analytics/reports/run}
+     *
+     * Kaynak, metrik, boyut ve filtre seçilerek rapor üretir; alanlar izinli listeyle sınırlıdır.
+     */
+    public ReportResult runReport(ReportRunBodyDto body, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/analytics/reports/run");
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_5);
+    }
+
+    private static final TypeReference<PathReport> TYPE_6 = new TypeReference<PathReport>() {};
 
     /**
      * Yol analizi
@@ -221,10 +250,10 @@ public final class AnalyticsResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_5);
+        return client.execute(op, options, TYPE_6);
     }
 
-    private static final TypeReference<FunnelReport> TYPE_6 = new TypeReference<FunnelReport>() {};
+    private static final TypeReference<FunnelReport> TYPE_7 = new TypeReference<FunnelReport>() {};
 
     /**
      * Funnel
@@ -246,10 +275,10 @@ public final class AnalyticsResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_6);
+        return client.execute(op, options, TYPE_7);
     }
 
-    private static final TypeReference<ProvidersReport> TYPE_7 = new TypeReference<ProvidersReport>() {};
+    private static final TypeReference<ProvidersReport> TYPE_8 = new TypeReference<ProvidersReport>() {};
 
     /**
      * Sağlayıcı sağlığı
@@ -281,10 +310,10 @@ public final class AnalyticsResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_7);
+        return client.execute(op, options, TYPE_8);
     }
 
-    private static final TypeReference<RetentionReport> TYPE_8 = new TypeReference<RetentionReport>() {};
+    private static final TypeReference<RetentionReport> TYPE_9 = new TypeReference<RetentionReport>() {};
 
     /**
      * Retention kohortu
@@ -316,10 +345,10 @@ public final class AnalyticsResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_8);
+        return client.execute(op, options, TYPE_9);
     }
 
-    private static final TypeReference<EngagementReport> TYPE_9 = new TypeReference<EngagementReport>() {};
+    private static final TypeReference<EngagementReport> TYPE_10 = new TypeReference<EngagementReport>() {};
 
     /**
      * Etkileşim ısı haritası
@@ -351,6 +380,120 @@ public final class AnalyticsResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_9);
+        return client.execute(op, options, TYPE_10);
+    }
+
+    private static final TypeReference<SavedReportList> TYPE_11 = new TypeReference<SavedReportList>() {};
+
+    /**
+     * Kaydedilmiş raporlar
+     *
+     * {@code GET /v1/apps/{appId}/analytics/reports}
+     */
+    public SavedReportList list() {
+        return list(null);
+    }
+
+    /**
+     * Kaydedilmiş raporlar
+     *
+     * {@code GET /v1/apps/{appId}/analytics/reports}
+     */
+    public SavedReportList list(RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/analytics/reports");
+        return client.execute(op, options, TYPE_11);
+    }
+
+    private static final TypeReference<SavedReport> TYPE_12 = new TypeReference<SavedReport>() {};
+
+    /**
+     * Raporu kaydet
+     *
+     * {@code POST /v1/apps/{appId}/analytics/reports}
+     */
+    public SavedReport create(CreateSavedReportDto body) {
+        return create(body, null);
+    }
+
+    /**
+     * Raporu kaydet
+     *
+     * {@code POST /v1/apps/{appId}/analytics/reports}
+     */
+    public SavedReport create(CreateSavedReportDto body, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/analytics/reports");
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_12);
+    }
+
+    private static final TypeReference<SavedReport> TYPE_13 = new TypeReference<SavedReport>() {};
+
+    /**
+     * Kaydedilmiş rapor
+     *
+     * {@code GET /v1/apps/{appId}/analytics/reports/{id}}
+     */
+    public SavedReport get(String id) {
+        return get(id, null);
+    }
+
+    /**
+     * Kaydedilmiş rapor
+     *
+     * {@code GET /v1/apps/{appId}/analytics/reports/{id}}
+     */
+    public SavedReport get(String id, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/analytics/reports/{id}");
+        op.pathParam("id", id);
+        return client.execute(op, options, TYPE_13);
+    }
+
+    private static final TypeReference<SavedReport> TYPE_14 = new TypeReference<SavedReport>() {};
+
+    /**
+     * Raporu güncelle
+     *
+     * {@code PATCH /v1/apps/{appId}/analytics/reports/{id}}
+     */
+    public SavedReport update(String id, UpdateSavedReportDto body) {
+        return update(id, body, null);
+    }
+
+    /**
+     * Raporu güncelle
+     *
+     * {@code PATCH /v1/apps/{appId}/analytics/reports/{id}}
+     */
+    public SavedReport update(String id, UpdateSavedReportDto body, RequestOptions options) {
+        Operation op = new Operation("PATCH", "/v1/apps/{appId}/analytics/reports/{id}");
+        op.pathParam("id", id);
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_14);
+    }
+
+    /**
+     * Raporu sil
+     *
+     * {@code DELETE /v1/apps/{appId}/analytics/reports/{id}}
+     */
+    public void delete(String id) {
+        delete(id, null);
+    }
+
+    /**
+     * Raporu sil
+     *
+     * {@code DELETE /v1/apps/{appId}/analytics/reports/{id}}
+     */
+    public void delete(String id, RequestOptions options) {
+        Operation op = new Operation("DELETE", "/v1/apps/{appId}/analytics/reports/{id}");
+        op.pathParam("id", id);
+        client.execute(op, options, null);
     }
 }
