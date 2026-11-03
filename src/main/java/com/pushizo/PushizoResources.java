@@ -30,6 +30,7 @@ public abstract class PushizoResources {
     private final OrganizationResource organization;
     private final AdsResource ads;
     private final CannedResponsesResource cannedResponses;
+    private final CatalogsResource catalogs;
     private final CategoriesResource categories;
     private final ContentTablesResource contentTables;
     private final ConversationsResource conversations;
@@ -75,6 +76,7 @@ public abstract class PushizoResources {
         this.organization = new OrganizationResource((Pushizo) this);
         this.ads = new AdsResource((Pushizo) this);
         this.cannedResponses = new CannedResponsesResource((Pushizo) this);
+        this.catalogs = new CatalogsResource((Pushizo) this);
         this.categories = new CategoriesResource((Pushizo) this);
         this.contentTables = new ContentTablesResource((Pushizo) this);
         this.conversations = new ConversationsResource((Pushizo) this);
@@ -244,6 +246,13 @@ public abstract class PushizoResources {
      */
     public CannedResponsesResource cannedResponses() {
         return cannedResponses;
+    }
+
+    /**
+     * catalogs
+     */
+    public CatalogsResource catalogs() {
+        return catalogs;
     }
 
     /**
