@@ -55,7 +55,7 @@ public final class WarehouseExport {
     private java.util.List<String> tables;
 
     /**
-     * Zorunlu. Değerler: "hourly", "daily".
+     * Zorunlu. Değerler: "every_15_minutes", "hourly", "daily".
      */
     @JsonProperty("schedule")
     private String schedule;

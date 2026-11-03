@@ -22,7 +22,7 @@ public final class UpdateWarehouseExportDto {
     private java.util.List<String> tables;
 
     /**
-     * Değerler: "hourly", "daily".
+     * Değerler: "every_15_minutes", "hourly", "daily".
      */
     @JsonProperty("schedule")
     private String schedule;
