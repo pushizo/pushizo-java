@@ -36,6 +36,7 @@ public abstract class PushizoResources {
     private final ContentTablesResource contentTables;
     private final ConversationsResource conversations;
     private final DataFeedsResource dataFeeds;
+    private final DecisionAgentsResource decisionAgents;
     private final EmailDeliverabilityResource emailDeliverability;
     private final FeatureFlagsResource featureFlags;
     private final FormsResource forms;
@@ -88,6 +89,7 @@ public abstract class PushizoResources {
         this.contentTables = new ContentTablesResource((Pushizo) this);
         this.conversations = new ConversationsResource((Pushizo) this);
         this.dataFeeds = new DataFeedsResource((Pushizo) this);
+        this.decisionAgents = new DecisionAgentsResource((Pushizo) this);
         this.emailDeliverability = new EmailDeliverabilityResource((Pushizo) this);
         this.featureFlags = new FeatureFlagsResource((Pushizo) this);
         this.forms = new FormsResource((Pushizo) this);
@@ -300,6 +302,13 @@ public abstract class PushizoResources {
      */
     public DataFeedsResource dataFeeds() {
         return dataFeeds;
+    }
+
+    /**
+     * decisionAgents
+     */
+    public DecisionAgentsResource decisionAgents() {
+        return decisionAgents;
     }
 
     /**
