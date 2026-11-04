@@ -47,6 +47,7 @@ public abstract class PushizoResources {
     private final LandingPagesResource landingPages;
     private final LiveActivitiesResource liveActivities;
     private final McpResource mcp;
+    private final PredictionsResource predictions;
     private final PreferencesResource preferences;
     private final PromoCodeListsResource promoCodeLists;
     private final ReverseEtlResource reverseEtl;
@@ -98,6 +99,7 @@ public abstract class PushizoResources {
         this.landingPages = new LandingPagesResource((Pushizo) this);
         this.liveActivities = new LiveActivitiesResource((Pushizo) this);
         this.mcp = new McpResource((Pushizo) this);
+        this.predictions = new PredictionsResource((Pushizo) this);
         this.preferences = new PreferencesResource((Pushizo) this);
         this.promoCodeLists = new PromoCodeListsResource((Pushizo) this);
         this.reverseEtl = new ReverseEtlResource((Pushizo) this);
@@ -375,6 +377,13 @@ public abstract class PushizoResources {
      */
     public McpResource mcp() {
         return mcp;
+    }
+
+    /**
+     * predictions
+     */
+    public PredictionsResource predictions() {
+        return predictions;
     }
 
     /**
