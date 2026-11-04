@@ -30,6 +30,12 @@ public final class UserExport {
     @JsonProperty("events")
     private java.util.List<UserExportEventsItem> events;
 
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("derived")
+    private UserExportDerived derived;
+
     public String getExportedAt() {
         return exportedAt;
     }
@@ -54,6 +60,15 @@ public final class UserExport {
 
     public UserExport events(java.util.List<UserExportEventsItem> events) {
         this.events = events;
+        return this;
+    }
+
+    public UserExportDerived getDerived() {
+        return derived;
+    }
+
+    public UserExport derived(UserExportDerived derived) {
+        this.derived = derived;
         return this;
     }
 
