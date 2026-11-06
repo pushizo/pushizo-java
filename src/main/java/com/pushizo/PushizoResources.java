@@ -7,7 +7,7 @@ import com.pushizo.resources.*;
 /** İstemciye kaynak erişimcilerini ekleyen üretilmiş taban sınıf. */
 public abstract class PushizoResources {
     /** SDK'nın üretildiği OpenAPI sözleşmesinin sürümü. */
-    public static final String API_VERSION = "1.0.0";
+    public static final String API_VERSION = "1.1.0";
 
     private final NotificationsResource notifications;
     private final UsersResource users;
