@@ -3,9 +3,9 @@
 package com.pushizo.params;
 
 /**
- * CatalogsResource.listRecommendations için isteğe bağlı sorgu parametreleri.
+ * RecommendationsResource.list için isteğe bağlı sorgu parametreleri.
  */
-public final class CatalogsListRecommendationsParams {
+public final class RecommendationsListParams {
     private Long limit;
 
     private String userId;
@@ -20,7 +20,7 @@ public final class CatalogsListRecommendationsParams {
         return limit;
     }
 
-    public CatalogsListRecommendationsParams limit(Long limit) {
+    public RecommendationsListParams limit(Long limit) {
         this.limit = limit;
         return this;
     }
@@ -29,7 +29,7 @@ public final class CatalogsListRecommendationsParams {
         return userId;
     }
 
-    public CatalogsListRecommendationsParams userId(String userId) {
+    public RecommendationsListParams userId(String userId) {
         this.userId = userId;
         return this;
     }
@@ -38,7 +38,7 @@ public final class CatalogsListRecommendationsParams {
         return externalId;
     }
 
-    public CatalogsListRecommendationsParams externalId(String externalId) {
+    public RecommendationsListParams externalId(String externalId) {
         this.externalId = externalId;
         return this;
     }
@@ -47,7 +47,7 @@ public final class CatalogsListRecommendationsParams {
         return itemId;
     }
 
-    public CatalogsListRecommendationsParams itemId(String itemId) {
+    public RecommendationsListParams itemId(String itemId) {
         this.itemId = itemId;
         return this;
     }
@@ -56,14 +56,14 @@ public final class CatalogsListRecommendationsParams {
         return category;
     }
 
-    public CatalogsListRecommendationsParams category(String category) {
+    public RecommendationsListParams category(String category) {
         this.category = category;
         return this;
     }
 
     /** Sığ kopya (sayfalama sırasında çağıranın nesnesi değiştirilmez). */
-    public CatalogsListRecommendationsParams copy() {
-        CatalogsListRecommendationsParams c = new CatalogsListRecommendationsParams();
+    public RecommendationsListParams copy() {
+        RecommendationsListParams c = new RecommendationsListParams();
         c.limit = limit;
         c.userId = userId;
         c.externalId = externalId;

@@ -29,8 +29,8 @@ public final class WalletResource {
      *
      * Kimlik bilgisi geri okunamaz, yalnızca durum döner.
      */
-    public WalletConfig config() {
-        return config(null);
+    public WalletConfig getConfig() {
+        return getConfig(null);
     }
 
     /**
@@ -40,7 +40,7 @@ public final class WalletResource {
      *
      * Kimlik bilgisi geri okunamaz, yalnızca durum döner.
      */
-    public WalletConfig config(RequestOptions options) {
+    public WalletConfig getConfig(RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/wallet/config");
         return client.execute(op, options, TYPE_0);
     }
@@ -77,8 +77,8 @@ public final class WalletResource {
      *
      * {@code GET /v1/apps/{appId}/wallet/templates}
      */
-    public WalletTemplateList templates() {
-        return templates(null);
+    public WalletTemplateList listTemplates() {
+        return listTemplates(null);
     }
 
     /**
@@ -86,7 +86,7 @@ public final class WalletResource {
      *
      * {@code GET /v1/apps/{appId}/wallet/templates}
      */
-    public WalletTemplateList templates(RequestOptions options) {
+    public WalletTemplateList listTemplates(RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/wallet/templates");
         return client.execute(op, options, TYPE_2);
     }
@@ -123,8 +123,8 @@ public final class WalletResource {
      *
      * {@code GET /v1/apps/{appId}/wallet/templates/{id}}
      */
-    public WalletTemplate template(String id) {
-        return template(id, null);
+    public WalletTemplate getTemplate(String id) {
+        return getTemplate(id, null);
     }
 
     /**
@@ -132,7 +132,7 @@ public final class WalletResource {
      *
      * {@code GET /v1/apps/{appId}/wallet/templates/{id}}
      */
-    public WalletTemplate template(String id, RequestOptions options) {
+    public WalletTemplate getTemplate(String id, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/wallet/templates/{id}");
         op.pathParam("id", id);
         return client.execute(op, options, TYPE_4);
@@ -175,8 +175,8 @@ public final class WalletResource {
      *
      * Verilmiş kartı olan şablon silinemez, arşivlenir.
      */
-    public void removeTemplate(String id) {
-        removeTemplate(id, null);
+    public void deleteTemplate(String id) {
+        deleteTemplate(id, null);
     }
 
     /**
@@ -186,7 +186,7 @@ public final class WalletResource {
      *
      * Verilmiş kartı olan şablon silinemez, arşivlenir.
      */
-    public void removeTemplate(String id, RequestOptions options) {
+    public void deleteTemplate(String id, RequestOptions options) {
         Operation op = new Operation("DELETE", "/v1/apps/{appId}/wallet/templates/{id}");
         op.pathParam("id", id);
         client.execute(op, options, null);
@@ -199,8 +199,8 @@ public final class WalletResource {
      *
      * {@code GET /v1/apps/{appId}/wallet/passes}
      */
-    public WalletPassPage passes() {
-        return passes(null, null);
+    public WalletPassPage listPasses() {
+        return listPasses(null, null);
     }
 
     /**
@@ -208,8 +208,8 @@ public final class WalletResource {
      *
      * {@code GET /v1/apps/{appId}/wallet/passes}
      */
-    public WalletPassPage passes(WalletPassesParams params) {
-        return passes(params, null);
+    public WalletPassPage listPasses(WalletListPassesParams params) {
+        return listPasses(params, null);
     }
 
     /**
@@ -217,7 +217,7 @@ public final class WalletResource {
      *
      * {@code GET /v1/apps/{appId}/wallet/passes}
      */
-    public WalletPassPage passes(WalletPassesParams params, RequestOptions options) {
+    public WalletPassPage listPasses(WalletListPassesParams params, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/wallet/passes");
         if (params != null) {
             params.applyTo(op);
@@ -234,8 +234,8 @@ public final class WalletResource {
      *
      * Kullanıcılı kart şablon başına tektir; tekrar istek aynı kartı döndürür.
      */
-    public WalletPass issue(IssueWalletPassDto body) {
-        return issue(body, null);
+    public WalletPass issuePass(IssueWalletPassDto body) {
+        return issuePass(body, null);
     }
 
     /**
@@ -245,7 +245,7 @@ public final class WalletResource {
      *
      * Kullanıcılı kart şablon başına tektir; tekrar istek aynı kartı döndürür.
      */
-    public WalletPass issue(IssueWalletPassDto body, RequestOptions options) {
+    public WalletPass issuePass(IssueWalletPassDto body, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/wallet/passes");
         if (body == null) {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
@@ -261,8 +261,8 @@ public final class WalletResource {
      *
      * {@code GET /v1/apps/{appId}/wallet/passes/{id}}
      */
-    public WalletPass pass(String id) {
-        return pass(id, null);
+    public WalletPass getPass(String id) {
+        return getPass(id, null);
     }
 
     /**
@@ -270,7 +270,7 @@ public final class WalletResource {
      *
      * {@code GET /v1/apps/{appId}/wallet/passes/{id}}
      */
-    public WalletPass pass(String id, RequestOptions options) {
+    public WalletPass getPass(String id, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/wallet/passes/{id}");
         op.pathParam("id", id);
         return client.execute(op, options, TYPE_8);

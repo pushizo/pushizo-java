@@ -3,9 +3,9 @@
 package com.pushizo.params;
 
 /**
- * WalletResource.passes için isteğe bağlı sorgu parametreleri.
+ * WalletResource.listPasses için isteğe bağlı sorgu parametreleri.
  */
-public final class WalletPassesParams {
+public final class WalletListPassesParams {
     private String templateId;
 
     private Long limit;
@@ -16,7 +16,7 @@ public final class WalletPassesParams {
         return templateId;
     }
 
-    public WalletPassesParams templateId(String templateId) {
+    public WalletListPassesParams templateId(String templateId) {
         this.templateId = templateId;
         return this;
     }
@@ -25,7 +25,7 @@ public final class WalletPassesParams {
         return limit;
     }
 
-    public WalletPassesParams limit(Long limit) {
+    public WalletListPassesParams limit(Long limit) {
         this.limit = limit;
         return this;
     }
@@ -34,14 +34,14 @@ public final class WalletPassesParams {
         return cursor;
     }
 
-    public WalletPassesParams cursor(String cursor) {
+    public WalletListPassesParams cursor(String cursor) {
         this.cursor = cursor;
         return this;
     }
 
     /** Sığ kopya (sayfalama sırasında çağıranın nesnesi değiştirilmez). */
-    public WalletPassesParams copy() {
-        WalletPassesParams c = new WalletPassesParams();
+    public WalletListPassesParams copy() {
+        WalletListPassesParams c = new WalletListPassesParams();
         c.templateId = templateId;
         c.limit = limit;
         c.cursor = cursor;

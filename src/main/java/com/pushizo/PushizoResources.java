@@ -51,6 +51,7 @@ public abstract class PushizoResources {
     private final PredictionsResource predictions;
     private final PreferencesResource preferences;
     private final PromoCodeListsResource promoCodeLists;
+    private final RecommendationsResource recommendations;
     private final ReverseEtlResource reverseEtl;
     private final RfmResource rfm;
     private final SmsKeywordsResource smsKeywords;
@@ -104,6 +105,7 @@ public abstract class PushizoResources {
         this.predictions = new PredictionsResource((Pushizo) this);
         this.preferences = new PreferencesResource((Pushizo) this);
         this.promoCodeLists = new PromoCodeListsResource((Pushizo) this);
+        this.recommendations = new RecommendationsResource((Pushizo) this);
         this.reverseEtl = new ReverseEtlResource((Pushizo) this);
         this.rfm = new RfmResource((Pushizo) this);
         this.smsKeywords = new SmsKeywordsResource((Pushizo) this);
@@ -407,6 +409,13 @@ public abstract class PushizoResources {
      */
     public PromoCodeListsResource promoCodeLists() {
         return promoCodeLists;
+    }
+
+    /**
+     * recommendations
+     */
+    public RecommendationsResource recommendations() {
+        return recommendations;
     }
 
     /**
