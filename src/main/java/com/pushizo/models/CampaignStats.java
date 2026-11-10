@@ -33,6 +33,12 @@ public final class CampaignStats {
     /**
      * Zorunlu.
      */
+    @JsonProperty("cards")
+    private CampaignStatsCards cards;
+
+    /**
+     * Zorunlu.
+     */
     @JsonProperty("channels")
     private java.util.List<CampaignStatsChannelsItem> channels;
 
@@ -78,6 +84,15 @@ public final class CampaignStats {
 
     public CampaignStats goals(java.util.List<CampaignStatsGoalsItem> goals) {
         this.goals = goals;
+        return this;
+    }
+
+    public CampaignStatsCards getCards() {
+        return cards;
+    }
+
+    public CampaignStats cards(CampaignStatsCards cards) {
+        this.cards = cards;
         return this;
     }
 
