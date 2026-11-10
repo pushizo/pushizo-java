@@ -48,6 +48,18 @@ public final class UserExportDerived {
     @JsonProperty("recommendations")
     private java.util.List<UserExportDerivedRecommendationsItem> recommendations;
 
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("affinities")
+    private java.util.List<UserExportDerivedAffinitiesItem> affinities;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("frequency_cap")
+    private UserExportDerivedFrequencyCap frequencyCap;
+
     public java.util.List<UserExportDerivedWalletPassesItem> getWalletPasses() {
         return walletPasses;
     }
@@ -99,6 +111,24 @@ public final class UserExportDerived {
 
     public UserExportDerived recommendations(java.util.List<UserExportDerivedRecommendationsItem> recommendations) {
         this.recommendations = recommendations;
+        return this;
+    }
+
+    public java.util.List<UserExportDerivedAffinitiesItem> getAffinities() {
+        return affinities;
+    }
+
+    public UserExportDerived affinities(java.util.List<UserExportDerivedAffinitiesItem> affinities) {
+        this.affinities = affinities;
+        return this;
+    }
+
+    public UserExportDerivedFrequencyCap getFrequencyCap() {
+        return frequencyCap;
+    }
+
+    public UserExportDerived frequencyCap(UserExportDerivedFrequencyCap frequencyCap) {
+        this.frequencyCap = frequencyCap;
         return this;
     }
 

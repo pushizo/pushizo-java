@@ -51,6 +51,9 @@ public final class AppSettings {
     @JsonProperty("ipRetentionDays")
     private Long ipRetentionDays;
 
+    @JsonProperty("adaptiveFrequency")
+    private AppSettingsAdaptiveFrequency adaptiveFrequency;
+
     @JsonProperty("allowedOrigins")
     private java.util.List<String> allowedOrigins;
 
@@ -171,6 +174,15 @@ public final class AppSettings {
 
     public AppSettings ipRetentionDays(Long ipRetentionDays) {
         this.ipRetentionDays = ipRetentionDays;
+        return this;
+    }
+
+    public AppSettingsAdaptiveFrequency getAdaptiveFrequency() {
+        return adaptiveFrequency;
+    }
+
+    public AppSettings adaptiveFrequency(AppSettingsAdaptiveFrequency adaptiveFrequency) {
+        this.adaptiveFrequency = adaptiveFrequency;
         return this;
     }
 

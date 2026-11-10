@@ -85,6 +85,18 @@ public final class UserDetail {
     private String lastIpAt;
 
     /**
+     * Zorunlu. Değerler: "positive", "negative", "neutral".
+     */
+    @JsonProperty("last_sentiment")
+    private String lastSentiment;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("last_sentiment_at")
+    private String lastSentimentAt;
+
+    /**
      * Zorunlu.
      */
     @JsonProperty("created_at")
@@ -225,6 +237,24 @@ public final class UserDetail {
 
     public UserDetail lastIpAt(String lastIpAt) {
         this.lastIpAt = lastIpAt;
+        return this;
+    }
+
+    public String getLastSentiment() {
+        return lastSentiment;
+    }
+
+    public UserDetail lastSentiment(String lastSentiment) {
+        this.lastSentiment = lastSentiment;
+        return this;
+    }
+
+    public String getLastSentimentAt() {
+        return lastSentimentAt;
+    }
+
+    public UserDetail lastSentimentAt(String lastSentimentAt) {
+        this.lastSentimentAt = lastSentimentAt;
         return this;
     }
 
