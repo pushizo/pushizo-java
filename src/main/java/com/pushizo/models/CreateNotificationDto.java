@@ -234,6 +234,9 @@ public final class CreateNotificationDto {
     @JsonProperty("inbox_ttl")
     private Long inboxTtl;
 
+    @JsonProperty("content_card")
+    private CreateNotificationDtoContentCard contentCard;
+
     @JsonProperty("frequency_cap_exempt")
     private Boolean frequencyCapExempt;
 
@@ -879,6 +882,15 @@ public final class CreateNotificationDto {
 
     public CreateNotificationDto inboxTtl(Long inboxTtl) {
         this.inboxTtl = inboxTtl;
+        return this;
+    }
+
+    public CreateNotificationDtoContentCard getContentCard() {
+        return contentCard;
+    }
+
+    public CreateNotificationDto contentCard(CreateNotificationDtoContentCard contentCard) {
+        this.contentCard = contentCard;
         return this;
     }
 

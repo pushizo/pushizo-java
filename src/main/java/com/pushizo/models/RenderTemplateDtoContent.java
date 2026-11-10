@@ -126,6 +126,9 @@ public final class RenderTemplateDtoContent {
     @JsonProperty("inbox_ttl")
     private Long inboxTtl;
 
+    @JsonProperty("content_card")
+    private RenderTemplateDtoContentContentCard contentCard;
+
     @JsonProperty("thread_id")
     private String threadId;
 
@@ -516,6 +519,15 @@ public final class RenderTemplateDtoContent {
 
     public RenderTemplateDtoContent inboxTtl(Long inboxTtl) {
         this.inboxTtl = inboxTtl;
+        return this;
+    }
+
+    public RenderTemplateDtoContentContentCard getContentCard() {
+        return contentCard;
+    }
+
+    public RenderTemplateDtoContent contentCard(RenderTemplateDtoContentContentCard contentCard) {
+        this.contentCard = contentCard;
         return this;
     }
 

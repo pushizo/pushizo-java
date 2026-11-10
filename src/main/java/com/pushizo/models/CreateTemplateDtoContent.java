@@ -126,6 +126,9 @@ public final class CreateTemplateDtoContent {
     @JsonProperty("inbox_ttl")
     private Long inboxTtl;
 
+    @JsonProperty("content_card")
+    private CreateTemplateDtoContentContentCard contentCard;
+
     @JsonProperty("thread_id")
     private String threadId;
 
@@ -516,6 +519,15 @@ public final class CreateTemplateDtoContent {
 
     public CreateTemplateDtoContent inboxTtl(Long inboxTtl) {
         this.inboxTtl = inboxTtl;
+        return this;
+    }
+
+    public CreateTemplateDtoContentContentCard getContentCard() {
+        return contentCard;
+    }
+
+    public CreateTemplateDtoContent contentCard(CreateTemplateDtoContentContentCard contentCard) {
+        this.contentCard = contentCard;
         return this;
     }
 
