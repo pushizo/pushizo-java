@@ -75,6 +75,18 @@ public final class UserDetail {
     /**
      * Zorunlu.
      */
+    @JsonProperty("last_ip")
+    private String lastIp;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("last_ip_at")
+    private String lastIpAt;
+
+    /**
+     * Zorunlu.
+     */
     @JsonProperty("created_at")
     private String createdAt;
 
@@ -195,6 +207,24 @@ public final class UserDetail {
 
     public UserDetail mergedInto(String mergedInto) {
         this.mergedInto = mergedInto;
+        return this;
+    }
+
+    public String getLastIp() {
+        return lastIp;
+    }
+
+    public UserDetail lastIp(String lastIp) {
+        this.lastIp = lastIp;
+        return this;
+    }
+
+    public String getLastIpAt() {
+        return lastIpAt;
+    }
+
+    public UserDetail lastIpAt(String lastIpAt) {
+        this.lastIpAt = lastIpAt;
         return this;
     }
 

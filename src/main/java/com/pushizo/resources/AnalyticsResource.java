@@ -125,7 +125,48 @@ public final class AnalyticsResource {
         return client.execute(op, options, TYPE_2);
     }
 
-    private static final TypeReference<EventsReport> TYPE_3 = new TypeReference<EventsReport>() {};
+    private static final TypeReference<UninstallReport> TYPE_3 = new TypeReference<UninstallReport>() {};
+
+    /**
+     * Uygulama kaldırma raporu
+     *
+     * {@code GET /v1/apps/{appId}/analytics/uninstalls}
+     *
+     * Mobil push sağlayıcısının "cihaz kayıtlı değil" yanıtından sayılır.
+     */
+    public UninstallReport uninstallReport() {
+        return uninstallReport(null, null);
+    }
+
+    /**
+     * Uygulama kaldırma raporu
+     *
+     * {@code GET /v1/apps/{appId}/analytics/uninstalls}
+     *
+     * Mobil push sağlayıcısının "cihaz kayıtlı değil" yanıtından sayılır.
+     */
+    public UninstallReport uninstallReport(AnalyticsUninstallReportParams params) {
+        return uninstallReport(params, null);
+    }
+
+    /**
+     * Uygulama kaldırma raporu
+     *
+     * {@code GET /v1/apps/{appId}/analytics/uninstalls}
+     *
+     * Mobil push sağlayıcısının "cihaz kayıtlı değil" yanıtından sayılır.
+     *
+     * Parametreler: compare — Değerler: "true", "false".; format — Değerler: "json", "csv".
+     */
+    public UninstallReport uninstallReport(AnalyticsUninstallReportParams params, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/analytics/uninstalls");
+        if (params != null) {
+            params.applyTo(op);
+        }
+        return client.execute(op, options, TYPE_3);
+    }
+
+    private static final TypeReference<EventsReport> TYPE_4 = new TypeReference<EventsReport>() {};
 
     /**
      * Olay hacmi
@@ -157,10 +198,10 @@ public final class AnalyticsResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_3);
+        return client.execute(op, options, TYPE_4);
     }
 
-    private static final TypeReference<ConversionsReport> TYPE_4 = new TypeReference<ConversionsReport>() {};
+    private static final TypeReference<ConversionsReport> TYPE_5 = new TypeReference<ConversionsReport>() {};
 
     /**
      * Dönüşüm/atribüsyon
@@ -192,10 +233,10 @@ public final class AnalyticsResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_4);
+        return client.execute(op, options, TYPE_5);
     }
 
-    private static final TypeReference<ReportResult> TYPE_5 = new TypeReference<ReportResult>() {};
+    private static final TypeReference<ReportResult> TYPE_6 = new TypeReference<ReportResult>() {};
 
     /**
      * Rapor çalıştır
@@ -221,10 +262,10 @@ public final class AnalyticsResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_5);
+        return client.execute(op, options, TYPE_6);
     }
 
-    private static final TypeReference<PathReport> TYPE_6 = new TypeReference<PathReport>() {};
+    private static final TypeReference<PathReport> TYPE_7 = new TypeReference<PathReport>() {};
 
     /**
      * Yol analizi
@@ -250,10 +291,10 @@ public final class AnalyticsResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_6);
+        return client.execute(op, options, TYPE_7);
     }
 
-    private static final TypeReference<FunnelReport> TYPE_7 = new TypeReference<FunnelReport>() {};
+    private static final TypeReference<FunnelReport> TYPE_8 = new TypeReference<FunnelReport>() {};
 
     /**
      * Funnel
@@ -275,10 +316,10 @@ public final class AnalyticsResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_7);
+        return client.execute(op, options, TYPE_8);
     }
 
-    private static final TypeReference<ProvidersReport> TYPE_8 = new TypeReference<ProvidersReport>() {};
+    private static final TypeReference<ProvidersReport> TYPE_9 = new TypeReference<ProvidersReport>() {};
 
     /**
      * Sağlayıcı sağlığı
@@ -310,10 +351,10 @@ public final class AnalyticsResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_8);
+        return client.execute(op, options, TYPE_9);
     }
 
-    private static final TypeReference<RetentionReport> TYPE_9 = new TypeReference<RetentionReport>() {};
+    private static final TypeReference<RetentionReport> TYPE_10 = new TypeReference<RetentionReport>() {};
 
     /**
      * Retention kohortu
@@ -345,10 +386,10 @@ public final class AnalyticsResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_9);
+        return client.execute(op, options, TYPE_10);
     }
 
-    private static final TypeReference<EngagementReport> TYPE_10 = new TypeReference<EngagementReport>() {};
+    private static final TypeReference<EngagementReport> TYPE_11 = new TypeReference<EngagementReport>() {};
 
     /**
      * Etkileşim ısı haritası
@@ -380,10 +421,10 @@ public final class AnalyticsResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_10);
+        return client.execute(op, options, TYPE_11);
     }
 
-    private static final TypeReference<SavedReportList> TYPE_11 = new TypeReference<SavedReportList>() {};
+    private static final TypeReference<SavedReportList> TYPE_12 = new TypeReference<SavedReportList>() {};
 
     /**
      * Kaydedilmiş raporlar
@@ -401,10 +442,10 @@ public final class AnalyticsResource {
      */
     public SavedReportList list(RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/analytics/reports");
-        return client.execute(op, options, TYPE_11);
+        return client.execute(op, options, TYPE_12);
     }
 
-    private static final TypeReference<SavedReport> TYPE_12 = new TypeReference<SavedReport>() {};
+    private static final TypeReference<SavedReport> TYPE_13 = new TypeReference<SavedReport>() {};
 
     /**
      * Raporu kaydet
@@ -426,10 +467,10 @@ public final class AnalyticsResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_12);
+        return client.execute(op, options, TYPE_13);
     }
 
-    private static final TypeReference<SavedReport> TYPE_13 = new TypeReference<SavedReport>() {};
+    private static final TypeReference<SavedReport> TYPE_14 = new TypeReference<SavedReport>() {};
 
     /**
      * Kaydedilmiş rapor
@@ -448,10 +489,10 @@ public final class AnalyticsResource {
     public SavedReport get(String id, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/analytics/reports/{id}");
         op.pathParam("id", id);
-        return client.execute(op, options, TYPE_13);
+        return client.execute(op, options, TYPE_14);
     }
 
-    private static final TypeReference<SavedReport> TYPE_14 = new TypeReference<SavedReport>() {};
+    private static final TypeReference<SavedReport> TYPE_15 = new TypeReference<SavedReport>() {};
 
     /**
      * Raporu güncelle
@@ -474,7 +515,7 @@ public final class AnalyticsResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_14);
+        return client.execute(op, options, TYPE_15);
     }
 
     /**

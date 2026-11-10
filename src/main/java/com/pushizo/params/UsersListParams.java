@@ -17,6 +17,8 @@ public final class UsersListParams {
 
     private String q;
 
+    private String ip;
+
     private String tag;
 
     private String lastActiveAfter;
@@ -59,6 +61,15 @@ public final class UsersListParams {
         return this;
     }
 
+    public String getIp() {
+        return ip;
+    }
+
+    public UsersListParams ip(String ip) {
+        this.ip = ip;
+        return this;
+    }
+
     public String getTag() {
         return tag;
     }
@@ -93,6 +104,7 @@ public final class UsersListParams {
         c.cursor = cursor;
         c.sort = sort;
         c.q = q;
+        c.ip = ip;
         c.tag = tag;
         c.lastActiveAfter = lastActiveAfter;
         c.lastActiveBefore = lastActiveBefore;
@@ -105,6 +117,7 @@ public final class UsersListParams {
         op.query("cursor", cursor);
         op.query("sort", sort);
         op.query("q", q);
+        op.query("ip", ip);
         op.query("tag", tag);
         op.query("last_active_after", lastActiveAfter);
         op.query("last_active_before", lastActiveBefore);

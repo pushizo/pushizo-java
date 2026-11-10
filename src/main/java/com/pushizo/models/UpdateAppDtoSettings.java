@@ -42,6 +42,15 @@ public final class UpdateAppDtoSettings {
     @JsonProperty("identityVerificationRequired")
     private Boolean identityVerificationRequired;
 
+    /**
+     * Değerler: "off", "full", "masked".
+     */
+    @JsonProperty("ipCapture")
+    private String ipCapture;
+
+    @JsonProperty("ipRetentionDays")
+    private Long ipRetentionDays;
+
     @JsonProperty("allowedOrigins")
     private java.util.List<String> allowedOrigins;
 
@@ -144,6 +153,24 @@ public final class UpdateAppDtoSettings {
 
     public UpdateAppDtoSettings identityVerificationRequired(Boolean identityVerificationRequired) {
         this.identityVerificationRequired = identityVerificationRequired;
+        return this;
+    }
+
+    public String getIpCapture() {
+        return ipCapture;
+    }
+
+    public UpdateAppDtoSettings ipCapture(String ipCapture) {
+        this.ipCapture = ipCapture;
+        return this;
+    }
+
+    public Long getIpRetentionDays() {
+        return ipRetentionDays;
+    }
+
+    public UpdateAppDtoSettings ipRetentionDays(Long ipRetentionDays) {
+        this.ipRetentionDays = ipRetentionDays;
         return this;
     }
 

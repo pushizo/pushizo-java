@@ -42,6 +42,15 @@ public final class AppSettings {
     @JsonProperty("identityVerificationRequired")
     private Boolean identityVerificationRequired;
 
+    /**
+     * Değerler: "off", "full", "masked".
+     */
+    @JsonProperty("ipCapture")
+    private String ipCapture;
+
+    @JsonProperty("ipRetentionDays")
+    private Long ipRetentionDays;
+
     @JsonProperty("allowedOrigins")
     private java.util.List<String> allowedOrigins;
 
@@ -144,6 +153,24 @@ public final class AppSettings {
 
     public AppSettings identityVerificationRequired(Boolean identityVerificationRequired) {
         this.identityVerificationRequired = identityVerificationRequired;
+        return this;
+    }
+
+    public String getIpCapture() {
+        return ipCapture;
+    }
+
+    public AppSettings ipCapture(String ipCapture) {
+        this.ipCapture = ipCapture;
+        return this;
+    }
+
+    public Long getIpRetentionDays() {
+        return ipRetentionDays;
+    }
+
+    public AppSettings ipRetentionDays(Long ipRetentionDays) {
+        this.ipRetentionDays = ipRetentionDays;
         return this;
     }
 

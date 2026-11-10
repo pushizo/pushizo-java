@@ -45,6 +45,12 @@ public final class Campaign {
     /**
      * Zorunlu.
      */
+    @JsonProperty("goals")
+    private CampaignGoals goals;
+
+    /**
+     * Zorunlu.
+     */
     @JsonProperty("ab_test")
     private CampaignAbTest abTest;
 
@@ -222,6 +228,15 @@ public final class Campaign {
 
     public Campaign category(String category) {
         this.category = category;
+        return this;
+    }
+
+    public CampaignGoals getGoals() {
+        return goals;
+    }
+
+    public Campaign goals(CampaignGoals goals) {
+        this.goals = goals;
         return this;
     }
 

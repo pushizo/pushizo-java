@@ -96,6 +96,12 @@ public final class CampaignVariantStatsVariantsItem {
     @JsonProperty("conversion_rate")
     private Double conversionRate;
 
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("goals")
+    private java.util.List<CampaignVariantStatsVariantsItemGoalsItem> goals;
+
     public String getVariantId() {
         return variantId;
     }
@@ -219,6 +225,15 @@ public final class CampaignVariantStatsVariantsItem {
 
     public CampaignVariantStatsVariantsItem conversionRate(Double conversionRate) {
         this.conversionRate = conversionRate;
+        return this;
+    }
+
+    public java.util.List<CampaignVariantStatsVariantsItemGoalsItem> getGoals() {
+        return goals;
+    }
+
+    public CampaignVariantStatsVariantsItem goals(java.util.List<CampaignVariantStatsVariantsItemGoalsItem> goals) {
+        this.goals = goals;
         return this;
     }
 

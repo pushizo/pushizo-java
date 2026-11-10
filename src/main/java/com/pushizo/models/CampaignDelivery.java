@@ -39,6 +39,12 @@ public final class CampaignDelivery {
     @JsonProperty("frequency_cap_exempt")
     private Boolean frequencyCapExempt;
 
+    /**
+     * Değerler: "low", "normal", "high".
+     */
+    @JsonProperty("frequency_priority")
+    private String frequencyPriority;
+
     @JsonProperty("global_control_exempt")
     private Boolean globalControlExempt;
 
@@ -108,6 +114,15 @@ public final class CampaignDelivery {
 
     public CampaignDelivery frequencyCapExempt(Boolean frequencyCapExempt) {
         this.frequencyCapExempt = frequencyCapExempt;
+        return this;
+    }
+
+    public String getFrequencyPriority() {
+        return frequencyPriority;
+    }
+
+    public CampaignDelivery frequencyPriority(String frequencyPriority) {
+        this.frequencyPriority = frequencyPriority;
         return this;
     }
 
