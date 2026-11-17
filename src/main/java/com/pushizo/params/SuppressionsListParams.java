@@ -11,7 +11,7 @@ public final class SuppressionsListParams {
     private String cursor;
 
     /**
-     * Değerler: "email", "sms", "whatsapp", "rcs".
+     * Değerler: "email", "sms", "whatsapp", "rcs", "telegram", "viber".
      */
     private String channel;
 

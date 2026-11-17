@@ -11,7 +11,7 @@ public final class InboxMetricsParams {
     private String to;
 
     /**
-     * Değerler: "sms", "whatsapp", "rcs", "email", "chat".
+     * Değerler: "sms", "whatsapp", "rcs", "telegram", "viber", "email", "chat".
      */
     private String channel;
 

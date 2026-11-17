@@ -228,6 +228,12 @@ public final class CreateNotificationDto {
     @JsonProperty("rcs_fallback_text")
     private java.util.Map<String, String> rcsFallbackText;
 
+    @JsonProperty("messenger_image_url")
+    private String messengerImageUrl;
+
+    @JsonProperty("messenger_buttons")
+    private java.util.List<Object> messengerButtons;
+
     @JsonProperty("add_to_inbox")
     private Boolean addToInbox;
 
@@ -864,6 +870,24 @@ public final class CreateNotificationDto {
 
     public CreateNotificationDto rcsFallbackText(java.util.Map<String, String> rcsFallbackText) {
         this.rcsFallbackText = rcsFallbackText;
+        return this;
+    }
+
+    public String getMessengerImageUrl() {
+        return messengerImageUrl;
+    }
+
+    public CreateNotificationDto messengerImageUrl(String messengerImageUrl) {
+        this.messengerImageUrl = messengerImageUrl;
+        return this;
+    }
+
+    public java.util.List<Object> getMessengerButtons() {
+        return messengerButtons;
+    }
+
+    public CreateNotificationDto messengerButtons(java.util.List<Object> messengerButtons) {
+        this.messengerButtons = messengerButtons;
         return this;
     }
 

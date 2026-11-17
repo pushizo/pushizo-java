@@ -25,7 +25,7 @@ public final class Suppression {
     private String appId;
 
     /**
-     * Zorunlu. Değerler: "email", "sms", "whatsapp", "rcs".
+     * Zorunlu. Değerler: "email", "sms", "whatsapp", "rcs", "telegram", "viber".
      */
     @JsonProperty("channel")
     private String channel;

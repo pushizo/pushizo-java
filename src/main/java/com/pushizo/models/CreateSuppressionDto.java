@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public final class CreateSuppressionDto {
     /**
-     * Zorunlu. Değerler: "email", "sms", "whatsapp", "rcs".
+     * Zorunlu. Değerler: "email", "sms", "whatsapp", "rcs", "telegram", "viber".
      */
     @JsonProperty("channel")
     private String channel;

@@ -45,7 +45,7 @@ public final class ConversationsResource {
      *
      * {@code GET /v1/apps/{appId}/conversations}
      *
-     * Parametreler: channel — Değerler: "sms", "whatsapp", "rcs", "email", "chat".; status — Değerler: "open", "pending", "resolved", "closed".; unread — Değerler: "true", "false".
+     * Parametreler: channel — Değerler: "sms", "whatsapp", "rcs", "telegram", "viber", "email", "chat".; status — Değerler: "open", "pending", "resolved", "closed".; unread — Değerler: "true", "false".
      */
     public ConversationPage list(ConversationsListParams params, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/conversations");
