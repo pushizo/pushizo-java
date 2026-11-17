@@ -186,6 +186,12 @@ public final class Campaign {
     @JsonProperty("estimated_recipients")
     private Long estimatedRecipients;
 
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("preflight")
+    private CampaignPreflight preflight;
+
     public String getId() {
         return id;
     }
@@ -444,6 +450,15 @@ public final class Campaign {
 
     public Campaign estimatedRecipients(Long estimatedRecipients) {
         this.estimatedRecipients = estimatedRecipients;
+        return this;
+    }
+
+    public CampaignPreflight getPreflight() {
+        return preflight;
+    }
+
+    public Campaign preflight(CampaignPreflight preflight) {
+        this.preflight = preflight;
         return this;
     }
 
