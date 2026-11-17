@@ -59,6 +59,7 @@ public abstract class PushizoResources {
     private final VerifyResource verify;
     private final WalletResource wallet;
     private final WarehouseExportsResource warehouseExports;
+    private final WarehouseSegmentsResource warehouseSegments;
     private final WebCampaignsResource webCampaigns;
     private final WebPersonalizationsResource webPersonalizations;
     private final WhatsappResource whatsapp;
@@ -114,6 +115,7 @@ public abstract class PushizoResources {
         this.verify = new VerifyResource((Pushizo) this);
         this.wallet = new WalletResource((Pushizo) this);
         this.warehouseExports = new WarehouseExportsResource((Pushizo) this);
+        this.warehouseSegments = new WarehouseSegmentsResource((Pushizo) this);
         this.webCampaigns = new WebCampaignsResource((Pushizo) this);
         this.webPersonalizations = new WebPersonalizationsResource((Pushizo) this);
         this.whatsapp = new WhatsappResource((Pushizo) this);
@@ -467,6 +469,13 @@ public abstract class PushizoResources {
      */
     public WarehouseExportsResource warehouseExports() {
         return warehouseExports;
+    }
+
+    /**
+     * warehouseSegments
+     */
+    public WarehouseSegmentsResource warehouseSegments() {
+        return warehouseSegments;
     }
 
     /**

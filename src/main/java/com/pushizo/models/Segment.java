@@ -84,6 +84,12 @@ public final class Segment {
     @JsonProperty("sql")
     private SegmentSql sql;
 
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("warehouse")
+    private SegmentWarehouse warehouse;
+
     public String getId() {
         return id;
     }
@@ -189,6 +195,15 @@ public final class Segment {
 
     public Segment sql(SegmentSql sql) {
         this.sql = sql;
+        return this;
+    }
+
+    public SegmentWarehouse getWarehouse() {
+        return warehouse;
+    }
+
+    public Segment warehouse(SegmentWarehouse warehouse) {
+        this.warehouse = warehouse;
         return this;
     }
 
