@@ -78,6 +78,12 @@ public final class Segment {
     @JsonProperty("updated_at")
     private String updatedAt;
 
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("sql")
+    private SegmentSql sql;
+
     public String getId() {
         return id;
     }
@@ -174,6 +180,15 @@ public final class Segment {
 
     public Segment updatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+        return this;
+    }
+
+    public SegmentSql getSql() {
+        return sql;
+    }
+
+    public Segment sql(SegmentSql sql) {
+        this.sql = sql;
         return this;
     }
 
