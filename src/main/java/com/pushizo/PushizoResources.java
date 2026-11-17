@@ -29,13 +29,18 @@ public abstract class PushizoResources {
     private final ApiKeysResource apiKeys;
     private final OrganizationResource organization;
     private final AdsResource ads;
+    private final AffinityResource affinity;
+    private final AiAgentsResource aiAgents;
     private final CannedResponsesResource cannedResponses;
     private final CatalogsResource catalogs;
     private final CategoriesResource categories;
     private final ChannelScoresResource channelScores;
+    private final CompaniesResource companies;
     private final ContentTablesResource contentTables;
     private final ConversationsResource conversations;
+    private final CustomAgentsResource customAgents;
     private final DataFeedsResource dataFeeds;
+    private final DataPipelinesResource dataPipelines;
     private final DecisionAgentsResource decisionAgents;
     private final EmailDeliverabilityResource emailDeliverability;
     private final FeatureFlagsResource featureFlags;
@@ -57,6 +62,7 @@ public abstract class PushizoResources {
     private final RfmResource rfm;
     private final SiteSearchResource siteSearch;
     private final SmsKeywordsResource smsKeywords;
+    private final SqlResource sql;
     private final SurveysResource surveys;
     private final VerifyResource verify;
     private final WalletResource wallet;
@@ -87,13 +93,18 @@ public abstract class PushizoResources {
         this.apiKeys = new ApiKeysResource((Pushizo) this);
         this.organization = new OrganizationResource((Pushizo) this);
         this.ads = new AdsResource((Pushizo) this);
+        this.affinity = new AffinityResource((Pushizo) this);
+        this.aiAgents = new AiAgentsResource((Pushizo) this);
         this.cannedResponses = new CannedResponsesResource((Pushizo) this);
         this.catalogs = new CatalogsResource((Pushizo) this);
         this.categories = new CategoriesResource((Pushizo) this);
         this.channelScores = new ChannelScoresResource((Pushizo) this);
+        this.companies = new CompaniesResource((Pushizo) this);
         this.contentTables = new ContentTablesResource((Pushizo) this);
         this.conversations = new ConversationsResource((Pushizo) this);
+        this.customAgents = new CustomAgentsResource((Pushizo) this);
         this.dataFeeds = new DataFeedsResource((Pushizo) this);
+        this.dataPipelines = new DataPipelinesResource((Pushizo) this);
         this.decisionAgents = new DecisionAgentsResource((Pushizo) this);
         this.emailDeliverability = new EmailDeliverabilityResource((Pushizo) this);
         this.featureFlags = new FeatureFlagsResource((Pushizo) this);
@@ -115,6 +126,7 @@ public abstract class PushizoResources {
         this.rfm = new RfmResource((Pushizo) this);
         this.siteSearch = new SiteSearchResource((Pushizo) this);
         this.smsKeywords = new SmsKeywordsResource((Pushizo) this);
+        this.sql = new SqlResource((Pushizo) this);
         this.surveys = new SurveysResource((Pushizo) this);
         this.verify = new VerifyResource((Pushizo) this);
         this.wallet = new WalletResource((Pushizo) this);
@@ -266,6 +278,20 @@ public abstract class PushizoResources {
     }
 
     /**
+     * affinity
+     */
+    public AffinityResource affinity() {
+        return affinity;
+    }
+
+    /**
+     * aiAgents
+     */
+    public AiAgentsResource aiAgents() {
+        return aiAgents;
+    }
+
+    /**
      * cannedResponses
      */
     public CannedResponsesResource cannedResponses() {
@@ -294,6 +320,13 @@ public abstract class PushizoResources {
     }
 
     /**
+     * companies
+     */
+    public CompaniesResource companies() {
+        return companies;
+    }
+
+    /**
      * contentTables
      */
     public ContentTablesResource contentTables() {
@@ -308,10 +341,24 @@ public abstract class PushizoResources {
     }
 
     /**
+     * customAgents
+     */
+    public CustomAgentsResource customAgents() {
+        return customAgents;
+    }
+
+    /**
      * dataFeeds
      */
     public DataFeedsResource dataFeeds() {
         return dataFeeds;
+    }
+
+    /**
+     * dataPipelines
+     */
+    public DataPipelinesResource dataPipelines() {
+        return dataPipelines;
     }
 
     /**
@@ -459,6 +506,13 @@ public abstract class PushizoResources {
      */
     public SmsKeywordsResource smsKeywords() {
         return smsKeywords;
+    }
+
+    /**
+     * sql
+     */
+    public SqlResource sql() {
+        return sql;
     }
 
     /**

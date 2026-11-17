@@ -145,7 +145,107 @@ public final class McpResource {
         return client.execute(op, options, TYPE_4);
     }
 
-    private static final TypeReference<CreateNotificationResult> TYPE_5 = new TypeReference<CreateNotificationResult>() {};
+    private static final TypeReference<WebCampaign> TYPE_5 = new TypeReference<WebCampaign>() {};
+
+    /**
+     * Web kampanyası taslağı oluştur (MCP onaylı mod; yayımlanmaz)
+     *
+     * {@code POST /v1/apps/{appId}/mcp/web-campaign-drafts}
+     */
+    public WebCampaign createWebCampaignDraft(CreateWebCampaignDto body) {
+        return createWebCampaignDraft(body, null);
+    }
+
+    /**
+     * Web kampanyası taslağı oluştur (MCP onaylı mod; yayımlanmaz)
+     *
+     * {@code POST /v1/apps/{appId}/mcp/web-campaign-drafts}
+     */
+    public WebCampaign createWebCampaignDraft(CreateWebCampaignDto body, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/mcp/web-campaign-drafts");
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_5);
+    }
+
+    private static final TypeReference<WebPersonalization> TYPE_6 = new TypeReference<WebPersonalization>() {};
+
+    /**
+     * Web kişiselleştirme taslağı oluştur (MCP onaylı mod; yayımlanmaz)
+     *
+     * {@code POST /v1/apps/{appId}/mcp/web-personalization-drafts}
+     */
+    public WebPersonalization createWebPersonalizationDraft(CreateWebPersonalizationDto body) {
+        return createWebPersonalizationDraft(body, null);
+    }
+
+    /**
+     * Web kişiselleştirme taslağı oluştur (MCP onaylı mod; yayımlanmaz)
+     *
+     * {@code POST /v1/apps/{appId}/mcp/web-personalization-drafts}
+     */
+    public WebPersonalization createWebPersonalizationDraft(CreateWebPersonalizationDto body, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/mcp/web-personalization-drafts");
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_6);
+    }
+
+    private static final TypeReference<Survey> TYPE_7 = new TypeReference<Survey>() {};
+
+    /**
+     * Anket taslağı oluştur (MCP onaylı mod; etkinleştirilmez)
+     *
+     * {@code POST /v1/apps/{appId}/mcp/survey-drafts}
+     */
+    public Survey createSurveyDraft(CreateSurveyDto body) {
+        return createSurveyDraft(body, null);
+    }
+
+    /**
+     * Anket taslağı oluştur (MCP onaylı mod; etkinleştirilmez)
+     *
+     * {@code POST /v1/apps/{appId}/mcp/survey-drafts}
+     */
+    public Survey createSurveyDraft(CreateSurveyDto body, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/mcp/survey-drafts");
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_7);
+    }
+
+    private static final TypeReference<LandingPage> TYPE_8 = new TypeReference<LandingPage>() {};
+
+    /**
+     * Landing sayfası taslağı oluştur (MCP onaylı mod; yayımlanmaz)
+     *
+     * {@code POST /v1/apps/{appId}/mcp/landing-page-drafts}
+     */
+    public LandingPage createLandingPageDraft(CreateLandingPageDto body) {
+        return createLandingPageDraft(body, null);
+    }
+
+    /**
+     * Landing sayfası taslağı oluştur (MCP onaylı mod; yayımlanmaz)
+     *
+     * {@code POST /v1/apps/{appId}/mcp/landing-page-drafts}
+     */
+    public LandingPage createLandingPageDraft(CreateLandingPageDto body, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/mcp/landing-page-drafts");
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_8);
+    }
+
+    private static final TypeReference<CreateNotificationResult> TYPE_9 = new TypeReference<CreateNotificationResult>() {};
 
     /**
      * Test gönderimi (yalnızca app’in test cihazlarına; MCP onaylı mod)
@@ -167,6 +267,6 @@ public final class McpResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_5);
+        return client.execute(op, options, TYPE_9);
     }
 }

@@ -87,6 +87,31 @@ public final class LandingPagesResource {
     private static final TypeReference<LandingPage> TYPE_1 = new TypeReference<LandingPage>() {};
 
     /**
+     * Landing sayfası oluştur (taslak)
+     *
+     * {@code POST /v1/apps/{appId}/landing-pages}
+     */
+    public LandingPage create(CreateLandingPageDto body) {
+        return create(body, null);
+    }
+
+    /**
+     * Landing sayfası oluştur (taslak)
+     *
+     * {@code POST /v1/apps/{appId}/landing-pages}
+     */
+    public LandingPage create(CreateLandingPageDto body, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/landing-pages");
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_1);
+    }
+
+    private static final TypeReference<LandingPage> TYPE_2 = new TypeReference<LandingPage>() {};
+
+    /**
      * Landing sayfası detayı
      *
      * {@code GET /v1/apps/{appId}/landing-pages/{pageId}}
@@ -103,10 +128,58 @@ public final class LandingPagesResource {
     public LandingPage get(String pageId, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/landing-pages/{pageId}");
         op.pathParam("pageId", pageId);
-        return client.execute(op, options, TYPE_1);
+        return client.execute(op, options, TYPE_2);
     }
 
-    private static final TypeReference<LandingPage> TYPE_2 = new TypeReference<LandingPage>() {};
+    private static final TypeReference<LandingPage> TYPE_3 = new TypeReference<LandingPage>() {};
+
+    /**
+     * Taslağı düzenle (yayındaki sürüm değişmez)
+     *
+     * {@code PATCH /v1/apps/{appId}/landing-pages/{pageId}}
+     */
+    public LandingPage update(String pageId, UpdateLandingPageDto body) {
+        return update(pageId, body, null);
+    }
+
+    /**
+     * Taslağı düzenle (yayındaki sürüm değişmez)
+     *
+     * {@code PATCH /v1/apps/{appId}/landing-pages/{pageId}}
+     */
+    public LandingPage update(String pageId, UpdateLandingPageDto body, RequestOptions options) {
+        Operation op = new Operation("PATCH", "/v1/apps/{appId}/landing-pages/{pageId}");
+        op.pathParam("pageId", pageId);
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_3);
+    }
+
+    private static final TypeReference<Ok> TYPE_4 = new TypeReference<Ok>() {};
+
+    /**
+     * Landing sayfasını sil
+     *
+     * {@code DELETE /v1/apps/{appId}/landing-pages/{pageId}}
+     */
+    public Ok delete(String pageId) {
+        return delete(pageId, null);
+    }
+
+    /**
+     * Landing sayfasını sil
+     *
+     * {@code DELETE /v1/apps/{appId}/landing-pages/{pageId}}
+     */
+    public Ok delete(String pageId, RequestOptions options) {
+        Operation op = new Operation("DELETE", "/v1/apps/{appId}/landing-pages/{pageId}");
+        op.pathParam("pageId", pageId);
+        return client.execute(op, options, TYPE_4);
+    }
+
+    private static final TypeReference<LandingPage> TYPE_5 = new TypeReference<LandingPage>() {};
 
     /**
      * Taslağı yayınla
@@ -125,10 +198,10 @@ public final class LandingPagesResource {
     public LandingPage publish(String pageId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/landing-pages/{pageId}/publish");
         op.pathParam("pageId", pageId);
-        return client.execute(op, options, TYPE_2);
+        return client.execute(op, options, TYPE_5);
     }
 
-    private static final TypeReference<LandingPage> TYPE_3 = new TypeReference<LandingPage>() {};
+    private static final TypeReference<LandingPage> TYPE_6 = new TypeReference<LandingPage>() {};
 
     /**
      * Yayından kaldır
@@ -147,6 +220,73 @@ public final class LandingPagesResource {
     public LandingPage unpublish(String pageId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/landing-pages/{pageId}/unpublish");
         op.pathParam("pageId", pageId);
-        return client.execute(op, options, TYPE_3);
+        return client.execute(op, options, TYPE_6);
+    }
+
+    private static final TypeReference<LandingPage> TYPE_7 = new TypeReference<LandingPage>() {};
+
+    /**
+     * Arşivle (yayından kalkar, kotadan düşer)
+     *
+     * {@code POST /v1/apps/{appId}/landing-pages/{pageId}/archive}
+     */
+    public LandingPage archive(String pageId) {
+        return archive(pageId, null);
+    }
+
+    /**
+     * Arşivle (yayından kalkar, kotadan düşer)
+     *
+     * {@code POST /v1/apps/{appId}/landing-pages/{pageId}/archive}
+     */
+    public LandingPage archive(String pageId, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/landing-pages/{pageId}/archive");
+        op.pathParam("pageId", pageId);
+        return client.execute(op, options, TYPE_7);
+    }
+
+    private static final TypeReference<LandingPageVersions> TYPE_8 = new TypeReference<LandingPageVersions>() {};
+
+    /**
+     * Yayın sürümleri
+     *
+     * {@code GET /v1/apps/{appId}/landing-pages/{pageId}/versions}
+     */
+    public LandingPageVersions versions(String pageId) {
+        return versions(pageId, null);
+    }
+
+    /**
+     * Yayın sürümleri
+     *
+     * {@code GET /v1/apps/{appId}/landing-pages/{pageId}/versions}
+     */
+    public LandingPageVersions versions(String pageId, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/landing-pages/{pageId}/versions");
+        op.pathParam("pageId", pageId);
+        return client.execute(op, options, TYPE_8);
+    }
+
+    private static final TypeReference<LandingPage> TYPE_9 = new TypeReference<LandingPage>() {};
+
+    /**
+     * Sürümü taslağa geri yükle
+     *
+     * {@code POST /v1/apps/{appId}/landing-pages/{pageId}/versions/{version}/restore}
+     */
+    public LandingPage restore(String pageId, String version) {
+        return restore(pageId, version, null);
+    }
+
+    /**
+     * Sürümü taslağa geri yükle
+     *
+     * {@code POST /v1/apps/{appId}/landing-pages/{pageId}/versions/{version}/restore}
+     */
+    public LandingPage restore(String pageId, String version, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/landing-pages/{pageId}/versions/{version}/restore");
+        op.pathParam("pageId", pageId);
+        op.pathParam("version", version);
+        return client.execute(op, options, TYPE_9);
     }
 }

@@ -224,7 +224,29 @@ public final class SegmentsResource {
         return client.execute(op, options, TYPE_6);
     }
 
-    private static final TypeReference<SegmentEstimate> TYPE_7 = new TypeReference<SegmentEstimate>() {};
+    private static final TypeReference<Segment> TYPE_7 = new TypeReference<Segment>() {};
+
+    /**
+     * Statik segment üyeliklerini yeniden hesapla
+     *
+     * {@code POST /v1/apps/{appId}/segments/{segmentId}/refresh}
+     */
+    public Segment refresh(String segmentId) {
+        return refresh(segmentId, null);
+    }
+
+    /**
+     * Statik segment üyeliklerini yeniden hesapla
+     *
+     * {@code POST /v1/apps/{appId}/segments/{segmentId}/refresh}
+     */
+    public Segment refresh(String segmentId, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/segments/{segmentId}/refresh");
+        op.pathParam("segmentId", segmentId);
+        return client.execute(op, options, TYPE_7);
+    }
+
+    private static final TypeReference<SegmentEstimate> TYPE_8 = new TypeReference<SegmentEstimate>() {};
 
     /**
      * Tahmini sayım
@@ -257,6 +279,6 @@ public final class SegmentsResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_7);
+        return client.execute(op, options, TYPE_8);
     }
 }

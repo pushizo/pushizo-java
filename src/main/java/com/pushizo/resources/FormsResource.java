@@ -131,7 +131,55 @@ public final class FormsResource {
         return client.execute(op, options, TYPE_2);
     }
 
-    private static final TypeReference<FormSubmissionPage> TYPE_3 = new TypeReference<FormSubmissionPage>() {};
+    private static final TypeReference<Form> TYPE_3 = new TypeReference<Form>() {};
+
+    /**
+     * Formu düzenle
+     *
+     * {@code PATCH /v1/apps/{appId}/forms/{formId}}
+     */
+    public Form update(String formId, UpdateFormDto body) {
+        return update(formId, body, null);
+    }
+
+    /**
+     * Formu düzenle
+     *
+     * {@code PATCH /v1/apps/{appId}/forms/{formId}}
+     */
+    public Form update(String formId, UpdateFormDto body, RequestOptions options) {
+        Operation op = new Operation("PATCH", "/v1/apps/{appId}/forms/{formId}");
+        op.pathParam("formId", formId);
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_3);
+    }
+
+    private static final TypeReference<Ok> TYPE_4 = new TypeReference<Ok>() {};
+
+    /**
+     * Formu sil (gönderimleriyle birlikte)
+     *
+     * {@code DELETE /v1/apps/{appId}/forms/{formId}}
+     */
+    public Ok delete(String formId) {
+        return delete(formId, null);
+    }
+
+    /**
+     * Formu sil (gönderimleriyle birlikte)
+     *
+     * {@code DELETE /v1/apps/{appId}/forms/{formId}}
+     */
+    public Ok delete(String formId, RequestOptions options) {
+        Operation op = new Operation("DELETE", "/v1/apps/{appId}/forms/{formId}");
+        op.pathParam("formId", formId);
+        return client.execute(op, options, TYPE_4);
+    }
+
+    private static final TypeReference<FormSubmissionPage> TYPE_5 = new TypeReference<FormSubmissionPage>() {};
 
     /**
      * Form gönderimleri
@@ -164,7 +212,7 @@ public final class FormsResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_3);
+        return client.execute(op, options, TYPE_5);
     }
 
     /**
@@ -196,7 +244,7 @@ public final class FormsResource {
         });
     }
 
-    private static final TypeReference<FormSubmitResult> TYPE_4 = new TypeReference<FormSubmitResult>() {};
+    private static final TypeReference<FormSubmitResult> TYPE_6 = new TypeReference<FormSubmitResult>() {};
 
     /**
      * Sunucu tarafı form gönderimi (`external_id` verilirse o kullanıcının profili güncellenir)
@@ -219,6 +267,6 @@ public final class FormsResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_4);
+        return client.execute(op, options, TYPE_6);
     }
 }

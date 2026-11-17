@@ -157,7 +157,29 @@ public final class WebPersonalizationsResource {
         return client.execute(op, options, TYPE_3);
     }
 
-    private static final TypeReference<WebPersonalizationReport> TYPE_4 = new TypeReference<WebPersonalizationReport>() {};
+    private static final TypeReference<Ok> TYPE_4 = new TypeReference<Ok>() {};
+
+    /**
+     * Kişiselleştirme deneyimini sil (olaylarıyla birlikte)
+     *
+     * {@code DELETE /v1/apps/{appId}/web-personalizations/{personalizationId}}
+     */
+    public Ok delete(String personalizationId) {
+        return delete(personalizationId, null);
+    }
+
+    /**
+     * Kişiselleştirme deneyimini sil (olaylarıyla birlikte)
+     *
+     * {@code DELETE /v1/apps/{appId}/web-personalizations/{personalizationId}}
+     */
+    public Ok delete(String personalizationId, RequestOptions options) {
+        Operation op = new Operation("DELETE", "/v1/apps/{appId}/web-personalizations/{personalizationId}");
+        op.pathParam("personalizationId", personalizationId);
+        return client.execute(op, options, TYPE_4);
+    }
+
+    private static final TypeReference<WebPersonalizationReport> TYPE_5 = new TypeReference<WebPersonalizationReport>() {};
 
     /**
      * Günlük seri
@@ -188,10 +210,10 @@ public final class WebPersonalizationsResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_4);
+        return client.execute(op, options, TYPE_5);
     }
 
-    private static final TypeReference<WebPersonalization> TYPE_5 = new TypeReference<WebPersonalization>() {};
+    private static final TypeReference<WebPersonalization> TYPE_6 = new TypeReference<WebPersonalization>() {};
 
     /**
      * Yayınla / duraklat / arşivle
@@ -214,6 +236,32 @@ public final class WebPersonalizationsResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_5);
+        return client.execute(op, options, TYPE_6);
+    }
+
+    private static final TypeReference<WebPersonalization> TYPE_7 = new TypeReference<WebPersonalization>() {};
+
+    /**
+     * A/B kazananını seç (SDK yalnız kazananın değişikliklerini uygular)
+     *
+     * {@code POST /v1/apps/{appId}/web-personalizations/{personalizationId}/winner}
+     */
+    public WebPersonalization winner(String personalizationId, WebPersonalizationWinnerDto body) {
+        return winner(personalizationId, body, null);
+    }
+
+    /**
+     * A/B kazananını seç (SDK yalnız kazananın değişikliklerini uygular)
+     *
+     * {@code POST /v1/apps/{appId}/web-personalizations/{personalizationId}/winner}
+     */
+    public WebPersonalization winner(String personalizationId, WebPersonalizationWinnerDto body, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/web-personalizations/{personalizationId}/winner");
+        op.pathParam("personalizationId", personalizationId);
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_7);
     }
 }

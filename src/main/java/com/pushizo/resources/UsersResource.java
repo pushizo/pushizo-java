@@ -20,7 +20,60 @@ public final class UsersResource {
         this.client = client;
     }
 
-    private static final TypeReference<UserList> TYPE_0 = new TypeReference<UserList>() {};
+    private static final TypeReference<UserCompanyList> TYPE_0 = new TypeReference<UserCompanyList>() {};
+
+    /**
+     * Kişinin şirketleri
+     *
+     * {@code GET /v1/apps/{appId}/users/{userId}/companies}
+     *
+     * En son bağlanan şirket önce (şablonda company bu şirkettir).
+     */
+    public UserCompanyList forUser(String userId) {
+        return forUser(userId, null);
+    }
+
+    /**
+     * Kişinin şirketleri
+     *
+     * {@code GET /v1/apps/{appId}/users/{userId}/companies}
+     *
+     * En son bağlanan şirket önce (şablonda company bu şirkettir).
+     */
+    public UserCompanyList forUser(String userId, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/users/{userId}/companies");
+        op.pathParam("userId", userId);
+        return client.execute(op, options, TYPE_0);
+    }
+
+    private static final TypeReference<UserCompanyList> TYPE_1 = new TypeReference<UserCompanyList>() {};
+
+    /**
+     * Kişinin şirketleri (external_id veya alias ile)
+     *
+     * {@code GET /v1/apps/{appId}/users/by/{label}/{value}/companies}
+     *
+     * label: hs_id, external_id veya özel alias etiketi.
+     */
+    public UserCompanyList forUserAlias(String label, String value) {
+        return forUserAlias(label, value, null);
+    }
+
+    /**
+     * Kişinin şirketleri (external_id veya alias ile)
+     *
+     * {@code GET /v1/apps/{appId}/users/by/{label}/{value}/companies}
+     *
+     * label: hs_id, external_id veya özel alias etiketi.
+     */
+    public UserCompanyList forUserAlias(String label, String value, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/users/by/{label}/{value}/companies");
+        op.pathParam("label", label);
+        op.pathParam("value", value);
+        return client.execute(op, options, TYPE_1);
+    }
+
+    private static final TypeReference<UserList> TYPE_2 = new TypeReference<UserList>() {};
 
     /**
      * Kullanıcı listesi
@@ -52,7 +105,7 @@ public final class UsersResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_0);
+        return client.execute(op, options, TYPE_2);
     }
 
     /**
@@ -84,7 +137,7 @@ public final class UsersResource {
         });
     }
 
-    private static final TypeReference<UserDetail> TYPE_1 = new TypeReference<UserDetail>() {};
+    private static final TypeReference<UserDetail> TYPE_3 = new TypeReference<UserDetail>() {};
 
     /**
      * Kullanıcı oluştur/güncelle (external_id ile, isteğe bağlı aboneliklerle)
@@ -111,10 +164,10 @@ public final class UsersResource {
         }
         op.body(body);
         op.idempotent(true);
-        return client.execute(op, options, TYPE_1);
+        return client.execute(op, options, TYPE_3);
     }
 
-    private static final TypeReference<UserList> TYPE_2 = new TypeReference<UserList>() {};
+    private static final TypeReference<UserList> TYPE_4 = new TypeReference<UserList>() {};
 
     /**
      * Segment tanımı ile kullanıcı arama
@@ -136,10 +189,10 @@ public final class UsersResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_2);
+        return client.execute(op, options, TYPE_4);
     }
 
-    private static final TypeReference<UserDetail> TYPE_3 = new TypeReference<UserDetail>() {};
+    private static final TypeReference<UserDetail> TYPE_5 = new TypeReference<UserDetail>() {};
 
     /**
      * Alias ile kullanıcı (hs_id, external_id veya özel etiket)
@@ -159,10 +212,10 @@ public final class UsersResource {
         Operation op = new Operation("GET", "/v1/apps/{appId}/users/by/{label}/{value}");
         op.pathParam("label", label);
         op.pathParam("value", value);
-        return client.execute(op, options, TYPE_3);
+        return client.execute(op, options, TYPE_5);
     }
 
-    private static final TypeReference<UserDetail> TYPE_4 = new TypeReference<UserDetail>() {};
+    private static final TypeReference<UserDetail> TYPE_6 = new TypeReference<UserDetail>() {};
 
     /**
      * Tag/property merge-patch ve deltas
@@ -186,10 +239,10 @@ public final class UsersResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_4);
+        return client.execute(op, options, TYPE_6);
     }
 
-    private static final TypeReference<Ok> TYPE_5 = new TypeReference<Ok>() {};
+    private static final TypeReference<Ok> TYPE_7 = new TypeReference<Ok>() {};
 
     /**
      * Kullanıcıyı sil (abonelikler silinir, olaylar anonimleşir)
@@ -209,10 +262,10 @@ public final class UsersResource {
         Operation op = new Operation("DELETE", "/v1/apps/{appId}/users/by/{label}/{value}");
         op.pathParam("label", label);
         op.pathParam("value", value);
-        return client.execute(op, options, TYPE_5);
+        return client.execute(op, options, TYPE_7);
     }
 
-    private static final TypeReference<UserIdentity> TYPE_6 = new TypeReference<UserIdentity>() {};
+    private static final TypeReference<UserIdentity> TYPE_8 = new TypeReference<UserIdentity>() {};
 
     /**
      * Kullanıcının tüm kimlikleri (hs_id, external_id, özel alias'lar)
@@ -232,10 +285,10 @@ public final class UsersResource {
         Operation op = new Operation("GET", "/v1/apps/{appId}/users/by/{label}/{value}/identity");
         op.pathParam("label", label);
         op.pathParam("value", value);
-        return client.execute(op, options, TYPE_6);
+        return client.execute(op, options, TYPE_8);
     }
 
-    private static final TypeReference<UserExport> TYPE_7 = new TypeReference<UserExport>() {};
+    private static final TypeReference<UserExport> TYPE_9 = new TypeReference<UserExport>() {};
 
     /**
      * Kullanıcı verisini dışa aktar (KVKK/GDPR taşınabilirlik): profil, alias, abonelik, son olaylar
@@ -255,10 +308,10 @@ public final class UsersResource {
         Operation op = new Operation("GET", "/v1/apps/{appId}/users/by/{label}/{value}/export");
         op.pathParam("label", label);
         op.pathParam("value", value);
-        return client.execute(op, options, TYPE_7);
+        return client.execute(op, options, TYPE_9);
     }
 
-    private static final TypeReference<Subscription> TYPE_8 = new TypeReference<Subscription>() {};
+    private static final TypeReference<Subscription> TYPE_10 = new TypeReference<Subscription>() {};
 
     /**
      * Kullanıcıya abonelik ekle
@@ -282,6 +335,6 @@ public final class UsersResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_8);
+        return client.execute(op, options, TYPE_10);
     }
 }
