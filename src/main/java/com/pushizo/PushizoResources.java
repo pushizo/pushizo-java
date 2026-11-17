@@ -55,6 +55,7 @@ public abstract class PushizoResources {
     private final RecommendationsResource recommendations;
     private final ReverseEtlResource reverseEtl;
     private final RfmResource rfm;
+    private final SiteSearchResource siteSearch;
     private final SmsKeywordsResource smsKeywords;
     private final SurveysResource surveys;
     private final VerifyResource verify;
@@ -112,6 +113,7 @@ public abstract class PushizoResources {
         this.recommendations = new RecommendationsResource((Pushizo) this);
         this.reverseEtl = new ReverseEtlResource((Pushizo) this);
         this.rfm = new RfmResource((Pushizo) this);
+        this.siteSearch = new SiteSearchResource((Pushizo) this);
         this.smsKeywords = new SmsKeywordsResource((Pushizo) this);
         this.surveys = new SurveysResource((Pushizo) this);
         this.verify = new VerifyResource((Pushizo) this);
@@ -443,6 +445,13 @@ public abstract class PushizoResources {
      */
     public RfmResource rfm() {
         return rfm;
+    }
+
+    /**
+     * siteSearch
+     */
+    public SiteSearchResource siteSearch() {
+        return siteSearch;
     }
 
     /**
