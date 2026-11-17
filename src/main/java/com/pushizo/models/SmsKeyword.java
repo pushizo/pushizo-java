@@ -37,7 +37,7 @@ public final class SmsKeyword {
     private String appId;
 
     /**
-     * Zorunlu. Değerler: "sms", "whatsapp", "rcs".
+     * Zorunlu. Değerler: "sms", "whatsapp", "rcs", "telegram", "viber".
      */
     @JsonProperty("channels")
     private java.util.List<String> channels;

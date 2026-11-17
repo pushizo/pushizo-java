@@ -25,7 +25,7 @@ public final class CreateKeywordDto {
     private String scope;
 
     /**
-     * Değerler: "sms", "whatsapp", "rcs".
+     * Değerler: "sms", "whatsapp", "rcs", "telegram", "viber".
      */
     @JsonProperty("channels")
     private java.util.List<String> channels;

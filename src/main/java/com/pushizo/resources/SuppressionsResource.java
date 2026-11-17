@@ -45,7 +45,7 @@ public final class SuppressionsResource {
      *
      * {@code GET /v1/apps/{appId}/suppressions}
      *
-     * Parametreler: channel — Değerler: "email", "sms", "whatsapp", "rcs".; reason — Değerler: "bounce", "complaint", "manual", "unsubscribe_link", "stop".
+     * Parametreler: channel — Değerler: "email", "sms", "whatsapp", "rcs", "telegram", "viber".; reason — Değerler: "bounce", "complaint", "manual", "unsubscribe_link", "stop".
      */
     public SuppressionPage list(SuppressionsListParams params, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/suppressions");

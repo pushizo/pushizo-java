@@ -45,7 +45,7 @@ public final class TemplatesResource {
      *
      * {@code GET /v1/apps/{appId}/templates}
      *
-     * Parametreler: channel — Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs".
+     * Parametreler: channel — Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs", "telegram", "viber".
      */
     public TemplatePage list(TemplatesListParams params, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/templates");

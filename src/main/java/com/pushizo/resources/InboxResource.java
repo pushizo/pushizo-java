@@ -133,7 +133,7 @@ public final class InboxResource {
      *
      * {@code GET /v1/apps/{appId}/inbox/metrics}
      *
-     * Parametreler: channel — Değerler: "sms", "whatsapp", "rcs", "email", "chat".
+     * Parametreler: channel — Değerler: "sms", "whatsapp", "rcs", "telegram", "viber", "email", "chat".
      */
     public InboxMetrics metrics(InboxMetricsParams params, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/inbox/metrics");
