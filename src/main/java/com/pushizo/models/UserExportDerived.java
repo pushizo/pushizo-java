@@ -60,6 +60,12 @@ public final class UserExportDerived {
     @JsonProperty("frequency_cap")
     private UserExportDerivedFrequencyCap frequencyCap;
 
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("companies")
+    private java.util.List<UserExportDerivedCompaniesItem> companies;
+
     public java.util.List<UserExportDerivedWalletPassesItem> getWalletPasses() {
         return walletPasses;
     }
@@ -129,6 +135,15 @@ public final class UserExportDerived {
 
     public UserExportDerived frequencyCap(UserExportDerivedFrequencyCap frequencyCap) {
         this.frequencyCap = frequencyCap;
+        return this;
+    }
+
+    public java.util.List<UserExportDerivedCompaniesItem> getCompanies() {
+        return companies;
+    }
+
+    public UserExportDerived companies(java.util.List<UserExportDerivedCompaniesItem> companies) {
+        this.companies = companies;
         return this;
     }
 
