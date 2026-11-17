@@ -17,7 +17,7 @@
 <dependency>
   <groupId>com.pushizo</groupId>
   <artifactId>pushizo-java</artifactId>
-  <version>0.2.0</version>
+  <version>0.3.0</version>
 </dependency>
 ```
 
@@ -42,14 +42,14 @@ Maven:
 <dependency>
   <groupId>com.pushizo</groupId>
   <artifactId>pushizo-java</artifactId>
-  <version>0.2.0</version>
+  <version>0.3.0</version>
 </dependency>
 ```
 
 Gradle:
 
 ```kotlin
-implementation("com.pushizo:pushizo-java:0.2.0")
+implementation("com.pushizo:pushizo-java:0.3.0")
 ```
 
 ## Kullanım
