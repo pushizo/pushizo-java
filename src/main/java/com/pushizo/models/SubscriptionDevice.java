@@ -60,6 +60,21 @@ public final class SubscriptionDevice {
     @JsonProperty("push_kind")
     private String pushKind;
 
+    @JsonProperty("manufacturer")
+    private String manufacturer;
+
+    @JsonProperty("brand")
+    private String brand;
+
+    @JsonProperty("rom")
+    private String rom;
+
+    @JsonProperty("rom_version")
+    private String romVersion;
+
+    @JsonProperty("delivery")
+    private SubscriptionDeviceDelivery delivery;
+
     public String getModel() {
         return model;
     }
@@ -174,6 +189,51 @@ public final class SubscriptionDevice {
 
     public SubscriptionDevice pushKind(String pushKind) {
         this.pushKind = pushKind;
+        return this;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public SubscriptionDevice manufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+        return this;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public SubscriptionDevice brand(String brand) {
+        this.brand = brand;
+        return this;
+    }
+
+    public String getRom() {
+        return rom;
+    }
+
+    public SubscriptionDevice rom(String rom) {
+        this.rom = rom;
+        return this;
+    }
+
+    public String getRomVersion() {
+        return romVersion;
+    }
+
+    public SubscriptionDevice romVersion(String romVersion) {
+        this.romVersion = romVersion;
+        return this;
+    }
+
+    public SubscriptionDeviceDelivery getDelivery() {
+        return delivery;
+    }
+
+    public SubscriptionDevice delivery(SubscriptionDeviceDelivery delivery) {
+        this.delivery = delivery;
         return this;
     }
 
