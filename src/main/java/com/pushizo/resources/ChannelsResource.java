@@ -41,7 +41,49 @@ public final class ChannelsResource {
         return client.execute(op, options, TYPE_0);
     }
 
-    private static final TypeReference<ChannelConfig> TYPE_1 = new TypeReference<ChannelConfig>() {};
+    private static final TypeReference<ChannelStatusList> TYPE_1 = new TypeReference<ChannelStatusList>() {};
+
+    /**
+     * Kanal özeti (yalnız sağlayıcı ve durum; yapılandırma ayrıntısı dönmez)
+     *
+     * {@code GET /v1/apps/{appId}/channels/status}
+     */
+    public ChannelStatusList status() {
+        return status(null);
+    }
+
+    /**
+     * Kanal özeti (yalnız sağlayıcı ve durum; yapılandırma ayrıntısı dönmez)
+     *
+     * {@code GET /v1/apps/{appId}/channels/status}
+     */
+    public ChannelStatusList status(RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/channels/status");
+        return client.execute(op, options, TYPE_1);
+    }
+
+    private static final TypeReference<ChannelsVerifyDnsResponse> TYPE_2 = new TypeReference<ChannelsVerifyDnsResponse>() {};
+
+    /**
+     * Gönderici alan adı SPF/DKIM/DMARC doğrulaması
+     *
+     * {@code POST /v1/apps/{appId}/channels/email/verify-dns}
+     */
+    public ChannelsVerifyDnsResponse verifyDns() {
+        return verifyDns(null);
+    }
+
+    /**
+     * Gönderici alan adı SPF/DKIM/DMARC doğrulaması
+     *
+     * {@code POST /v1/apps/{appId}/channels/email/verify-dns}
+     */
+    public ChannelsVerifyDnsResponse verifyDns(RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/channels/email/verify-dns");
+        return client.execute(op, options, TYPE_2);
+    }
+
+    private static final TypeReference<ChannelConfig> TYPE_3 = new TypeReference<ChannelConfig>() {};
 
     /**
      * Kimlik bilgisi yükle (APNs p8, FCM servis hesabı, VAPID, mock)
@@ -64,10 +106,10 @@ public final class ChannelsResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_1);
+        return client.execute(op, options, TYPE_3);
     }
 
-    private static final TypeReference<ChannelValidation> TYPE_2 = new TypeReference<ChannelValidation>() {};
+    private static final TypeReference<ChannelValidation> TYPE_4 = new TypeReference<ChannelValidation>() {};
 
     /**
      * Sağlayıcıya test bağlantısı
@@ -86,6 +128,6 @@ public final class ChannelsResource {
     public ChannelValidation validate(String channel, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/channels/{channel}/validate");
         op.pathParam("channel", channel);
-        return client.execute(op, options, TYPE_2);
+        return client.execute(op, options, TYPE_4);
     }
 }

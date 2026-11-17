@@ -241,7 +241,167 @@ public final class EmailDeliverabilityResource {
         return client.execute(op, options, TYPE_8);
     }
 
-    private static final TypeReference<PostmasterStats> TYPE_9 = new TypeReference<PostmasterStats>() {};
+    private static final TypeReference<EmailHygieneStatus> TYPE_9 = new TypeReference<EmailHygieneStatus>() {};
+
+    /**
+     * Liste temizliği durumu: e-posta aboneliklerinin denetim dağılımı ve son doğrulama çalıştırması
+     *
+     * {@code GET /v1/apps/{appId}/email-deliverability/hygiene}
+     */
+    public EmailHygieneStatus hygiene() {
+        return hygiene(null);
+    }
+
+    /**
+     * Liste temizliği durumu: e-posta aboneliklerinin denetim dağılımı ve son doğrulama çalıştırması
+     *
+     * {@code GET /v1/apps/{appId}/email-deliverability/hygiene}
+     */
+    public EmailHygieneStatus hygiene(RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/email-deliverability/hygiene");
+        return client.execute(op, options, TYPE_9);
+    }
+
+    private static final TypeReference<EmailHygieneStart> TYPE_10 = new TypeReference<EmailHygieneStart>() {};
+
+    /**
+     * Listeyi doğrula: tüm e-posta aboneliklerini toplu, hız sınırlı doğrula (etkin çalıştırma varsa o döner)
+     *
+     * {@code POST /v1/apps/{appId}/email-deliverability/hygiene-runs}
+     */
+    public EmailHygieneStart startHygiene(java.util.Map<String, Object> body) {
+        return startHygiene(body, null);
+    }
+
+    /**
+     * Listeyi doğrula: tüm e-posta aboneliklerini toplu, hız sınırlı doğrula (etkin çalıştırma varsa o döner)
+     *
+     * {@code POST /v1/apps/{appId}/email-deliverability/hygiene-runs}
+     */
+    public EmailHygieneStart startHygiene(java.util.Map<String, Object> body, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/email-deliverability/hygiene-runs");
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_10);
+    }
+
+    private static final TypeReference<EmailHygieneRun> TYPE_11 = new TypeReference<EmailHygieneRun>() {};
+
+    /**
+     * Liste doğrulama çalıştırması (ilerleme ve özet)
+     *
+     * {@code GET /v1/apps/{appId}/email-deliverability/hygiene-runs/{runId}}
+     */
+    public EmailHygieneRun hygieneRun(String runId) {
+        return hygieneRun(runId, null);
+    }
+
+    /**
+     * Liste doğrulama çalıştırması (ilerleme ve özet)
+     *
+     * {@code GET /v1/apps/{appId}/email-deliverability/hygiene-runs/{runId}}
+     */
+    public EmailHygieneRun hygieneRun(String runId, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/email-deliverability/hygiene-runs/{runId}");
+        op.pathParam("runId", runId);
+        return client.execute(op, options, TYPE_11);
+    }
+
+    private static final TypeReference<EmailHygieneSuppress> TYPE_12 = new TypeReference<EmailHygieneSuppress>() {};
+
+    /**
+     * Doğrulamada geçersiz bulunan adresleri bastır (abonelik invalid + suppression list)
+     *
+     * {@code POST /v1/apps/{appId}/email-deliverability/hygiene-runs/{runId}/suppress}
+     */
+    public EmailHygieneSuppress suppressHygiene(String runId, java.util.Map<String, Object> body) {
+        return suppressHygiene(runId, body, null);
+    }
+
+    /**
+     * Doğrulamada geçersiz bulunan adresleri bastır (abonelik invalid + suppression list)
+     *
+     * {@code POST /v1/apps/{appId}/email-deliverability/hygiene-runs/{runId}/suppress}
+     */
+    public EmailHygieneSuppress suppressHygiene(String runId, java.util.Map<String, Object> body, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/email-deliverability/hygiene-runs/{runId}/suppress");
+        op.pathParam("runId", runId);
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_12);
+    }
+
+    private static final TypeReference<EmailProviderInsights> TYPE_13 = new TypeReference<EmailProviderInsights>() {};
+
+    /**
+     * Posta sağlayıcısı bazında (Gmail, Outlook, Yahoo, diğer) teslim, açılma, tıklama, bounce ve şikâyet sayıları
+     *
+     * {@code GET /v1/apps/{appId}/email-deliverability/insights}
+     */
+    public EmailProviderInsights insights() {
+        return insights(null, null);
+    }
+
+    /**
+     * Posta sağlayıcısı bazında (Gmail, Outlook, Yahoo, diğer) teslim, açılma, tıklama, bounce ve şikâyet sayıları
+     *
+     * {@code GET /v1/apps/{appId}/email-deliverability/insights}
+     */
+    public EmailProviderInsights insights(EmailDeliverabilityInsightsParams params) {
+        return insights(params, null);
+    }
+
+    /**
+     * Posta sağlayıcısı bazında (Gmail, Outlook, Yahoo, diğer) teslim, açılma, tıklama, bounce ve şikâyet sayıları
+     *
+     * {@code GET /v1/apps/{appId}/email-deliverability/insights}
+     */
+    public EmailProviderInsights insights(EmailDeliverabilityInsightsParams params, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/email-deliverability/insights");
+        if (params != null) {
+            params.applyTo(op);
+        }
+        return client.execute(op, options, TYPE_13);
+    }
+
+    private static final TypeReference<EmailBounceStats> TYPE_14 = new TypeReference<EmailBounceStats>() {};
+
+    /**
+     * E-posta bounce eğilimi (%2 hedef), tür/neden dağılımı ve en çok bounce alan alıcı alan adları
+     *
+     * {@code GET /v1/apps/{appId}/email-deliverability/bounces}
+     */
+    public EmailBounceStats bounces() {
+        return bounces(null, null);
+    }
+
+    /**
+     * E-posta bounce eğilimi (%2 hedef), tür/neden dağılımı ve en çok bounce alan alıcı alan adları
+     *
+     * {@code GET /v1/apps/{appId}/email-deliverability/bounces}
+     */
+    public EmailBounceStats bounces(EmailDeliverabilityBouncesParams params) {
+        return bounces(params, null);
+    }
+
+    /**
+     * E-posta bounce eğilimi (%2 hedef), tür/neden dağılımı ve en çok bounce alan alıcı alan adları
+     *
+     * {@code GET /v1/apps/{appId}/email-deliverability/bounces}
+     */
+    public EmailBounceStats bounces(EmailDeliverabilityBouncesParams params, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/email-deliverability/bounces");
+        if (params != null) {
+            params.applyTo(op);
+        }
+        return client.execute(op, options, TYPE_14);
+    }
+
+    private static final TypeReference<PostmasterStats> TYPE_15 = new TypeReference<PostmasterStats>() {};
 
     /**
      * Google Postmaster itibar kayıtları
@@ -259,10 +419,10 @@ public final class EmailDeliverabilityResource {
      */
     public PostmasterStats postmaster(RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/email-deliverability/postmaster");
-        return client.execute(op, options, TYPE_9);
+        return client.execute(op, options, TYPE_15);
     }
 
-    private static final TypeReference<PostmasterStats> TYPE_10 = new TypeReference<PostmasterStats>() {};
+    private static final TypeReference<PostmasterStats> TYPE_16 = new TypeReference<PostmasterStats>() {};
 
     /**
      * Google Postmaster dünkü itibarını oku
@@ -280,6 +440,6 @@ public final class EmailDeliverabilityResource {
      */
     public PostmasterStats syncPostmaster(RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/email-deliverability/postmaster/sync");
-        return client.execute(op, options, TYPE_10);
+        return client.execute(op, options, TYPE_16);
     }
 }

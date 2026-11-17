@@ -60,10 +60,12 @@ public abstract class PushizoResources {
     private final RecommendationsResource recommendations;
     private final ReverseEtlResource reverseEtl;
     private final RfmResource rfm;
+    private final SdkErrorsResource sdkErrors;
     private final SiteSearchResource siteSearch;
     private final SmsKeywordsResource smsKeywords;
     private final SqlResource sql;
     private final SurveysResource surveys;
+    private final TraceResource trace;
     private final VerifyResource verify;
     private final WalletResource wallet;
     private final WarehouseExportsResource warehouseExports;
@@ -124,10 +126,12 @@ public abstract class PushizoResources {
         this.recommendations = new RecommendationsResource((Pushizo) this);
         this.reverseEtl = new ReverseEtlResource((Pushizo) this);
         this.rfm = new RfmResource((Pushizo) this);
+        this.sdkErrors = new SdkErrorsResource((Pushizo) this);
         this.siteSearch = new SiteSearchResource((Pushizo) this);
         this.smsKeywords = new SmsKeywordsResource((Pushizo) this);
         this.sql = new SqlResource((Pushizo) this);
         this.surveys = new SurveysResource((Pushizo) this);
+        this.trace = new TraceResource((Pushizo) this);
         this.verify = new VerifyResource((Pushizo) this);
         this.wallet = new WalletResource((Pushizo) this);
         this.warehouseExports = new WarehouseExportsResource((Pushizo) this);
@@ -495,6 +499,13 @@ public abstract class PushizoResources {
     }
 
     /**
+     * sdkErrors
+     */
+    public SdkErrorsResource sdkErrors() {
+        return sdkErrors;
+    }
+
+    /**
      * siteSearch
      */
     public SiteSearchResource siteSearch() {
@@ -520,6 +531,13 @@ public abstract class PushizoResources {
      */
     public SurveysResource surveys() {
         return surveys;
+    }
+
+    /**
+     * trace
+     */
+    public TraceResource trace() {
+        return trace;
     }
 
     /**

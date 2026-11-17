@@ -124,7 +124,71 @@ public final class OrganizationResource {
         });
     }
 
-    private static final TypeReference<UsageReport> TYPE_3 = new TypeReference<UsageReport>() {};
+    private static final TypeReference<RequestLogPage> TYPE_3 = new TypeReference<RequestLogPage>() {};
+
+    /**
+     * Public API istek logları (org geneli admin anahtarı; son 7 gün, cursor)
+     *
+     * {@code GET /v1/organization/logs}
+     */
+    public RequestLogPage requestLogs() {
+        return requestLogs(null, null);
+    }
+
+    /**
+     * Public API istek logları (org geneli admin anahtarı; son 7 gün, cursor)
+     *
+     * {@code GET /v1/organization/logs}
+     */
+    public RequestLogPage requestLogs(OrganizationRequestLogsParams params) {
+        return requestLogs(params, null);
+    }
+
+    /**
+     * Public API istek logları (org geneli admin anahtarı; son 7 gün, cursor)
+     *
+     * {@code GET /v1/organization/logs}
+     *
+     * Parametreler: status_class — Değerler: "2xx", "4xx", "5xx".; method — Değerler: "GET", "POST", "PUT", "PATCH", "DELETE".
+     */
+    public RequestLogPage requestLogs(OrganizationRequestLogsParams params, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/organization/logs");
+        if (params != null) {
+            params.applyTo(op);
+        }
+        return client.execute(op, options, TYPE_3);
+    }
+
+    /**
+     * requestLogs sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek dolaşır (sayfalar tembel yüklenir).
+     */
+    public PageIterable<RequestLog> requestLogsAll() {
+        return requestLogsAll(null, null);
+    }
+
+    /**
+     * requestLogs sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek dolaşır (sayfalar tembel yüklenir).
+     */
+    public PageIterable<RequestLog> requestLogsAll(OrganizationRequestLogsParams params) {
+        return requestLogsAll(params, null);
+    }
+
+    /**
+     * requestLogs sonuçlarını next_cursor ile tüm sayfalar boyunca tek tek dolaşır (sayfalar tembel yüklenir).
+     */
+    public PageIterable<RequestLog> requestLogsAll(OrganizationRequestLogsParams params, RequestOptions options) {
+        OrganizationRequestLogsParams base = params == null ? new OrganizationRequestLogsParams() : params.copy();
+        return new PageIterable<>(cursor -> {
+            OrganizationRequestLogsParams p = base.copy();
+            if (cursor != null) {
+                p.cursor(cursor);
+            }
+            RequestLogPage page = requestLogs(p, options);
+            return new PageIterable.Page<>(page.getData(), page.getNextCursor(), Boolean.TRUE.equals(page.getHasMore()));
+        });
+    }
+
+    private static final TypeReference<UsageReport> TYPE_4 = new TypeReference<UsageReport>() {};
 
     /**
      * Organizasyon kullanımı ve plan kotaları (org geneli anahtar)
@@ -154,6 +218,6 @@ public final class OrganizationResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_3);
+        return client.execute(op, options, TYPE_4);
     }
 }

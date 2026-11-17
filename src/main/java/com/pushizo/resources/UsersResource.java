@@ -311,7 +311,100 @@ public final class UsersResource {
         return client.execute(op, options, TYPE_9);
     }
 
-    private static final TypeReference<Subscription> TYPE_10 = new TypeReference<Subscription>() {};
+    private static final TypeReference<UserTimeline> TYPE_10 = new TypeReference<UserTimeline>() {};
+
+    /**
+     * Kullanıcının olay ve teslimat zaman çizelgesi (en yeni 40 kayıt)
+     *
+     * {@code GET /v1/apps/{appId}/users/by/{label}/{value}/timeline}
+     */
+    public UserTimeline timeline(String label, String value) {
+        return timeline(label, value, null);
+    }
+
+    /**
+     * Kullanıcının olay ve teslimat zaman çizelgesi (en yeni 40 kayıt)
+     *
+     * {@code GET /v1/apps/{appId}/users/by/{label}/{value}/timeline}
+     */
+    public UserTimeline timeline(String label, String value, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/users/by/{label}/{value}/timeline");
+        op.pathParam("label", label);
+        op.pathParam("value", value);
+        return client.execute(op, options, TYPE_10);
+    }
+
+    private static final TypeReference<EventList> TYPE_11 = new TypeReference<EventList>() {};
+
+    /**
+     * Kullanıcının son olayları
+     *
+     * {@code GET /v1/apps/{appId}/users/by/{label}/{value}/events}
+     */
+    public EventList userEvents(String label, String value) {
+        return userEvents(label, value, null, null);
+    }
+
+    /**
+     * Kullanıcının son olayları
+     *
+     * {@code GET /v1/apps/{appId}/users/by/{label}/{value}/events}
+     */
+    public EventList userEvents(String label, String value, UsersUserEventsParams params) {
+        return userEvents(label, value, params, null);
+    }
+
+    /**
+     * Kullanıcının son olayları
+     *
+     * {@code GET /v1/apps/{appId}/users/by/{label}/{value}/events}
+     */
+    public EventList userEvents(String label, String value, UsersUserEventsParams params, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/users/by/{label}/{value}/events");
+        op.pathParam("label", label);
+        op.pathParam("value", value);
+        if (params != null) {
+            params.applyTo(op);
+        }
+        return client.execute(op, options, TYPE_11);
+    }
+
+    private static final TypeReference<UserMessageList> TYPE_12 = new TypeReference<UserMessageList>() {};
+
+    /**
+     * Kullanıcının son mesajları (teslimatlar, en yeni önce)
+     *
+     * {@code GET /v1/apps/{appId}/users/by/{label}/{value}/messages}
+     */
+    public UserMessageList userMessages(String label, String value) {
+        return userMessages(label, value, null, null);
+    }
+
+    /**
+     * Kullanıcının son mesajları (teslimatlar, en yeni önce)
+     *
+     * {@code GET /v1/apps/{appId}/users/by/{label}/{value}/messages}
+     */
+    public UserMessageList userMessages(String label, String value, UsersUserMessagesParams params) {
+        return userMessages(label, value, params, null);
+    }
+
+    /**
+     * Kullanıcının son mesajları (teslimatlar, en yeni önce)
+     *
+     * {@code GET /v1/apps/{appId}/users/by/{label}/{value}/messages}
+     */
+    public UserMessageList userMessages(String label, String value, UsersUserMessagesParams params, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/users/by/{label}/{value}/messages");
+        op.pathParam("label", label);
+        op.pathParam("value", value);
+        if (params != null) {
+            params.applyTo(op);
+        }
+        return client.execute(op, options, TYPE_12);
+    }
+
+    private static final TypeReference<Subscription> TYPE_13 = new TypeReference<Subscription>() {};
 
     /**
      * Kullanıcıya abonelik ekle
@@ -335,6 +428,6 @@ public final class UsersResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_10);
+        return client.execute(op, options, TYPE_13);
     }
 }

@@ -20,7 +20,28 @@ public final class WebhooksResource {
         this.client = client;
     }
 
-    private static final TypeReference<WebhookList> TYPE_0 = new TypeReference<WebhookList>() {};
+    private static final TypeReference<WebhookEventTypes> TYPE_0 = new TypeReference<WebhookEventTypes>() {};
+
+    /**
+     * Abone olunabilecek olay türleri
+     *
+     * {@code GET /v1/apps/{appId}/webhooks/event-types}
+     */
+    public WebhookEventTypes eventTypes() {
+        return eventTypes(null);
+    }
+
+    /**
+     * Abone olunabilecek olay türleri
+     *
+     * {@code GET /v1/apps/{appId}/webhooks/event-types}
+     */
+    public WebhookEventTypes eventTypes(RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/webhooks/event-types");
+        return client.execute(op, options, TYPE_0);
+    }
+
+    private static final TypeReference<WebhookList> TYPE_1 = new TypeReference<WebhookList>() {};
 
     /**
      * Webhook endpoint'leri
@@ -38,10 +59,10 @@ public final class WebhooksResource {
      */
     public WebhookList list(RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/webhooks");
-        return client.execute(op, options, TYPE_0);
+        return client.execute(op, options, TYPE_1);
     }
 
-    private static final TypeReference<WebhookWithSecret> TYPE_1 = new TypeReference<WebhookWithSecret>() {};
+    private static final TypeReference<WebhookWithSecret> TYPE_2 = new TypeReference<WebhookWithSecret>() {};
 
     /**
      * Endpoint oluştur (secret yalnızca bu yanıtta döner)
@@ -63,10 +84,10 @@ public final class WebhooksResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_1);
+        return client.execute(op, options, TYPE_2);
     }
 
-    private static final TypeReference<WebhookPreviewResult> TYPE_2 = new TypeReference<WebhookPreviewResult>() {};
+    private static final TypeReference<WebhookPreviewResult> TYPE_3 = new TypeReference<WebhookPreviewResult>() {};
 
     /**
      * Event Streams önizlemesi: örnek olay + şablon + filtre → gövde/hata (gönderim yapmaz)
@@ -88,10 +109,10 @@ public final class WebhooksResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_2);
+        return client.execute(op, options, TYPE_3);
     }
 
-    private static final TypeReference<Webhook> TYPE_3 = new TypeReference<Webhook>() {};
+    private static final TypeReference<Webhook> TYPE_4 = new TypeReference<Webhook>() {};
 
     /**
      * Endpoint detayı
@@ -110,10 +131,10 @@ public final class WebhooksResource {
     public Webhook get(String webhookId, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/webhooks/{webhookId}");
         op.pathParam("webhookId", webhookId);
-        return client.execute(op, options, TYPE_3);
+        return client.execute(op, options, TYPE_4);
     }
 
-    private static final TypeReference<Webhook> TYPE_4 = new TypeReference<Webhook>() {};
+    private static final TypeReference<Webhook> TYPE_5 = new TypeReference<Webhook>() {};
 
     /**
      * Endpoint güncelle (URL, olaylar, batch, başlıklar, etkinleştir/durdur)
@@ -136,10 +157,10 @@ public final class WebhooksResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_4);
+        return client.execute(op, options, TYPE_5);
     }
 
-    private static final TypeReference<Ok> TYPE_5 = new TypeReference<Ok>() {};
+    private static final TypeReference<Ok> TYPE_6 = new TypeReference<Ok>() {};
 
     /**
      * Endpoint sil
@@ -158,10 +179,10 @@ public final class WebhooksResource {
     public Ok delete(String webhookId, RequestOptions options) {
         Operation op = new Operation("DELETE", "/v1/apps/{appId}/webhooks/{webhookId}");
         op.pathParam("webhookId", webhookId);
-        return client.execute(op, options, TYPE_5);
+        return client.execute(op, options, TYPE_6);
     }
 
-    private static final TypeReference<WebhookWithSecret> TYPE_6 = new TypeReference<WebhookWithSecret>() {};
+    private static final TypeReference<WebhookWithSecret> TYPE_7 = new TypeReference<WebhookWithSecret>() {};
 
     /**
      * Secret rotasyonu (eski secret 24 saat ikinci imza olarak gönderilir)
@@ -180,10 +201,10 @@ public final class WebhooksResource {
     public WebhookWithSecret rotateSecret(String webhookId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/webhooks/{webhookId}/rotate-secret");
         op.pathParam("webhookId", webhookId);
-        return client.execute(op, options, TYPE_6);
+        return client.execute(op, options, TYPE_7);
     }
 
-    private static final TypeReference<WebhookDeliveryDetail> TYPE_7 = new TypeReference<WebhookDeliveryDetail>() {};
+    private static final TypeReference<WebhookDeliveryDetail> TYPE_8 = new TypeReference<WebhookDeliveryDetail>() {};
 
     /**
      * Test olayı gönder (anında, sonuç döner)
@@ -202,10 +223,10 @@ public final class WebhooksResource {
     public WebhookDeliveryDetail test(String webhookId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/webhooks/{webhookId}/test");
         op.pathParam("webhookId", webhookId);
-        return client.execute(op, options, TYPE_7);
+        return client.execute(op, options, TYPE_8);
     }
 
-    private static final TypeReference<WebhookDeliveryPage> TYPE_8 = new TypeReference<WebhookDeliveryPage>() {};
+    private static final TypeReference<WebhookDeliveryPage> TYPE_9 = new TypeReference<WebhookDeliveryPage>() {};
 
     /**
      * Teslim geçmişi (cursor; durum/olay türü filtresi)
@@ -238,7 +259,7 @@ public final class WebhooksResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_8);
+        return client.execute(op, options, TYPE_9);
     }
 
     /**
@@ -270,7 +291,55 @@ public final class WebhooksResource {
         });
     }
 
-    private static final TypeReference<WebhookDeliveryDetail> TYPE_9 = new TypeReference<WebhookDeliveryDetail>() {};
+    private static final TypeReference<WebhookBulkReplayResult> TYPE_10 = new TypeReference<WebhookBulkReplayResult>() {};
+
+    /**
+     * Başarısız/ölü teslimleri toplu yeniden gönder (en fazla 1000)
+     *
+     * {@code POST /v1/apps/{appId}/webhooks/{webhookId}/replay}
+     */
+    public WebhookBulkReplayResult bulkReplay(String webhookId, BulkReplayDto body) {
+        return bulkReplay(webhookId, body, null);
+    }
+
+    /**
+     * Başarısız/ölü teslimleri toplu yeniden gönder (en fazla 1000)
+     *
+     * {@code POST /v1/apps/{appId}/webhooks/{webhookId}/replay}
+     */
+    public WebhookBulkReplayResult bulkReplay(String webhookId, BulkReplayDto body, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/webhooks/{webhookId}/replay");
+        op.pathParam("webhookId", webhookId);
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_10);
+    }
+
+    private static final TypeReference<WebhookDeliveryDetail> TYPE_11 = new TypeReference<WebhookDeliveryDetail>() {};
+
+    /**
+     * Teslim detayı (gövde dahil)
+     *
+     * {@code GET /v1/apps/{appId}/webhooks/deliveries/{deliveryId}}
+     */
+    public WebhookDeliveryDetail delivery(String deliveryId) {
+        return delivery(deliveryId, null);
+    }
+
+    /**
+     * Teslim detayı (gövde dahil)
+     *
+     * {@code GET /v1/apps/{appId}/webhooks/deliveries/{deliveryId}}
+     */
+    public WebhookDeliveryDetail delivery(String deliveryId, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/webhooks/deliveries/{deliveryId}");
+        op.pathParam("deliveryId", deliveryId);
+        return client.execute(op, options, TYPE_11);
+    }
+
+    private static final TypeReference<WebhookDeliveryDetail> TYPE_12 = new TypeReference<WebhookDeliveryDetail>() {};
 
     /**
      * Teslimi yeniden gönder (aynı olay kimliğiyle)
@@ -289,6 +358,6 @@ public final class WebhooksResource {
     public WebhookDeliveryDetail replay(String deliveryId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/webhooks/deliveries/{deliveryId}/replay");
         op.pathParam("deliveryId", deliveryId);
-        return client.execute(op, options, TYPE_9);
+        return client.execute(op, options, TYPE_12);
     }
 }
