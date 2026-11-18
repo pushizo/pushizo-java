@@ -25,7 +25,7 @@ public final class Import {
     private String appId;
 
     /**
-     * Zorunlu. Değerler: "eski sağlayıcı_players", "csv_users".
+     * Zorunlu. Değerler: "legacy_players", "csv_users".
      */
     @JsonProperty("type")
     private String type;

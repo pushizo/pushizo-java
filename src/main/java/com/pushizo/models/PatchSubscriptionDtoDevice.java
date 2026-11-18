@@ -48,6 +48,33 @@ public final class PatchSubscriptionDtoDevice {
     @JsonProperty("push_environment")
     private String pushEnvironment;
 
+    /**
+     * Değerler: "phone", "watch".
+     */
+    @JsonProperty("form_factor")
+    private String formFactor;
+
+    /**
+     * Değerler: "alert", "voip", "app_clip".
+     */
+    @JsonProperty("push_kind")
+    private String pushKind;
+
+    @JsonProperty("manufacturer")
+    private String manufacturer;
+
+    @JsonProperty("brand")
+    private String brand;
+
+    @JsonProperty("rom")
+    private String rom;
+
+    @JsonProperty("rom_version")
+    private String romVersion;
+
+    @JsonProperty("delivery")
+    private PatchSubscriptionDtoDeviceDelivery delivery;
+
     public String getModel() {
         return model;
     }
@@ -144,6 +171,69 @@ public final class PatchSubscriptionDtoDevice {
 
     public PatchSubscriptionDtoDevice pushEnvironment(String pushEnvironment) {
         this.pushEnvironment = pushEnvironment;
+        return this;
+    }
+
+    public String getFormFactor() {
+        return formFactor;
+    }
+
+    public PatchSubscriptionDtoDevice formFactor(String formFactor) {
+        this.formFactor = formFactor;
+        return this;
+    }
+
+    public String getPushKind() {
+        return pushKind;
+    }
+
+    public PatchSubscriptionDtoDevice pushKind(String pushKind) {
+        this.pushKind = pushKind;
+        return this;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public PatchSubscriptionDtoDevice manufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+        return this;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public PatchSubscriptionDtoDevice brand(String brand) {
+        this.brand = brand;
+        return this;
+    }
+
+    public String getRom() {
+        return rom;
+    }
+
+    public PatchSubscriptionDtoDevice rom(String rom) {
+        this.rom = rom;
+        return this;
+    }
+
+    public String getRomVersion() {
+        return romVersion;
+    }
+
+    public PatchSubscriptionDtoDevice romVersion(String romVersion) {
+        this.romVersion = romVersion;
+        return this;
+    }
+
+    public PatchSubscriptionDtoDeviceDelivery getDelivery() {
+        return delivery;
+    }
+
+    public PatchSubscriptionDtoDevice delivery(PatchSubscriptionDtoDeviceDelivery delivery) {
+        this.delivery = delivery;
         return this;
     }
 

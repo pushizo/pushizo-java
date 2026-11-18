@@ -30,6 +30,24 @@ public final class EmailDeliverabilitySettings {
     @JsonProperty("verifier")
     private EmailDeliverabilitySettingsVerifier verifier;
 
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("volume_spike")
+    private EmailDeliverabilitySettingsVolumeSpike volumeSpike;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("postmaster")
+    private EmailDeliverabilitySettingsPostmaster postmaster;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("max_invalid_ratio")
+    private Double maxInvalidRatio;
+
     public String getBccAddress() {
         return bccAddress;
     }
@@ -54,6 +72,33 @@ public final class EmailDeliverabilitySettings {
 
     public EmailDeliverabilitySettings verifier(EmailDeliverabilitySettingsVerifier verifier) {
         this.verifier = verifier;
+        return this;
+    }
+
+    public EmailDeliverabilitySettingsVolumeSpike getVolumeSpike() {
+        return volumeSpike;
+    }
+
+    public EmailDeliverabilitySettings volumeSpike(EmailDeliverabilitySettingsVolumeSpike volumeSpike) {
+        this.volumeSpike = volumeSpike;
+        return this;
+    }
+
+    public EmailDeliverabilitySettingsPostmaster getPostmaster() {
+        return postmaster;
+    }
+
+    public EmailDeliverabilitySettings postmaster(EmailDeliverabilitySettingsPostmaster postmaster) {
+        this.postmaster = postmaster;
+        return this;
+    }
+
+    public Double getMaxInvalidRatio() {
+        return maxInvalidRatio;
+    }
+
+    public EmailDeliverabilitySettings maxInvalidRatio(Double maxInvalidRatio) {
+        this.maxInvalidRatio = maxInvalidRatio;
         return this;
     }
 

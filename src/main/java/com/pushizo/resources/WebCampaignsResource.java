@@ -157,7 +157,29 @@ public final class WebCampaignsResource {
         return client.execute(op, options, TYPE_3);
     }
 
-    private static final TypeReference<WebCampaignReport> TYPE_4 = new TypeReference<WebCampaignReport>() {};
+    private static final TypeReference<Ok> TYPE_4 = new TypeReference<Ok>() {};
+
+    /**
+     * Web kampanyasını sil (olaylarıyla birlikte)
+     *
+     * {@code DELETE /v1/apps/{appId}/web-campaigns/{campaignId}}
+     */
+    public Ok delete(String campaignId) {
+        return delete(campaignId, null);
+    }
+
+    /**
+     * Web kampanyasını sil (olaylarıyla birlikte)
+     *
+     * {@code DELETE /v1/apps/{appId}/web-campaigns/{campaignId}}
+     */
+    public Ok delete(String campaignId, RequestOptions options) {
+        Operation op = new Operation("DELETE", "/v1/apps/{appId}/web-campaigns/{campaignId}");
+        op.pathParam("campaignId", campaignId);
+        return client.execute(op, options, TYPE_4);
+    }
+
+    private static final TypeReference<WebCampaignReport> TYPE_5 = new TypeReference<WebCampaignReport>() {};
 
     /**
      * Günlük seri
@@ -188,10 +210,10 @@ public final class WebCampaignsResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_4);
+        return client.execute(op, options, TYPE_5);
     }
 
-    private static final TypeReference<WebCampaign> TYPE_5 = new TypeReference<WebCampaign>() {};
+    private static final TypeReference<WebCampaign> TYPE_6 = new TypeReference<WebCampaign>() {};
 
     /**
      * Yayınla / duraklat / arşivle
@@ -214,6 +236,32 @@ public final class WebCampaignsResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_5);
+        return client.execute(op, options, TYPE_6);
+    }
+
+    private static final TypeReference<WebCampaign> TYPE_7 = new TypeReference<WebCampaign>() {};
+
+    /**
+     * A/B kazananını seç (SDK yalnızca kazanan görünümü sunar)
+     *
+     * {@code POST /v1/apps/{appId}/web-campaigns/{campaignId}/winner}
+     */
+    public WebCampaign winner(String campaignId, WebCampaignWinnerDto body) {
+        return winner(campaignId, body, null);
+    }
+
+    /**
+     * A/B kazananını seç (SDK yalnızca kazanan görünümü sunar)
+     *
+     * {@code POST /v1/apps/{appId}/web-campaigns/{campaignId}/winner}
+     */
+    public WebCampaign winner(String campaignId, WebCampaignWinnerDto body, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/web-campaigns/{campaignId}/winner");
+        op.pathParam("campaignId", campaignId);
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_7);
     }
 }

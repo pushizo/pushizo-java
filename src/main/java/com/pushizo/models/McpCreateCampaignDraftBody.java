@@ -39,6 +39,12 @@ public final class McpCreateCampaignDraftBody {
     @JsonProperty("category")
     private String category;
 
+    /**
+     * Dönüşüm hedefleri (ADR-0080): birincil A/B kazananını belirler; olaylar dönüşüm olayı olarak tanımlı olmalı.
+     */
+    @JsonProperty("goals")
+    private McpCreateCampaignDraftBodyGoals goals;
+
     @JsonProperty("ab_test")
     private McpCreateCampaignDraftBodyAbTest abTest;
 
@@ -114,6 +120,15 @@ public final class McpCreateCampaignDraftBody {
 
     public McpCreateCampaignDraftBody category(String category) {
         this.category = category;
+        return this;
+    }
+
+    public McpCreateCampaignDraftBodyGoals getGoals() {
+        return goals;
+    }
+
+    public McpCreateCampaignDraftBody goals(McpCreateCampaignDraftBodyGoals goals) {
+        this.goals = goals;
         return this;
     }
 

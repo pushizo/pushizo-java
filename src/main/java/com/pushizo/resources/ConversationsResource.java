@@ -45,7 +45,7 @@ public final class ConversationsResource {
      *
      * {@code GET /v1/apps/{appId}/conversations}
      *
-     * Parametreler: channel — Değerler: "sms", "whatsapp", "rcs", "email", "chat".; status — Değerler: "open", "pending", "resolved", "closed".; unread — Değerler: "true", "false".
+     * Parametreler: channel — Değerler: "sms", "whatsapp", "rcs", "telegram", "viber", "email", "chat".; status — Değerler: "open", "pending", "resolved", "closed".; unread — Değerler: "true", "false".
      */
     public ConversationPage list(ConversationsListParams params, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/conversations");
@@ -132,7 +132,29 @@ public final class ConversationsResource {
         return client.execute(op, options, TYPE_2);
     }
 
-    private static final TypeReference<ConversationMessagePage> TYPE_3 = new TypeReference<ConversationMessagePage>() {};
+    private static final TypeReference<ConversationContact> TYPE_3 = new TypeReference<ConversationContact>() {};
+
+    /**
+     * Kişi profili: özellikler, etiketler, abonelikler (maskeli), son olaylar, diğer konuşmalar
+     *
+     * {@code GET /v1/apps/{appId}/conversations/{conversationId}/contact}
+     */
+    public ConversationContact contact(String conversationId) {
+        return contact(conversationId, null);
+    }
+
+    /**
+     * Kişi profili: özellikler, etiketler, abonelikler (maskeli), son olaylar, diğer konuşmalar
+     *
+     * {@code GET /v1/apps/{appId}/conversations/{conversationId}/contact}
+     */
+    public ConversationContact contact(String conversationId, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/conversations/{conversationId}/contact");
+        op.pathParam("conversationId", conversationId);
+        return client.execute(op, options, TYPE_3);
+    }
+
+    private static final TypeReference<ConversationMessagePage> TYPE_4 = new TypeReference<ConversationMessagePage>() {};
 
     /**
      * Konuşma mesajları (yeniden eskiye; `after_seq` ile eskiden yeniye; giden mesaj durumu teslimattan veya okundu işaretçisinden)
@@ -163,7 +185,7 @@ public final class ConversationsResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_3);
+        return client.execute(op, options, TYPE_4);
     }
 
     /**
@@ -195,7 +217,7 @@ public final class ConversationsResource {
         });
     }
 
-    private static final TypeReference<ConversationReplyResult> TYPE_4 = new TypeReference<ConversationReplyResult>() {};
+    private static final TypeReference<ConversationReplyResult> TYPE_5 = new TypeReference<ConversationReplyResult>() {};
 
     /**
      * Yanıt gönder (client_message_id ile tekilleşir). Sohbet: doğrudan; e-posta: yanıt adresli işlemsel e-posta; WhatsApp: açık rıza zorunlu, son gelen mesajdan 24 saat içinde metin/medya, pencere dışında yalnızca onaylı şablon (aksi 422 WHATSAPP_WINDOW_CLOSED).
@@ -218,10 +240,10 @@ public final class ConversationsResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_4);
+        return client.execute(op, options, TYPE_5);
     }
 
-    private static final TypeReference<Conversation> TYPE_5 = new TypeReference<Conversation>() {};
+    private static final TypeReference<Conversation> TYPE_6 = new TypeReference<Conversation>() {};
 
     /**
      * Gelen mesajları okundu işaretle (sohbette ziyaretçiye okundu bilgisi gider)
@@ -240,10 +262,10 @@ public final class ConversationsResource {
     public Conversation read(String conversationId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/conversations/{conversationId}/read");
         op.pathParam("conversationId", conversationId);
-        return client.execute(op, options, TYPE_5);
+        return client.execute(op, options, TYPE_6);
     }
 
-    private static final TypeReference<Conversation> TYPE_6 = new TypeReference<Conversation>() {};
+    private static final TypeReference<Conversation> TYPE_7 = new TypeReference<Conversation>() {};
 
     /**
      * Konuşmayı temsilciye ve/veya takıma ata (inbox.manage olmadan yalnızca kendine)
@@ -266,10 +288,10 @@ public final class ConversationsResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_6);
+        return client.execute(op, options, TYPE_7);
     }
 
-    private static final TypeReference<ConversationTagsResult> TYPE_7 = new TypeReference<ConversationTagsResult>() {};
+    private static final TypeReference<ConversationTagsResult> TYPE_8 = new TypeReference<ConversationTagsResult>() {};
 
     /**
      * Sohbetten kişiye etiket ekle/kaldır
@@ -292,10 +314,10 @@ public final class ConversationsResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_7);
+        return client.execute(op, options, TYPE_8);
     }
 
-    private static final TypeReference<ConversationActivity> TYPE_8 = new TypeReference<ConversationActivity>() {};
+    private static final TypeReference<ConversationActivity> TYPE_9 = new TypeReference<ConversationActivity>() {};
 
     /**
      * Konuşma zaman çizelgesi (atama, durum, ilk yanıt, bot devri)
@@ -314,6 +336,6 @@ public final class ConversationsResource {
     public ConversationActivity activity(String conversationId, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/conversations/{conversationId}/activity");
         op.pathParam("conversationId", conversationId);
-        return client.execute(op, options, TYPE_8);
+        return client.execute(op, options, TYPE_9);
     }
 }

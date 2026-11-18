@@ -33,11 +33,26 @@ public final class AppSettings {
     @JsonProperty("preferenceCenter")
     private AppSettingsPreferenceCenter preferenceCenter;
 
+    @JsonProperty("brandKit")
+    private AppSettingsBrandKit brandKit;
+
     @JsonProperty("defaultTtlSeconds")
     private Long defaultTtlSeconds;
 
     @JsonProperty("identityVerificationRequired")
     private Boolean identityVerificationRequired;
+
+    /**
+     * Değerler: "off", "full", "masked".
+     */
+    @JsonProperty("ipCapture")
+    private String ipCapture;
+
+    @JsonProperty("ipRetentionDays")
+    private Long ipRetentionDays;
+
+    @JsonProperty("adaptiveFrequency")
+    private AppSettingsAdaptiveFrequency adaptiveFrequency;
 
     @JsonProperty("allowedOrigins")
     private java.util.List<String> allowedOrigins;
@@ -117,6 +132,15 @@ public final class AppSettings {
         return this;
     }
 
+    public AppSettingsBrandKit getBrandKit() {
+        return brandKit;
+    }
+
+    public AppSettings brandKit(AppSettingsBrandKit brandKit) {
+        this.brandKit = brandKit;
+        return this;
+    }
+
     public Long getDefaultTtlSeconds() {
         return defaultTtlSeconds;
     }
@@ -132,6 +156,33 @@ public final class AppSettings {
 
     public AppSettings identityVerificationRequired(Boolean identityVerificationRequired) {
         this.identityVerificationRequired = identityVerificationRequired;
+        return this;
+    }
+
+    public String getIpCapture() {
+        return ipCapture;
+    }
+
+    public AppSettings ipCapture(String ipCapture) {
+        this.ipCapture = ipCapture;
+        return this;
+    }
+
+    public Long getIpRetentionDays() {
+        return ipRetentionDays;
+    }
+
+    public AppSettings ipRetentionDays(Long ipRetentionDays) {
+        this.ipRetentionDays = ipRetentionDays;
+        return this;
+    }
+
+    public AppSettingsAdaptiveFrequency getAdaptiveFrequency() {
+        return adaptiveFrequency;
+    }
+
+    public AppSettings adaptiveFrequency(AppSettingsAdaptiveFrequency adaptiveFrequency) {
+        this.adaptiveFrequency = adaptiveFrequency;
         return this;
     }
 

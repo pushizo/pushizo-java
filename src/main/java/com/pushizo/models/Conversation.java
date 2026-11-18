@@ -19,7 +19,7 @@ public final class Conversation {
     private String id;
 
     /**
-     * Zorunlu. Değerler: "sms", "whatsapp", "rcs", "email", "chat".
+     * Zorunlu. Değerler: "sms", "whatsapp", "rcs", "telegram", "viber", "email", "chat".
      */
     @JsonProperty("channel")
     private String channel;

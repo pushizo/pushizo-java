@@ -45,7 +45,7 @@ public final class CampaignsResource {
      *
      * {@code GET /v1/apps/{appId}/campaigns}
      *
-     * Parametreler: status — Değerler: "draft", "scheduled", "running", "paused", "completed", "cancelled", "failed".; type — Değerler: "one_time", "scheduled", "recurring", "automated", "transactional".; channel — Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+     * Parametreler: status — Değerler: "draft", "scheduled", "running", "paused", "completed", "cancelled", "failed".; type — Değerler: "one_time", "scheduled", "recurring", "automated", "transactional".; channel — Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs", "telegram", "viber".
      */
     public CampaignPage list(CampaignsListParams params, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/campaigns");
@@ -182,22 +182,36 @@ public final class CampaignsResource {
     private static final TypeReference<Campaign> TYPE_5 = new TypeReference<Campaign>() {};
 
     /**
-     * Zamanla
+     * Zamanla; e-posta liste koruması 409 → force=true (admin kapsamı)
      *
      * {@code POST /v1/apps/{appId}/campaigns/{campaignId}/schedule}
      */
     public Campaign schedule(String campaignId, ScheduleCampaignDto body) {
-        return schedule(campaignId, body, null);
+        return schedule(campaignId, body, null, null);
     }
 
     /**
-     * Zamanla
+     * Zamanla; e-posta liste koruması 409 → force=true (admin kapsamı)
      *
      * {@code POST /v1/apps/{appId}/campaigns/{campaignId}/schedule}
      */
-    public Campaign schedule(String campaignId, ScheduleCampaignDto body, RequestOptions options) {
+    public Campaign schedule(String campaignId, ScheduleCampaignDto body, CampaignsScheduleParams params) {
+        return schedule(campaignId, body, params, null);
+    }
+
+    /**
+     * Zamanla; e-posta liste koruması 409 → force=true (admin kapsamı)
+     *
+     * {@code POST /v1/apps/{appId}/campaigns/{campaignId}/schedule}
+     *
+     * Parametreler: force — Değerler: "true", "false".; preflight_ack — Değerler: "true", "false".
+     */
+    public Campaign schedule(String campaignId, ScheduleCampaignDto body, CampaignsScheduleParams params, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/campaigns/{campaignId}/schedule");
         op.pathParam("campaignId", campaignId);
+        if (params != null) {
+            params.applyTo(op);
+        }
         if (body == null) {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
@@ -208,26 +222,98 @@ public final class CampaignsResource {
     private static final TypeReference<Campaign> TYPE_6 = new TypeReference<Campaign>() {};
 
     /**
-     * Hemen gönder
+     * Hemen gönder; e-posta liste koruması 409 → force=true (admin kapsamı)
      *
      * {@code POST /v1/apps/{appId}/campaigns/{campaignId}/send}
      */
     public Campaign send(String campaignId) {
-        return send(campaignId, null);
+        return send(campaignId, null, null);
     }
 
     /**
-     * Hemen gönder
+     * Hemen gönder; e-posta liste koruması 409 → force=true (admin kapsamı)
      *
      * {@code POST /v1/apps/{appId}/campaigns/{campaignId}/send}
      */
-    public Campaign send(String campaignId, RequestOptions options) {
+    public Campaign send(String campaignId, CampaignsSendParams params) {
+        return send(campaignId, params, null);
+    }
+
+    /**
+     * Hemen gönder; e-posta liste koruması 409 → force=true (admin kapsamı)
+     *
+     * {@code POST /v1/apps/{appId}/campaigns/{campaignId}/send}
+     *
+     * Parametreler: force — Değerler: "true", "false".; preflight_ack — Değerler: "true", "false".
+     */
+    public Campaign send(String campaignId, CampaignsSendParams params, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/campaigns/{campaignId}/send");
         op.pathParam("campaignId", campaignId);
+        if (params != null) {
+            params.applyTo(op);
+        }
         return client.execute(op, options, TYPE_6);
     }
 
-    private static final TypeReference<Campaign> TYPE_7 = new TypeReference<Campaign>() {};
+    private static final TypeReference<CampaignPreflightReport> TYPE_7 = new TypeReference<CampaignPreflightReport>() {};
+
+    /**
+     * Yayın öncesi denetim raporu (marka, yasaklı ifade, bağlantı, kişiselleştirme, KVKK/İYS)
+     *
+     * {@code POST /v1/apps/{appId}/campaigns/{campaignId}/preflight}
+     */
+    public CampaignPreflightReport preflight(String campaignId) {
+        return preflight(campaignId, null, null);
+    }
+
+    /**
+     * Yayın öncesi denetim raporu (marka, yasaklı ifade, bağlantı, kişiselleştirme, KVKK/İYS)
+     *
+     * {@code POST /v1/apps/{appId}/campaigns/{campaignId}/preflight}
+     */
+    public CampaignPreflightReport preflight(String campaignId, CampaignsPreflightParams params) {
+        return preflight(campaignId, params, null);
+    }
+
+    /**
+     * Yayın öncesi denetim raporu (marka, yasaklı ifade, bağlantı, kişiselleştirme, KVKK/İYS)
+     *
+     * {@code POST /v1/apps/{appId}/campaigns/{campaignId}/preflight}
+     *
+     * Parametreler: check_links — Değerler: "true", "false".
+     */
+    public CampaignPreflightReport preflight(String campaignId, CampaignsPreflightParams params, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/campaigns/{campaignId}/preflight");
+        op.pathParam("campaignId", campaignId);
+        if (params != null) {
+            params.applyTo(op);
+        }
+        return client.execute(op, options, TYPE_7);
+    }
+
+    private static final TypeReference<CampaignEmailRisk> TYPE_8 = new TypeReference<CampaignEmailRisk>() {};
+
+    /**
+     * E-posta liste riski (tahmini geçersiz oranı, 7/30 gün bounce oranı)
+     *
+     * {@code GET /v1/apps/{appId}/campaigns/{campaignId}/email-risk}
+     */
+    public CampaignEmailRisk emailRisk(String campaignId) {
+        return emailRisk(campaignId, null);
+    }
+
+    /**
+     * E-posta liste riski (tahmini geçersiz oranı, 7/30 gün bounce oranı)
+     *
+     * {@code GET /v1/apps/{appId}/campaigns/{campaignId}/email-risk}
+     */
+    public CampaignEmailRisk emailRisk(String campaignId, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/campaigns/{campaignId}/email-risk");
+        op.pathParam("campaignId", campaignId);
+        return client.execute(op, options, TYPE_8);
+    }
+
+    private static final TypeReference<Campaign> TYPE_9 = new TypeReference<Campaign>() {};
 
     /**
      * Duraklat
@@ -246,10 +332,10 @@ public final class CampaignsResource {
     public Campaign pause(String campaignId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/campaigns/{campaignId}/pause");
         op.pathParam("campaignId", campaignId);
-        return client.execute(op, options, TYPE_7);
+        return client.execute(op, options, TYPE_9);
     }
 
-    private static final TypeReference<Campaign> TYPE_8 = new TypeReference<Campaign>() {};
+    private static final TypeReference<Campaign> TYPE_10 = new TypeReference<Campaign>() {};
 
     /**
      * Sürdür
@@ -268,10 +354,10 @@ public final class CampaignsResource {
     public Campaign resume(String campaignId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/campaigns/{campaignId}/resume");
         op.pathParam("campaignId", campaignId);
-        return client.execute(op, options, TYPE_8);
+        return client.execute(op, options, TYPE_10);
     }
 
-    private static final TypeReference<Campaign> TYPE_9 = new TypeReference<Campaign>() {};
+    private static final TypeReference<Campaign> TYPE_11 = new TypeReference<Campaign>() {};
 
     /**
      * İptal
@@ -290,10 +376,10 @@ public final class CampaignsResource {
     public Campaign cancel(String campaignId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/campaigns/{campaignId}/cancel");
         op.pathParam("campaignId", campaignId);
-        return client.execute(op, options, TYPE_9);
+        return client.execute(op, options, TYPE_11);
     }
 
-    private static final TypeReference<Campaign> TYPE_10 = new TypeReference<Campaign>() {};
+    private static final TypeReference<Campaign> TYPE_12 = new TypeReference<Campaign>() {};
 
     /**
      * Çoğalt
@@ -312,10 +398,10 @@ public final class CampaignsResource {
     public Campaign duplicate(String campaignId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/campaigns/{campaignId}/duplicate");
         op.pathParam("campaignId", campaignId);
-        return client.execute(op, options, TYPE_10);
+        return client.execute(op, options, TYPE_12);
     }
 
-    private static final TypeReference<Campaign> TYPE_11 = new TypeReference<Campaign>() {};
+    private static final TypeReference<Campaign> TYPE_13 = new TypeReference<Campaign>() {};
 
     /**
      * Onayla
@@ -323,7 +409,7 @@ public final class CampaignsResource {
      * {@code POST /v1/apps/{appId}/campaigns/{campaignId}/approve}
      */
     public Campaign approve(String campaignId) {
-        return approve(campaignId, null);
+        return approve(campaignId, null, null);
     }
 
     /**
@@ -331,13 +417,27 @@ public final class CampaignsResource {
      *
      * {@code POST /v1/apps/{appId}/campaigns/{campaignId}/approve}
      */
-    public Campaign approve(String campaignId, RequestOptions options) {
-        Operation op = new Operation("POST", "/v1/apps/{appId}/campaigns/{campaignId}/approve");
-        op.pathParam("campaignId", campaignId);
-        return client.execute(op, options, TYPE_11);
+    public Campaign approve(String campaignId, CampaignsApproveParams params) {
+        return approve(campaignId, params, null);
     }
 
-    private static final TypeReference<CampaignStats> TYPE_12 = new TypeReference<CampaignStats>() {};
+    /**
+     * Onayla
+     *
+     * {@code POST /v1/apps/{appId}/campaigns/{campaignId}/approve}
+     *
+     * Parametreler: force — Değerler: "true", "false".; preflight_ack — Değerler: "true", "false".
+     */
+    public Campaign approve(String campaignId, CampaignsApproveParams params, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/campaigns/{campaignId}/approve");
+        op.pathParam("campaignId", campaignId);
+        if (params != null) {
+            params.applyTo(op);
+        }
+        return client.execute(op, options, TYPE_13);
+    }
+
+    private static final TypeReference<CampaignStats> TYPE_14 = new TypeReference<CampaignStats>() {};
 
     /**
      * İstatistikler
@@ -356,10 +456,10 @@ public final class CampaignsResource {
     public CampaignStats stats(String campaignId, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/campaigns/{campaignId}/stats");
         op.pathParam("campaignId", campaignId);
-        return client.execute(op, options, TYPE_12);
+        return client.execute(op, options, TYPE_14);
     }
 
-    private static final TypeReference<CampaignVariantStats> TYPE_13 = new TypeReference<CampaignVariantStats>() {};
+    private static final TypeReference<CampaignVariantStats> TYPE_15 = new TypeReference<CampaignVariantStats>() {};
 
     /**
      * A/B varyant karşılaştırması
@@ -378,10 +478,10 @@ public final class CampaignsResource {
     public CampaignVariantStats variantStats(String campaignId, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/campaigns/{campaignId}/variants/stats");
         op.pathParam("campaignId", campaignId);
-        return client.execute(op, options, TYPE_13);
+        return client.execute(op, options, TYPE_15);
     }
 
-    private static final TypeReference<Campaign> TYPE_14 = new TypeReference<Campaign>() {};
+    private static final TypeReference<Campaign> TYPE_16 = new TypeReference<Campaign>() {};
 
     /**
      * A/B kazananını seç
@@ -404,10 +504,10 @@ public final class CampaignsResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_14);
+        return client.execute(op, options, TYPE_16);
     }
 
-    private static final TypeReference<DeliveryList> TYPE_15 = new TypeReference<DeliveryList>() {};
+    private static final TypeReference<DeliveryList> TYPE_17 = new TypeReference<DeliveryList>() {};
 
     /**
      * Abone bazlı teslimatlar
@@ -440,7 +540,7 @@ public final class CampaignsResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_15);
+        return client.execute(op, options, TYPE_17);
     }
 
     /**
@@ -472,7 +572,7 @@ public final class CampaignsResource {
         });
     }
 
-    private static final TypeReference<Campaign> TYPE_16 = new TypeReference<Campaign>() {};
+    private static final TypeReference<Campaign> TYPE_18 = new TypeReference<Campaign>() {};
 
     /**
      * Başarısız teslimatlara yeniden gönder
@@ -491,10 +591,10 @@ public final class CampaignsResource {
     public Campaign resendFailed(String campaignId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/campaigns/{campaignId}/resend-failed");
         op.pathParam("campaignId", campaignId);
-        return client.execute(op, options, TYPE_16);
+        return client.execute(op, options, TYPE_18);
     }
 
-    private static final TypeReference<MessageList> TYPE_17 = new TypeReference<MessageList>() {};
+    private static final TypeReference<MessageList> TYPE_19 = new TypeReference<MessageList>() {};
 
     /**
      * Kampanya çalıştırmaları
@@ -513,6 +613,6 @@ public final class CampaignsResource {
     public MessageList messages(String campaignId, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/campaigns/{campaignId}/messages");
         op.pathParam("campaignId", campaignId);
-        return client.execute(op, options, TYPE_17);
+        return client.execute(op, options, TYPE_19);
     }
 }

@@ -7,7 +7,7 @@ package com.pushizo.params;
  */
 public final class ImportsCreateForm {
     /**
-     * Zorunlu. Değerler: "eski sağlayıcı_players", "csv_users".
+     * Zorunlu. Değerler: "legacy_players", "csv_users".
      */
     private String type;
 

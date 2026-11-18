@@ -13,25 +13,11 @@
 
 **Pushizo Java SDK** — Server-side SDK for Java 17+. Models and resources are generated from the Pushizo OpenAPI schema; retries, idempotency, pagination and webhook verification are built in.
 
-> **Status:** Publishing to Maven Central is in progress.<br>
-> **Durum:** Maven Central yayını hazırlanıyor.
-
-**Install from GitHub until then · O zamana kadar GitHub'dan kurulum:**
-
-```bash
-curl -LO https://github.com/pushizo/pushizo-java/releases/download/v0.1.0/pushizo-java-0.1.0.jar
-curl -LO https://github.com/pushizo/pushizo-java/releases/download/v0.1.0/pom.xml
-mvn install:install-file -Dfile=pushizo-java-0.1.0.jar -DpomFile=pom.xml
-# ardından / then: com.pushizo:pushizo-java:0.1.0
-```
-
-**After publication · Yayından sonra:**
-
 ```xml
 <dependency>
   <groupId>com.pushizo</groupId>
   <artifactId>pushizo-java</artifactId>
-  <version>0.1.0</version>
+  <version>0.3.0</version>
 </dependency>
 ```
 
@@ -56,14 +42,14 @@ Maven:
 <dependency>
   <groupId>com.pushizo</groupId>
   <artifactId>pushizo-java</artifactId>
-  <version>0.1.0</version>
+  <version>0.3.0</version>
 </dependency>
 ```
 
 Gradle:
 
 ```kotlin
-implementation("com.pushizo:pushizo-java:0.1.0")
+implementation("com.pushizo:pushizo-java:0.3.0")
 ```
 
 ## Kullanım

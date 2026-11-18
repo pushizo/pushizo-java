@@ -7,7 +7,7 @@ import com.pushizo.resources.*;
 /** İstemciye kaynak erişimcilerini ekleyen üretilmiş taban sınıf. */
 public abstract class PushizoResources {
     /** SDK'nın üretildiği OpenAPI sözleşmesinin sürümü. */
-    public static final String API_VERSION = "1.0.0";
+    public static final String API_VERSION = "1.1.0";
 
     private final NotificationsResource notifications;
     private final UsersResource users;
@@ -29,24 +29,49 @@ public abstract class PushizoResources {
     private final ApiKeysResource apiKeys;
     private final OrganizationResource organization;
     private final AdsResource ads;
+    private final AffinityResource affinity;
+    private final AiAgentsResource aiAgents;
     private final CannedResponsesResource cannedResponses;
+    private final CatalogsResource catalogs;
     private final CategoriesResource categories;
+    private final ChannelScoresResource channelScores;
+    private final CompaniesResource companies;
     private final ContentTablesResource contentTables;
     private final ConversationsResource conversations;
+    private final CustomAgentsResource customAgents;
     private final DataFeedsResource dataFeeds;
+    private final DataPipelinesResource dataPipelines;
+    private final DecisionAgentsResource decisionAgents;
     private final EmailDeliverabilityResource emailDeliverability;
+    private final FeatureFlagsResource featureFlags;
     private final FormsResource forms;
+    private final GeofencesResource geofences;
+    private final GlobalControlResource globalControl;
     private final IdentityKeysResource identityKeys;
     private final IntegrationsResource integrations;
     private final JourneysResource journeys;
     private final LandingPagesResource landingPages;
     private final LiveActivitiesResource liveActivities;
     private final McpResource mcp;
+    private final MessengerLinksResource messengerLinks;
+    private final PredictionsResource predictions;
     private final PreferencesResource preferences;
+    private final PromoCodeListsResource promoCodeLists;
+    private final RecommendationsResource recommendations;
+    private final ReverseEtlResource reverseEtl;
+    private final RfmResource rfm;
+    private final SdkErrorsResource sdkErrors;
+    private final SiteSearchResource siteSearch;
     private final SmsKeywordsResource smsKeywords;
+    private final SqlResource sql;
     private final SurveysResource surveys;
+    private final TraceResource trace;
+    private final VerifyResource verify;
+    private final WalletResource wallet;
     private final WarehouseExportsResource warehouseExports;
+    private final WarehouseSegmentsResource warehouseSegments;
     private final WebCampaignsResource webCampaigns;
+    private final WebPersonalizationsResource webPersonalizations;
     private final WhatsappResource whatsapp;
 
     protected PushizoResources() {
@@ -70,24 +95,49 @@ public abstract class PushizoResources {
         this.apiKeys = new ApiKeysResource((Pushizo) this);
         this.organization = new OrganizationResource((Pushizo) this);
         this.ads = new AdsResource((Pushizo) this);
+        this.affinity = new AffinityResource((Pushizo) this);
+        this.aiAgents = new AiAgentsResource((Pushizo) this);
         this.cannedResponses = new CannedResponsesResource((Pushizo) this);
+        this.catalogs = new CatalogsResource((Pushizo) this);
         this.categories = new CategoriesResource((Pushizo) this);
+        this.channelScores = new ChannelScoresResource((Pushizo) this);
+        this.companies = new CompaniesResource((Pushizo) this);
         this.contentTables = new ContentTablesResource((Pushizo) this);
         this.conversations = new ConversationsResource((Pushizo) this);
+        this.customAgents = new CustomAgentsResource((Pushizo) this);
         this.dataFeeds = new DataFeedsResource((Pushizo) this);
+        this.dataPipelines = new DataPipelinesResource((Pushizo) this);
+        this.decisionAgents = new DecisionAgentsResource((Pushizo) this);
         this.emailDeliverability = new EmailDeliverabilityResource((Pushizo) this);
+        this.featureFlags = new FeatureFlagsResource((Pushizo) this);
         this.forms = new FormsResource((Pushizo) this);
+        this.geofences = new GeofencesResource((Pushizo) this);
+        this.globalControl = new GlobalControlResource((Pushizo) this);
         this.identityKeys = new IdentityKeysResource((Pushizo) this);
         this.integrations = new IntegrationsResource((Pushizo) this);
         this.journeys = new JourneysResource((Pushizo) this);
         this.landingPages = new LandingPagesResource((Pushizo) this);
         this.liveActivities = new LiveActivitiesResource((Pushizo) this);
         this.mcp = new McpResource((Pushizo) this);
+        this.messengerLinks = new MessengerLinksResource((Pushizo) this);
+        this.predictions = new PredictionsResource((Pushizo) this);
         this.preferences = new PreferencesResource((Pushizo) this);
+        this.promoCodeLists = new PromoCodeListsResource((Pushizo) this);
+        this.recommendations = new RecommendationsResource((Pushizo) this);
+        this.reverseEtl = new ReverseEtlResource((Pushizo) this);
+        this.rfm = new RfmResource((Pushizo) this);
+        this.sdkErrors = new SdkErrorsResource((Pushizo) this);
+        this.siteSearch = new SiteSearchResource((Pushizo) this);
         this.smsKeywords = new SmsKeywordsResource((Pushizo) this);
+        this.sql = new SqlResource((Pushizo) this);
         this.surveys = new SurveysResource((Pushizo) this);
+        this.trace = new TraceResource((Pushizo) this);
+        this.verify = new VerifyResource((Pushizo) this);
+        this.wallet = new WalletResource((Pushizo) this);
         this.warehouseExports = new WarehouseExportsResource((Pushizo) this);
+        this.warehouseSegments = new WarehouseSegmentsResource((Pushizo) this);
         this.webCampaigns = new WebCampaignsResource((Pushizo) this);
+        this.webPersonalizations = new WebPersonalizationsResource((Pushizo) this);
         this.whatsapp = new WhatsappResource((Pushizo) this);
     }
 
@@ -232,6 +282,20 @@ public abstract class PushizoResources {
     }
 
     /**
+     * affinity
+     */
+    public AffinityResource affinity() {
+        return affinity;
+    }
+
+    /**
+     * aiAgents
+     */
+    public AiAgentsResource aiAgents() {
+        return aiAgents;
+    }
+
+    /**
      * cannedResponses
      */
     public CannedResponsesResource cannedResponses() {
@@ -239,10 +303,31 @@ public abstract class PushizoResources {
     }
 
     /**
+     * catalogs
+     */
+    public CatalogsResource catalogs() {
+        return catalogs;
+    }
+
+    /**
      * categories
      */
     public CategoriesResource categories() {
         return categories;
+    }
+
+    /**
+     * channelScores
+     */
+    public ChannelScoresResource channelScores() {
+        return channelScores;
+    }
+
+    /**
+     * companies
+     */
+    public CompaniesResource companies() {
+        return companies;
     }
 
     /**
@@ -260,10 +345,31 @@ public abstract class PushizoResources {
     }
 
     /**
+     * customAgents
+     */
+    public CustomAgentsResource customAgents() {
+        return customAgents;
+    }
+
+    /**
      * dataFeeds
      */
     public DataFeedsResource dataFeeds() {
         return dataFeeds;
+    }
+
+    /**
+     * dataPipelines
+     */
+    public DataPipelinesResource dataPipelines() {
+        return dataPipelines;
+    }
+
+    /**
+     * decisionAgents
+     */
+    public DecisionAgentsResource decisionAgents() {
+        return decisionAgents;
     }
 
     /**
@@ -274,10 +380,31 @@ public abstract class PushizoResources {
     }
 
     /**
+     * featureFlags
+     */
+    public FeatureFlagsResource featureFlags() {
+        return featureFlags;
+    }
+
+    /**
      * forms
      */
     public FormsResource forms() {
         return forms;
+    }
+
+    /**
+     * geofences
+     */
+    public GeofencesResource geofences() {
+        return geofences;
+    }
+
+    /**
+     * globalControl
+     */
+    public GlobalControlResource globalControl() {
+        return globalControl;
     }
 
     /**
@@ -323,10 +450,66 @@ public abstract class PushizoResources {
     }
 
     /**
+     * messengerLinks
+     */
+    public MessengerLinksResource messengerLinks() {
+        return messengerLinks;
+    }
+
+    /**
+     * predictions
+     */
+    public PredictionsResource predictions() {
+        return predictions;
+    }
+
+    /**
      * preferences
      */
     public PreferencesResource preferences() {
         return preferences;
+    }
+
+    /**
+     * promoCodeLists
+     */
+    public PromoCodeListsResource promoCodeLists() {
+        return promoCodeLists;
+    }
+
+    /**
+     * recommendations
+     */
+    public RecommendationsResource recommendations() {
+        return recommendations;
+    }
+
+    /**
+     * reverseEtl
+     */
+    public ReverseEtlResource reverseEtl() {
+        return reverseEtl;
+    }
+
+    /**
+     * rfm
+     */
+    public RfmResource rfm() {
+        return rfm;
+    }
+
+    /**
+     * sdkErrors
+     */
+    public SdkErrorsResource sdkErrors() {
+        return sdkErrors;
+    }
+
+    /**
+     * siteSearch
+     */
+    public SiteSearchResource siteSearch() {
+        return siteSearch;
     }
 
     /**
@@ -337,10 +520,38 @@ public abstract class PushizoResources {
     }
 
     /**
+     * sql
+     */
+    public SqlResource sql() {
+        return sql;
+    }
+
+    /**
      * surveys
      */
     public SurveysResource surveys() {
         return surveys;
+    }
+
+    /**
+     * trace
+     */
+    public TraceResource trace() {
+        return trace;
+    }
+
+    /**
+     * verify
+     */
+    public VerifyResource verify() {
+        return verify;
+    }
+
+    /**
+     * wallet
+     */
+    public WalletResource wallet() {
+        return wallet;
     }
 
     /**
@@ -351,10 +562,24 @@ public abstract class PushizoResources {
     }
 
     /**
+     * warehouseSegments
+     */
+    public WarehouseSegmentsResource warehouseSegments() {
+        return warehouseSegments;
+    }
+
+    /**
      * webCampaigns
      */
     public WebCampaignsResource webCampaigns() {
         return webCampaigns;
+    }
+
+    /**
+     * webPersonalizations
+     */
+    public WebPersonalizationsResource webPersonalizations() {
+        return webPersonalizations;
     }
 
     /**

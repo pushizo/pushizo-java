@@ -254,7 +254,30 @@ public final class JourneysResource {
         return client.execute(op, options, TYPE_7);
     }
 
-    private static final TypeReference<JourneyPublishResult> TYPE_8 = new TypeReference<JourneyPublishResult>() {};
+    private static final TypeReference<JourneyDetail> TYPE_8 = new TypeReference<JourneyDetail>() {};
+
+    /**
+     * Eski sürümü yeni taslak olarak geri yükle (yayındaki sürüm değişmez)
+     *
+     * {@code POST /v1/apps/{appId}/journeys/{journeyId}/versions/{version}/restore}
+     */
+    public JourneyDetail restoreVersion(String journeyId, String version) {
+        return restoreVersion(journeyId, version, null);
+    }
+
+    /**
+     * Eski sürümü yeni taslak olarak geri yükle (yayındaki sürüm değişmez)
+     *
+     * {@code POST /v1/apps/{appId}/journeys/{journeyId}/versions/{version}/restore}
+     */
+    public JourneyDetail restoreVersion(String journeyId, String version, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/journeys/{journeyId}/versions/{version}/restore");
+        op.pathParam("journeyId", journeyId);
+        op.pathParam("version", version);
+        return client.execute(op, options, TYPE_8);
+    }
+
+    private static final TypeReference<JourneyPublishResult> TYPE_9 = new TypeReference<JourneyPublishResult>() {};
 
     /**
      * Yayınla
@@ -273,10 +296,10 @@ public final class JourneysResource {
     public JourneyPublishResult publish(String journeyId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/journeys/{journeyId}/publish");
         op.pathParam("journeyId", journeyId);
-        return client.execute(op, options, TYPE_8);
+        return client.execute(op, options, TYPE_9);
     }
 
-    private static final TypeReference<JourneyDetail> TYPE_9 = new TypeReference<JourneyDetail>() {};
+    private static final TypeReference<JourneyDetail> TYPE_10 = new TypeReference<JourneyDetail>() {};
 
     /**
      * Duraklat
@@ -295,10 +318,10 @@ public final class JourneysResource {
     public JourneyDetail pause(String journeyId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/journeys/{journeyId}/pause");
         op.pathParam("journeyId", journeyId);
-        return client.execute(op, options, TYPE_9);
+        return client.execute(op, options, TYPE_10);
     }
 
-    private static final TypeReference<JourneyDetail> TYPE_10 = new TypeReference<JourneyDetail>() {};
+    private static final TypeReference<JourneyDetail> TYPE_11 = new TypeReference<JourneyDetail>() {};
 
     /**
      * Devam ettir
@@ -317,10 +340,10 @@ public final class JourneysResource {
     public JourneyDetail resume(String journeyId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/journeys/{journeyId}/resume");
         op.pathParam("journeyId", journeyId);
-        return client.execute(op, options, TYPE_10);
+        return client.execute(op, options, TYPE_11);
     }
 
-    private static final TypeReference<JourneyDetail> TYPE_11 = new TypeReference<JourneyDetail>() {};
+    private static final TypeReference<JourneyDetail> TYPE_12 = new TypeReference<JourneyDetail>() {};
 
     /**
      * Arşivle
@@ -339,10 +362,10 @@ public final class JourneysResource {
     public JourneyDetail archive(String journeyId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/journeys/{journeyId}/archive");
         op.pathParam("journeyId", journeyId);
-        return client.execute(op, options, TYPE_11);
+        return client.execute(op, options, TYPE_12);
     }
 
-    private static final TypeReference<JourneyDetail> TYPE_12 = new TypeReference<JourneyDetail>() {};
+    private static final TypeReference<JourneyDetail> TYPE_13 = new TypeReference<JourneyDetail>() {};
 
     /**
      * Kopyala
@@ -361,10 +384,10 @@ public final class JourneysResource {
     public JourneyDetail duplicate(String journeyId, RequestOptions options) {
         Operation op = new Operation("POST", "/v1/apps/{appId}/journeys/{journeyId}/duplicate");
         op.pathParam("journeyId", journeyId);
-        return client.execute(op, options, TYPE_12);
+        return client.execute(op, options, TYPE_13);
     }
 
-    private static final TypeReference<JourneyStats> TYPE_13 = new TypeReference<JourneyStats>() {};
+    private static final TypeReference<JourneyStats> TYPE_14 = new TypeReference<JourneyStats>() {};
 
     /**
      * Düğüm bazlı istatistik
@@ -397,10 +420,10 @@ public final class JourneysResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_13);
+        return client.execute(op, options, TYPE_14);
     }
 
-    private static final TypeReference<JourneyRunPage> TYPE_14 = new TypeReference<JourneyRunPage>() {};
+    private static final TypeReference<JourneyRunPage> TYPE_15 = new TypeReference<JourneyRunPage>() {};
 
     /**
      * Run listesi
@@ -433,7 +456,7 @@ public final class JourneysResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_14);
+        return client.execute(op, options, TYPE_15);
     }
 
     /**
@@ -465,7 +488,7 @@ public final class JourneysResource {
         });
     }
 
-    private static final TypeReference<JourneyTriggerResult> TYPE_15 = new TypeReference<JourneyTriggerResult>() {};
+    private static final TypeReference<JourneyTriggerResult> TYPE_16 = new TypeReference<JourneyTriggerResult>() {};
 
     /**
      * Kullanıcıyı journey'e sok (external_id, user_id veya alias; context Liquid custom_data)
@@ -488,10 +511,10 @@ public final class JourneysResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_15);
+        return client.execute(op, options, TYPE_16);
     }
 
-    private static final TypeReference<JourneyRunDetail> TYPE_16 = new TypeReference<JourneyRunDetail>() {};
+    private static final TypeReference<JourneyRunDetail> TYPE_17 = new TypeReference<JourneyRunDetail>() {};
 
     /**
      * Run detayı ve adımlar
@@ -511,10 +534,10 @@ public final class JourneysResource {
         Operation op = new Operation("GET", "/v1/apps/{appId}/journeys/{journeyId}/runs/{runId}");
         op.pathParam("journeyId", journeyId);
         op.pathParam("runId", runId);
-        return client.execute(op, options, TYPE_16);
+        return client.execute(op, options, TYPE_17);
     }
 
-    private static final TypeReference<JourneyRunDetail> TYPE_17 = new TypeReference<JourneyRunDetail>() {};
+    private static final TypeReference<JourneyRunDetail> TYPE_18 = new TypeReference<JourneyRunDetail>() {};
 
     /**
      * Run'ı sonlandır
@@ -534,10 +557,10 @@ public final class JourneysResource {
         Operation op = new Operation("DELETE", "/v1/apps/{appId}/journeys/{journeyId}/runs/{runId}");
         op.pathParam("journeyId", journeyId);
         op.pathParam("runId", runId);
-        return client.execute(op, options, TYPE_17);
+        return client.execute(op, options, TYPE_18);
     }
 
-    private static final TypeReference<UserJourneyRuns> TYPE_18 = new TypeReference<UserJourneyRuns>() {};
+    private static final TypeReference<UserJourneyRuns> TYPE_19 = new TypeReference<UserJourneyRuns>() {};
 
     /**
      * Kullanıcının journey run'ları
@@ -557,6 +580,6 @@ public final class JourneysResource {
         Operation op = new Operation("GET", "/v1/apps/{appId}/users/by/{label}/{value}/journeys");
         op.pathParam("label", label);
         op.pathParam("value", value);
-        return client.execute(op, options, TYPE_18);
+        return client.execute(op, options, TYPE_19);
     }
 }

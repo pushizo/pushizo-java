@@ -16,7 +16,7 @@ public final class UpdateKeywordDto {
     private String keyword;
 
     /**
-     * Değerler: "sms", "whatsapp", "rcs".
+     * Değerler: "sms", "whatsapp", "rcs", "telegram", "viber".
      */
     @JsonProperty("channels")
     private java.util.List<String> channels;

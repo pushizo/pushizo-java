@@ -111,6 +111,9 @@ public final class ChannelConfigConfig {
     @JsonProperty("messaging_service_sid")
     private String messagingServiceSid;
 
+    @JsonProperty("verify_service_sid")
+    private String verifyServiceSid;
+
     @JsonProperty("usercode")
     private String usercode;
 
@@ -146,6 +149,21 @@ public final class ChannelConfigConfig {
 
     @JsonProperty("sms_fallback")
     private Boolean smsFallback;
+
+    @JsonProperty("telegram_bot_username")
+    private String telegramBotUsername;
+
+    @JsonProperty("viber_uri")
+    private String viberUri;
+
+    @JsonProperty("viber_sender_name")
+    private String viberSenderName;
+
+    @JsonProperty("viber_sender_avatar")
+    private String viberSenderAvatar;
+
+    @JsonProperty("webhook_registered_at")
+    private String webhookRegisteredAt;
 
     public String getAuthType() {
         return authType;
@@ -417,6 +435,15 @@ public final class ChannelConfigConfig {
         return this;
     }
 
+    public String getVerifyServiceSid() {
+        return verifyServiceSid;
+    }
+
+    public ChannelConfigConfig verifyServiceSid(String verifyServiceSid) {
+        this.verifyServiceSid = verifyServiceSid;
+        return this;
+    }
+
     public String getUsercode() {
         return usercode;
     }
@@ -513,6 +540,51 @@ public final class ChannelConfigConfig {
 
     public ChannelConfigConfig smsFallback(Boolean smsFallback) {
         this.smsFallback = smsFallback;
+        return this;
+    }
+
+    public String getTelegramBotUsername() {
+        return telegramBotUsername;
+    }
+
+    public ChannelConfigConfig telegramBotUsername(String telegramBotUsername) {
+        this.telegramBotUsername = telegramBotUsername;
+        return this;
+    }
+
+    public String getViberUri() {
+        return viberUri;
+    }
+
+    public ChannelConfigConfig viberUri(String viberUri) {
+        this.viberUri = viberUri;
+        return this;
+    }
+
+    public String getViberSenderName() {
+        return viberSenderName;
+    }
+
+    public ChannelConfigConfig viberSenderName(String viberSenderName) {
+        this.viberSenderName = viberSenderName;
+        return this;
+    }
+
+    public String getViberSenderAvatar() {
+        return viberSenderAvatar;
+    }
+
+    public ChannelConfigConfig viberSenderAvatar(String viberSenderAvatar) {
+        this.viberSenderAvatar = viberSenderAvatar;
+        return this;
+    }
+
+    public String getWebhookRegisteredAt() {
+        return webhookRegisteredAt;
+    }
+
+    public ChannelConfigConfig webhookRegisteredAt(String webhookRegisteredAt) {
+        this.webhookRegisteredAt = webhookRegisteredAt;
         return this;
     }
 

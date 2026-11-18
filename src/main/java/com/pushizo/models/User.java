@@ -75,6 +75,30 @@ public final class User {
     /**
      * Zorunlu.
      */
+    @JsonProperty("last_ip")
+    private String lastIp;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("last_ip_at")
+    private String lastIpAt;
+
+    /**
+     * Zorunlu. Değerler: "positive", "negative", "neutral".
+     */
+    @JsonProperty("last_sentiment")
+    private String lastSentiment;
+
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("last_sentiment_at")
+    private String lastSentimentAt;
+
+    /**
+     * Zorunlu.
+     */
     @JsonProperty("created_at")
     private String createdAt;
 
@@ -91,7 +115,7 @@ public final class User {
     private Long subscriptionCount;
 
     /**
-     * Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+     * Zorunlu. Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs", "telegram", "viber".
      */
     @JsonProperty("channels")
     private java.util.List<String> channels;
@@ -183,6 +207,42 @@ public final class User {
 
     public User mergedInto(String mergedInto) {
         this.mergedInto = mergedInto;
+        return this;
+    }
+
+    public String getLastIp() {
+        return lastIp;
+    }
+
+    public User lastIp(String lastIp) {
+        this.lastIp = lastIp;
+        return this;
+    }
+
+    public String getLastIpAt() {
+        return lastIpAt;
+    }
+
+    public User lastIpAt(String lastIpAt) {
+        this.lastIpAt = lastIpAt;
+        return this;
+    }
+
+    public String getLastSentiment() {
+        return lastSentiment;
+    }
+
+    public User lastSentiment(String lastSentiment) {
+        this.lastSentiment = lastSentiment;
+        return this;
+    }
+
+    public String getLastSentimentAt() {
+        return lastSentimentAt;
+    }
+
+    public User lastSentimentAt(String lastSentimentAt) {
+        this.lastSentimentAt = lastSentimentAt;
         return this;
     }
 

@@ -33,11 +33,26 @@ public final class UpdateAppDtoSettings {
     @JsonProperty("preferenceCenter")
     private UpdateAppDtoSettingsPreferenceCenter preferenceCenter;
 
+    @JsonProperty("brandKit")
+    private UpdateAppDtoSettingsBrandKit brandKit;
+
     @JsonProperty("defaultTtlSeconds")
     private Long defaultTtlSeconds;
 
     @JsonProperty("identityVerificationRequired")
     private Boolean identityVerificationRequired;
+
+    /**
+     * Değerler: "off", "full", "masked".
+     */
+    @JsonProperty("ipCapture")
+    private String ipCapture;
+
+    @JsonProperty("ipRetentionDays")
+    private Long ipRetentionDays;
+
+    @JsonProperty("adaptiveFrequency")
+    private UpdateAppDtoSettingsAdaptiveFrequency adaptiveFrequency;
 
     @JsonProperty("allowedOrigins")
     private java.util.List<String> allowedOrigins;
@@ -117,6 +132,15 @@ public final class UpdateAppDtoSettings {
         return this;
     }
 
+    public UpdateAppDtoSettingsBrandKit getBrandKit() {
+        return brandKit;
+    }
+
+    public UpdateAppDtoSettings brandKit(UpdateAppDtoSettingsBrandKit brandKit) {
+        this.brandKit = brandKit;
+        return this;
+    }
+
     public Long getDefaultTtlSeconds() {
         return defaultTtlSeconds;
     }
@@ -132,6 +156,33 @@ public final class UpdateAppDtoSettings {
 
     public UpdateAppDtoSettings identityVerificationRequired(Boolean identityVerificationRequired) {
         this.identityVerificationRequired = identityVerificationRequired;
+        return this;
+    }
+
+    public String getIpCapture() {
+        return ipCapture;
+    }
+
+    public UpdateAppDtoSettings ipCapture(String ipCapture) {
+        this.ipCapture = ipCapture;
+        return this;
+    }
+
+    public Long getIpRetentionDays() {
+        return ipRetentionDays;
+    }
+
+    public UpdateAppDtoSettings ipRetentionDays(Long ipRetentionDays) {
+        this.ipRetentionDays = ipRetentionDays;
+        return this;
+    }
+
+    public UpdateAppDtoSettingsAdaptiveFrequency getAdaptiveFrequency() {
+        return adaptiveFrequency;
+    }
+
+    public UpdateAppDtoSettings adaptiveFrequency(UpdateAppDtoSettingsAdaptiveFrequency adaptiveFrequency) {
+        this.adaptiveFrequency = adaptiveFrequency;
         return this;
     }
 

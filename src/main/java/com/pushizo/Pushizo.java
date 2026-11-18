@@ -47,7 +47,7 @@ import javax.crypto.spec.SecretKeySpec;
  * üretilen {@link PushizoResources} sınıfından gelir.
  */
 public final class Pushizo extends PushizoResources {
-    public static final String VERSION = "0.1.0";
+    public static final String VERSION = "0.3.0";
     public static final String DEFAULT_BASE_URL = "https://api.pushizo.com";
     private static final long[] BACKOFF_MS = {300, 1000, 3000};
 

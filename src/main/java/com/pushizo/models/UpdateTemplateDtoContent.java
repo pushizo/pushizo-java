@@ -126,6 +126,9 @@ public final class UpdateTemplateDtoContent {
     @JsonProperty("inbox_ttl")
     private Long inboxTtl;
 
+    @JsonProperty("content_card")
+    private UpdateTemplateDtoContentContentCard contentCard;
+
     @JsonProperty("thread_id")
     private String threadId;
 
@@ -182,6 +185,24 @@ public final class UpdateTemplateDtoContent {
 
     @JsonProperty("rcs_fallback_text")
     private java.util.Map<String, String> rcsFallbackText;
+
+    @JsonProperty("messenger_image_url")
+    private String messengerImageUrl;
+
+    @JsonProperty("messenger_buttons")
+    private java.util.List<Object> messengerButtons;
+
+    @JsonProperty("ios_carousel")
+    private java.util.List<UpdateTemplateDtoContentIosCarouselItem> iosCarousel;
+
+    @JsonProperty("android_live_update")
+    private UpdateTemplateDtoContentAndroidLiveUpdate androidLiveUpdate;
+
+    @JsonProperty("voip")
+    private Boolean voip;
+
+    @JsonProperty("app_clip")
+    private Boolean appClip;
 
     public java.util.Map<String, String> getHeadings() {
         return headings;
@@ -507,6 +528,15 @@ public final class UpdateTemplateDtoContent {
         return this;
     }
 
+    public UpdateTemplateDtoContentContentCard getContentCard() {
+        return contentCard;
+    }
+
+    public UpdateTemplateDtoContent contentCard(UpdateTemplateDtoContentContentCard contentCard) {
+        this.contentCard = contentCard;
+        return this;
+    }
+
     public String getThreadId() {
         return threadId;
     }
@@ -666,6 +696,60 @@ public final class UpdateTemplateDtoContent {
 
     public UpdateTemplateDtoContent rcsFallbackText(java.util.Map<String, String> rcsFallbackText) {
         this.rcsFallbackText = rcsFallbackText;
+        return this;
+    }
+
+    public String getMessengerImageUrl() {
+        return messengerImageUrl;
+    }
+
+    public UpdateTemplateDtoContent messengerImageUrl(String messengerImageUrl) {
+        this.messengerImageUrl = messengerImageUrl;
+        return this;
+    }
+
+    public java.util.List<Object> getMessengerButtons() {
+        return messengerButtons;
+    }
+
+    public UpdateTemplateDtoContent messengerButtons(java.util.List<Object> messengerButtons) {
+        this.messengerButtons = messengerButtons;
+        return this;
+    }
+
+    public java.util.List<UpdateTemplateDtoContentIosCarouselItem> getIosCarousel() {
+        return iosCarousel;
+    }
+
+    public UpdateTemplateDtoContent iosCarousel(java.util.List<UpdateTemplateDtoContentIosCarouselItem> iosCarousel) {
+        this.iosCarousel = iosCarousel;
+        return this;
+    }
+
+    public UpdateTemplateDtoContentAndroidLiveUpdate getAndroidLiveUpdate() {
+        return androidLiveUpdate;
+    }
+
+    public UpdateTemplateDtoContent androidLiveUpdate(UpdateTemplateDtoContentAndroidLiveUpdate androidLiveUpdate) {
+        this.androidLiveUpdate = androidLiveUpdate;
+        return this;
+    }
+
+    public Boolean getVoip() {
+        return voip;
+    }
+
+    public UpdateTemplateDtoContent voip(Boolean voip) {
+        this.voip = voip;
+        return this;
+    }
+
+    public Boolean getAppClip() {
+        return appClip;
+    }
+
+    public UpdateTemplateDtoContent appClip(Boolean appClip) {
+        this.appClip = appClip;
         return this;
     }
 

@@ -45,7 +45,7 @@ public final class TemplatesResource {
      *
      * {@code GET /v1/apps/{appId}/templates}
      *
-     * Parametreler: channel — Değerler: "ios_push", "android_push", "hms_push", "web_push", "email", "sms", "whatsapp", "rcs".
+     * Parametreler: channel — Değerler: "ios_push", "android_push", "hms_push", "adm_push", "wns_push", "web_push", "email", "sms", "whatsapp", "rcs", "telegram", "viber".
      */
     public TemplatePage list(TemplatesListParams params, RequestOptions options) {
         Operation op = new Operation("GET", "/v1/apps/{appId}/templates");
@@ -249,7 +249,30 @@ public final class TemplatesResource {
         return client.execute(op, options, TYPE_7);
     }
 
-    private static final TypeReference<RenderPreview> TYPE_8 = new TypeReference<RenderPreview>() {};
+    private static final TypeReference<Template> TYPE_8 = new TypeReference<Template>() {};
+
+    /**
+     * Eski sürümü geçerli yap
+     *
+     * {@code POST /v1/apps/{appId}/templates/{templateId}/versions/{version}/revert}
+     */
+    public Template revert(String templateId, String version) {
+        return revert(templateId, version, null);
+    }
+
+    /**
+     * Eski sürümü geçerli yap
+     *
+     * {@code POST /v1/apps/{appId}/templates/{templateId}/versions/{version}/revert}
+     */
+    public Template revert(String templateId, String version, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/templates/{templateId}/versions/{version}/revert");
+        op.pathParam("templateId", templateId);
+        op.pathParam("version", version);
+        return client.execute(op, options, TYPE_8);
+    }
+
+    private static final TypeReference<RenderPreview> TYPE_9 = new TypeReference<RenderPreview>() {};
 
     /**
      * Şablonu örnek verilerle render et
@@ -272,6 +295,6 @@ public final class TemplatesResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_8);
+        return client.execute(op, options, TYPE_9);
     }
 }

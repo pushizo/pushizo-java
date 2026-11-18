@@ -28,13 +28,13 @@ public final class AppSettingsOnboarding {
     private Long version;
 
     /**
-     * Değerler: "ios", "android", "huawei", "web".
+     * Değerler: "ios", "android", "huawei", "web", "amazon", "windows", "email", "sms".
      */
     @JsonProperty("platforms")
     private java.util.List<String> platforms;
 
     /**
-     * Değerler: "native", "flutter", "react-native", "unity", "capacitor", "cordova", "maui".
+     * Değerler: "native", "flutter", "react-native", "expo", "kmp", "unity", "capacitor", "cordova", "maui".
      */
     @JsonProperty("framework")
     private String framework;

@@ -134,6 +134,54 @@ public final class SurveysResource {
     private static final TypeReference<Survey> TYPE_3 = new TypeReference<Survey>() {};
 
     /**
+     * Anketi düzenle (bağlı in-app mesajı yenilenir)
+     *
+     * {@code PATCH /v1/apps/{appId}/surveys/{surveyId}}
+     */
+    public Survey update(String surveyId, UpdateSurveyDto body) {
+        return update(surveyId, body, null);
+    }
+
+    /**
+     * Anketi düzenle (bağlı in-app mesajı yenilenir)
+     *
+     * {@code PATCH /v1/apps/{appId}/surveys/{surveyId}}
+     */
+    public Survey update(String surveyId, UpdateSurveyDto body, RequestOptions options) {
+        Operation op = new Operation("PATCH", "/v1/apps/{appId}/surveys/{surveyId}");
+        op.pathParam("surveyId", surveyId);
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_3);
+    }
+
+    private static final TypeReference<Ok> TYPE_4 = new TypeReference<Ok>() {};
+
+    /**
+     * Anketi sil (yanıtları ve bağlı in-app mesajıyla birlikte)
+     *
+     * {@code DELETE /v1/apps/{appId}/surveys/{surveyId}}
+     */
+    public Ok delete(String surveyId) {
+        return delete(surveyId, null);
+    }
+
+    /**
+     * Anketi sil (yanıtları ve bağlı in-app mesajıyla birlikte)
+     *
+     * {@code DELETE /v1/apps/{appId}/surveys/{surveyId}}
+     */
+    public Ok delete(String surveyId, RequestOptions options) {
+        Operation op = new Operation("DELETE", "/v1/apps/{appId}/surveys/{surveyId}");
+        op.pathParam("surveyId", surveyId);
+        return client.execute(op, options, TYPE_4);
+    }
+
+    private static final TypeReference<Survey> TYPE_5 = new TypeReference<Survey>() {};
+
+    /**
      * Etkinleştir / kapat
      *
      * {@code POST /v1/apps/{appId}/surveys/{surveyId}/status}
@@ -154,10 +202,36 @@ public final class SurveysResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_3);
+        return client.execute(op, options, TYPE_5);
     }
 
-    private static final TypeReference<SurveyReport> TYPE_4 = new TypeReference<SurveyReport>() {};
+    private static final TypeReference<Survey> TYPE_6 = new TypeReference<Survey>() {};
+
+    /**
+     * In-app dağıtımı: anketi HTML in-app mesajına dönüştür (oluştur/güncelle, isteğe bağlı yayınla)
+     *
+     * {@code POST /v1/apps/{appId}/surveys/{surveyId}/distribute/in-app}
+     */
+    public Survey distribute(String surveyId, SurveyInAppDto body) {
+        return distribute(surveyId, body, null);
+    }
+
+    /**
+     * In-app dağıtımı: anketi HTML in-app mesajına dönüştür (oluştur/güncelle, isteğe bağlı yayınla)
+     *
+     * {@code POST /v1/apps/{appId}/surveys/{surveyId}/distribute/in-app}
+     */
+    public Survey distribute(String surveyId, SurveyInAppDto body, RequestOptions options) {
+        Operation op = new Operation("POST", "/v1/apps/{appId}/surveys/{surveyId}/distribute/in-app");
+        op.pathParam("surveyId", surveyId);
+        if (body == null) {
+            throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
+        }
+        op.body(body);
+        return client.execute(op, options, TYPE_6);
+    }
+
+    private static final TypeReference<SurveyReport> TYPE_7 = new TypeReference<SurveyReport>() {};
 
     /**
      * NPS / CSAT raporu
@@ -188,10 +262,10 @@ public final class SurveysResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_4);
+        return client.execute(op, options, TYPE_7);
     }
 
-    private static final TypeReference<SurveyResponsePage> TYPE_5 = new TypeReference<SurveyResponsePage>() {};
+    private static final TypeReference<SurveyResponsePage> TYPE_8 = new TypeReference<SurveyResponsePage>() {};
 
     /**
      * Anket yanıtları
@@ -224,7 +298,7 @@ public final class SurveysResource {
         if (params != null) {
             params.applyTo(op);
         }
-        return client.execute(op, options, TYPE_5);
+        return client.execute(op, options, TYPE_8);
     }
 
     /**
@@ -256,7 +330,7 @@ public final class SurveysResource {
         });
     }
 
-    private static final TypeReference<SurveyResponseResult> TYPE_6 = new TypeReference<SurveyResponseResult>() {};
+    private static final TypeReference<SurveyResponseResult> TYPE_9 = new TypeReference<SurveyResponseResult>() {};
 
     /**
      * Sunucu tarafı anket yanıtı (`external_id` ile kullanıcıya bağlanır)
@@ -279,6 +353,6 @@ public final class SurveysResource {
             throw new IllegalArgumentException("Pushizo: istek gövdesi null olamaz.");
         }
         op.body(body);
-        return client.execute(op, options, TYPE_6);
+        return client.execute(op, options, TYPE_9);
     }
 }

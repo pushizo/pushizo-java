@@ -154,4 +154,37 @@ public final class EventsResource {
         op.body(body);
         return client.execute(op, options, TYPE_3);
     }
+
+    private static final TypeReference<RecentEvents> TYPE_4 = new TypeReference<RecentEvents>() {};
+
+    /**
+     * Son olaylar (kullanıcı kimliği ve özelliklerle; ad ve zaman filtresi)
+     *
+     * {@code GET /v1/apps/{appId}/events/recent}
+     */
+    public RecentEvents recent() {
+        return recent(null, null);
+    }
+
+    /**
+     * Son olaylar (kullanıcı kimliği ve özelliklerle; ad ve zaman filtresi)
+     *
+     * {@code GET /v1/apps/{appId}/events/recent}
+     */
+    public RecentEvents recent(EventsRecentParams params) {
+        return recent(params, null);
+    }
+
+    /**
+     * Son olaylar (kullanıcı kimliği ve özelliklerle; ad ve zaman filtresi)
+     *
+     * {@code GET /v1/apps/{appId}/events/recent}
+     */
+    public RecentEvents recent(EventsRecentParams params, RequestOptions options) {
+        Operation op = new Operation("GET", "/v1/apps/{appId}/events/recent");
+        if (params != null) {
+            params.applyTo(op);
+        }
+        return client.execute(op, options, TYPE_4);
+    }
 }

@@ -21,6 +21,15 @@ public final class DeliverabilitySettingsDto {
     @JsonProperty("verifier")
     private DeliverabilitySettingsDtoVerifier verifier;
 
+    @JsonProperty("volume_spike")
+    private DeliverabilitySettingsDtoVolumeSpike volumeSpike;
+
+    @JsonProperty("max_invalid_ratio")
+    private Double maxInvalidRatio;
+
+    @JsonProperty("postmaster")
+    private DeliverabilitySettingsDtoPostmaster postmaster;
+
     public String getBccAddress() {
         return bccAddress;
     }
@@ -45,6 +54,33 @@ public final class DeliverabilitySettingsDto {
 
     public DeliverabilitySettingsDto verifier(DeliverabilitySettingsDtoVerifier verifier) {
         this.verifier = verifier;
+        return this;
+    }
+
+    public DeliverabilitySettingsDtoVolumeSpike getVolumeSpike() {
+        return volumeSpike;
+    }
+
+    public DeliverabilitySettingsDto volumeSpike(DeliverabilitySettingsDtoVolumeSpike volumeSpike) {
+        this.volumeSpike = volumeSpike;
+        return this;
+    }
+
+    public Double getMaxInvalidRatio() {
+        return maxInvalidRatio;
+    }
+
+    public DeliverabilitySettingsDto maxInvalidRatio(Double maxInvalidRatio) {
+        this.maxInvalidRatio = maxInvalidRatio;
+        return this;
+    }
+
+    public DeliverabilitySettingsDtoPostmaster getPostmaster() {
+        return postmaster;
+    }
+
+    public DeliverabilitySettingsDto postmaster(DeliverabilitySettingsDtoPostmaster postmaster) {
+        this.postmaster = postmaster;
         return this;
     }
 

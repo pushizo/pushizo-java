@@ -45,6 +45,12 @@ public final class Campaign {
     /**
      * Zorunlu.
      */
+    @JsonProperty("goals")
+    private CampaignGoals goals;
+
+    /**
+     * Zorunlu.
+     */
     @JsonProperty("ab_test")
     private CampaignAbTest abTest;
 
@@ -180,6 +186,12 @@ public final class Campaign {
     @JsonProperty("estimated_recipients")
     private Long estimatedRecipients;
 
+    /**
+     * Zorunlu.
+     */
+    @JsonProperty("preflight")
+    private CampaignPreflight preflight;
+
     public String getId() {
         return id;
     }
@@ -222,6 +234,15 @@ public final class Campaign {
 
     public Campaign category(String category) {
         this.category = category;
+        return this;
+    }
+
+    public CampaignGoals getGoals() {
+        return goals;
+    }
+
+    public Campaign goals(CampaignGoals goals) {
+        this.goals = goals;
         return this;
     }
 
@@ -429,6 +450,15 @@ public final class Campaign {
 
     public Campaign estimatedRecipients(Long estimatedRecipients) {
         this.estimatedRecipients = estimatedRecipients;
+        return this;
+    }
+
+    public CampaignPreflight getPreflight() {
+        return preflight;
+    }
+
+    public Campaign preflight(CampaignPreflight preflight) {
+        this.preflight = preflight;
         return this;
     }
 
